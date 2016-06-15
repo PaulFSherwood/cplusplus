@@ -1,0 +1,57 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+bool isRunning = true;
+string cpuGuess;
+int iterations = 0;
+
+string incrementLetter(string &myString, int index) {
+    myString[index]++;
+    return myString;
+}
+
+int main()
+{
+    string userInput;
+    // get the input from the user and the length. store values
+    getline(cin, userInput);
+    int inputLength = userInput.length();
+    
+    cout << "userInput: " << userInput << " || length is: " << inputLength << endl;
+    
+    char letter = 'a';
+    // fill array with input.lenght number of letters
+    for (int i = 0; i < inputLength; i++) {
+        //cpuGuess[i] = static_cast<char>(letter + 1);
+        cpuGuess.append("a");
+    }
+    // cpuGuess should be filled to the same length of userInput
+    cout << "Initial cpuGuess:" << cpuGuess << endl;
+    
+    while(isRunning) {
+        if (cpuGuess == userInput) {
+            // if its a match we are done
+            cout << "match found: " << cpuGuess << endl;
+            cout << "after " << iterations << " iterations" << endl;
+            isRunning = false;
+        // if we dont have a complete match yet
+        } else {
+            // check the last digit see if is a match if not increment guess
+            for (int i = inputLength; i > 0; i--) {
+                if (cpuGuess[i] != userInput[i]){
+                    // change the last letter
+                    incrementLetter(cpuGuess, i);
+                    cout << "cpuGuess[" << i << "]" << cpuGuess << endl;
+                }
+                iterations++;
+            }
+        }
+        if (iterations > 50) {
+            isRunning = false;
+        }
+    }
+    cout << "\ncpuGuess:" << cpuGuess << endl;
+    return 0;
+}
