@@ -1,0 +1,56 @@
+
+**** Build of configuration Debug for project matrixy ****
+
+make all 
+Building file: ../src/matrixy.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/matrixy.d" -MT"src/matrixy.d" -o"src/matrixy.o" "../src/matrixy.cpp"
+../src/matrixy.cpp: In function ‘int main(int, char**)’:
+Finished building: ../src/matrixy.cpp
+../src/matrixy.cpp:24:27: warning: left-hand operand of comma has no effect
+ 
+Building target: matrixy
+../src/matrixy.cpp:24:31: warning: right-hand operand of comma has no effect
+Invoking: GCC C++ Linker
+g++  -o"matrixy"  ./src/matrixy.o   
+../src/matrixy.cpp:24:35: warning: right-hand operand of comma has no effect
+../src/matrixy.cpp:24:39: warning: right-hand operand of comma has no effect
+../src/matrixy.cpp:24:43: warning: right-hand operand of comma has no effect
+../src/matrixy.cpp:24:47: warning: right-hand operand of comma has no effect
+../src/matrixy.cpp:24:51: warning: right-hand operand of comma has no effect
+../src/matrixy.cpp:24:55: warning: right-hand operand of comma has no effect
+../src/matrixy.cpp:24:59: warning: right-hand operand of comma has no effect
+../src/matrixy.cpp:24:63: warning: right-hand operand of comma has no effect
+../src/matrixy.cpp:24:67: warning: right-hand operand of comma has no effect
+../src/matrixy.cpp:24:71: warning: right-hand operand of comma has no effect
+../src/matrixy.cpp:24:75: warning: right-hand operand of comma has no effect
+../src/matrixy.cpp:24:79: warning: right-hand operand of comma has no effect
+../src/matrixy.cpp:24:83: warning: right-hand operand of comma has no effect
+../src/matrixy.cpp:24:87: warning: right-hand operand of comma has no effect
+../src/matrixy.cpp:24:91: warning: right-hand operand of comma has no effect
+../src/matrixy.cpp:24:95: warning: right-hand operand of comma has no effect
+../src/matrixy.cpp:24:99: warning: right-hand operand of comma has no effect
+../src/matrixy.cpp:24:103: warning: right-hand operand of comma has no effect
+Finished building target: matrixy
+ 
+../src/matrixy.cpp:24:107: warning: right-hand operand of comma has no effect
+../src/matrixy.cpp:24:111: warning: right-hand operand of comma has no effect
+../src/matrixy.cpp:24:115: warning: right-hand operand of comma has no effect
+../src/matrixy.cpp:24:119: warning: right-hand operand of comma has no effect
+../src/matrixy.cpp:24:123: warning: right-hand operand of comma has no effect
+../src/matrixy.cpp:24:127: warning: right-hand operand of comma has no effect
+../src/matrixy.cpp:24:131: warning: right-hand operand of comma has no effect
+../src/matrixy.cpp:24:135: warning: right-hand operand of comma has no effect
+../src/matrixy.cpp:24:139: warning: right-hand operand of comma has no effect
+../src/matrixy.cpp:24:143: warning: right-hand operand of comma has no effect
+../src/matrixy.cpp:24:147: warning: right-hand operand of comma has no effect
+../src/matrixy.cpp:24:151: warning: right-hand operand of comma has no effect
+../src/matrixy.cpp:24:155: warning: right-hand operand of comma has no effect
+../src/matrixy.cpp:24:159: warning: right-hand operand of comma has no effect
+../src/matrixy.cpp:24:163: warning: right-hand operand of comma has no effect
+../src/matrixy.cpp:24:167: warning: right-hand operand of comma has no effect
+../src/matrixy.cpp:24:171: warning: right-hand operand of comma has no effect
+../src/matrixy.cpp:24:175: warning: right-hand operand of comma has no effect
+../src/matrixy.cpp:24:179: warning: right-hand operand of comma has no effect
+../src/matrixy.cpp:24:183: warning: right-hand operand of comma has no effect
+../src/matrixy.cpp:24:187: warning: right-hand operand of comma has no effect

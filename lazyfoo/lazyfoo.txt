@@ -1,0 +1,91 @@
+This tutorial covers how to do hello world sdl style.
+
+now that you have sdl set up, it's time to make a bare bones graphics application that loads and
+displays an image on the screen.
+
+//Iinclude SDL functions and datatypes
+#include "SDL/SDL.h"
+
+At the top of the source file we include the sdl header file so we can use the sdl functions and
+data types.
+
+Remember that some of you (like visual studio users) are going to include sdl like this:
+#include "SDL.h"
+
+So if the compiler is complaining that it can't find "SDL/SDL.h", then it's either because you're
+including the wrong path or you forgot to put sdl.h in the right place.
+
+int main(int argc, char* args[])
+{
+	//the images
+	SDL_Surface *hello = NULL;
+	SDL_Surface *screen = NULL;
+
+at the top of the main() function, two sdl_surface pointers are declared.  an sdl_surface is an
+image, and in this application we're going to be dealing with two images.  the surface "hello" is
+the image we're going to be loading and showing. the "screen"  is what is visible on the screen.
+
+whenever you're dealing with pointers, you should always remember to initialize them.
+
+Also, when using sdl, you must have your main() function declared like it is above.  you can't use
+void main() or anything like that.
+
+	// start sdl
+	SDL_Init(SDL_INIT_EVERYTHING);
+
+	// set up screen
+	screen = SDL_SetVideoMode(640, 480, 32, SDL_SWSURFACE);
+
+	// load image
+	hello = SDL_LoadBMP("hello.bmp");
+
+The first function we call in the main() function is SDL_Init().  This call of SDL_Init()
+initializes all the SDL subsystems so we can start using SDL's graphics functions.
+
+Next SDL_SetVideoMode() is called to set up a 640 pixel wide, 480 pixel high window that has 32
+bits per pixel.  The last argument (SDL_SWSURFACE) sets up the surface in software memory.  after
+SDL_SetVideoMode() executes, it returns a pointer to the window surface so we can use it.
+
+After the window is set up, we load our image using SDL_LoadBMP().  SDL_LoadBMP() takes in a path to
+a bitmap file as an argument and returns a pointer to the loaded SDL_Surface.  This function returns
+NULL if there was an error in loading the image.
+
+	//Apply image to screen
+	SDL_BlitSurface(hello, NULL, screen, NULL);
+
+	//Update screen
+	SDL_Flip(screen);
+
+	//Pause
+	SDL_Delay(2000);
+
+Now that we have our window set up and our image loaded, we want to apply the loaded image onto the
+screen.  We do this using SDL_BlitSurface().  The first of SDL_BlitSurface() argument is the source
+surface.  The third argument is the destination surface.  SDL_BlitSurface() sticks the soorce screen.
+You'll find out what the other argumetns do in later tutorials.
+
+Now that our image is applied to screen, we need to update the screen so we can see it.  We do this
+using SDL_Flip().  If you don't call SDL_Flip(), you'll only see an unupdated blank screen.
+
+Now that the image is applied to the screen and it's make visible, we have to make the window stay
+visible so it doesn't just flash for a split second and disappear.  We'll make the window stay by
+calling SDL_Delay().  Here we delay the window for 2000 milliseconds (2 seconds).  You'll learn a 
+better way to make the window stay in place in tutorial 4.
+
+	// Free the loaded image
+	SDL_FreeSurface(hello);
+
+	//quit sdl
+	SDL_Quit();
+
+	return 0;
+}
+
+Now that we're not going to use the loaded iamge anymore in our program, we need to remove it from
+memory.  You can't just use delete, you have to use SDL_FreeSurface() to remeove the image from
+memory.  At the end of our program, we call SDL_Quit(0 to shutdown SDL.
+
+You may be wondering why we never delete the screen surface.  Don't worry, SDL_Quit() cleanse it up
+for you.
+
+Congratulations, you're just made your first graphics application.

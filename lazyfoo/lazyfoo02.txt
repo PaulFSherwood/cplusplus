@@ -1,0 +1,55 @@
+// Headers
+
+// the attributes of the screen
+
+// the surface that will be used
+
+// image loading function
+
+	// temporary storage for the image thats loaded
+
+	// the optimized image
+
+	// load the iage
+
+	// if nothing went wrong in loading the image
+
+		// create an optimized image
+
+		// free the old image
+	
+	// return the optimized image
+
+// surface blitting 
+
+	// make a temporary rectangle to hold the offsets
+
+	// give the offsets to the retangel
+
+	// blit the surface
+
+// main function
+
+// Initialize  sdl subsystems
+
+// set up the scren
+
+// if there was an error in setting up the screen
+
+// set the window caption
+
+// load the images
+
+// apply the background to the screen
+
+// appply the message to the screen
+
+// update the screen
+
+// wait 2 seconds
+
+// free the surface
+
+// quit sdl
+
+// return 0;

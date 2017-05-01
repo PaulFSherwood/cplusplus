@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;composition2/src/composition2.cpp&apos; to &apos;Point2D.h&apos;" description="Rename resource &apos;composition2.cpp&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/composition2.cpp" name="Point2D.h" stamp="1304954170835" updateReferences="true"/>
+</session>

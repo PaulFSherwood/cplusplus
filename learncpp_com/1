@@ -1,0 +1,27 @@
+#include <iostream> 
+#include <ctime> 
+#include <cstdlib>
+#include <string>
+ 
+using namespace std;
+
+int randomNumber(int numberRange)
+{
+    srand((unsigned)time(0)); 
+    int random_integer = rand()%numberRange; 
+    //cout << random_integer << endl;
+    return random_integer;
+
+}
+
+int main() 
+{
+    cout << randomNumber(100) << endl;
+    
+    //int lowest=1, highest=10; 
+    //int range=(highest-lowest)+1; 
+    //for(int index=0; index<20; index++){ 
+    //    random_integer = lowest+int(range*rand()/(RAND_MAX + 1.0)); 
+    //    cout << random_integer << endl; 
+    //} 
+}

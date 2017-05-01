@@ -1,0 +1,14 @@
+
+**** Build of configuration Debug for project tic tac toe ****
+
+make all 
+Building file: ../src/tic tac toe.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/tic tac toe.d" -MT"src/tic\ tac\ toe.d" -o"src/tic tac toe.o" "../src/tic tac toe.cpp"
+Finished building: ../src/tic tac toe.cpp
+ 
+Building target: tic tac toe
+Invoking: GCC C++ Linker
+g++  -o"tic tac toe"  ./src/tic\ tac\ toe.o   
+Finished building target: tic tac toe
+ 

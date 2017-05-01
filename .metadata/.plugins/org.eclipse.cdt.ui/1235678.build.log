@@ -1,0 +1,19 @@
+
+**** Build of configuration Debug for project 1235678 ****
+
+make all 
+Building file: ../src/grant.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/grant.d" -MT"src/grant.d" -o"src/grant.o" "../src/grant.cpp"
+Finished building: ../src/grant.cpp
+ 
+Building file: ../src/grant_game.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/grant_game.d" -MT"src/grant_game.d" -o"src/grant_game.o" "../src/grant_game.cpp"
+Finished building: ../src/grant_game.cpp
+ 
+Building target: 1235678
+Invoking: GCC C++ Linker
+g++  -o"1235678"  ./src/grant.o ./src/grant_game.o   
+Finished building target: 1235678
+ 

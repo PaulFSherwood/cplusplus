@@ -1,0 +1,14 @@
+
+**** Build of configuration Debug for project templet_specialization ****
+
+make all 
+Building file: ../src/templet_specialization.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/templet_specialization.d" -MT"src/templet_specialization.d" -o"src/templet_specialization.o" "../src/templet_specialization.cpp"
+Finished building: ../src/templet_specialization.cpp
+ 
+Building target: templet_specialization
+Invoking: GCC C++ Linker
+g++  -o"templet_specialization"  ./src/templet_specialization.o   
+Finished building target: templet_specialization
+ 

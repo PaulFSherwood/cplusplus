@@ -1,0 +1,44 @@
+// tried to do something with this but it seems that cpp treats everything thats 
+// going to fname and sname as strings even escape characters
+// spoke too soon it doesnt.
+
+#include <iostream>
+#include <string>
+#include <algorithm>
+using namespace std;
+
+string getString(int x)
+{
+	string mystring = "";
+
+	if (x == 1)
+	{
+		cout << "Please enter your first name ";
+		cin >> mystring;
+	}
+	else 
+	{
+		cout << "Please enter your last name ";
+		cin >> mystring;
+	}
+
+	return mystring;
+}
+
+string checkString(string inputName)
+{
+	char xcheck = '8';
+	replace(inputName.begin(), inputName.end(), xcheck, 'a');
+	return inputName;
+}
+
+int main()
+{
+	const int size = 5;
+	string fname = getString(1);
+	string sname = getString(2);
+
+	fname = checkString(fname);
+
+	cout << fname << " " <<  sname << endl;
+}

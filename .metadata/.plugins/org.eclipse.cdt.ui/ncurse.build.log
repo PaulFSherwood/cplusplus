@@ -1,0 +1,29 @@
+
+**** Build of configuration Debug for project ncurse ****
+
+make all 
+Building target: ncurse
+Invoking: GCC C++ Linker
+g++  -o"ncurse"  ./ncurses_test.o   
+./ncurses_test.o: In function `main':
+/home/grrwood/Documents/src/cplusplus/ncurse/Debug/../ncurses_test.cpp:7: undefined reference to `initscr'
+/home/grrwood/Documents/src/cplusplus/ncurse/Debug/../ncurses_test.cpp:8: undefined reference to `raw'
+/home/grrwood/Documents/src/cplusplus/ncurse/Debug/../ncurses_test.cpp:9: undefined reference to `stdscr'
+/home/grrwood/Documents/src/cplusplus/ncurse/Debug/../ncurses_test.cpp:9: undefined reference to `keypad'
+/home/grrwood/Documents/src/cplusplus/ncurse/Debug/../ncurses_test.cpp:10: undefined reference to `noecho'
+/home/grrwood/Documents/src/cplusplus/ncurse/Debug/../ncurses_test.cpp:12: undefined reference to `printw'
+/home/grrwood/Documents/src/cplusplus/ncurse/Debug/../ncurses_test.cpp:13: undefined reference to `stdscr'
+/home/grrwood/Documents/src/cplusplus/ncurse/Debug/../ncurses_test.cpp:13: undefined reference to `wgetch'
+/home/grrwood/Documents/src/cplusplus/ncurse/Debug/../ncurses_test.cpp:17: undefined reference to `printw'
+/home/grrwood/Documents/src/cplusplus/ncurse/Debug/../ncurses_test.cpp:22: undefined reference to `printw'
+/home/grrwood/Documents/src/cplusplus/ncurse/Debug/../ncurses_test.cpp:23: undefined reference to `stdscr'
+/home/grrwood/Documents/src/cplusplus/ncurse/Debug/../ncurses_test.cpp:23: undefined reference to `wattr_on'
+/home/grrwood/Documents/src/cplusplus/ncurse/Debug/../ncurses_test.cpp:24: undefined reference to `printw'
+/home/grrwood/Documents/src/cplusplus/ncurse/Debug/../ncurses_test.cpp:25: undefined reference to `stdscr'
+/home/grrwood/Documents/src/cplusplus/ncurse/Debug/../ncurses_test.cpp:25: undefined reference to `wattr_off'
+/home/grrwood/Documents/src/cplusplus/ncurse/Debug/../ncurses_test.cpp:27: undefined reference to `refresh'
+/home/grrwood/Documents/src/cplusplus/ncurse/Debug/../ncurses_test.cpp:28: undefined reference to `stdscr'
+/home/grrwood/Documents/src/cplusplus/ncurse/Debug/../ncurses_test.cpp:28: undefined reference to `wgetch'
+/home/grrwood/Documents/src/cplusplus/ncurse/Debug/../ncurses_test.cpp:29: undefined reference to `endwin'
+collect2: ld returned 1 exit status
+make: *** [ncurse] Error 1

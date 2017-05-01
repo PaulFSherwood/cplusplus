@@ -1,0 +1,21 @@
+#include <iostream>
+using namespace std;
+
+int printArray(int array[][3], int index)
+{
+	for (int x = 0; x < index; x++)
+	{
+		for (int y = 0; y < index; y++)
+		{
+			cout << array[x][y];
+		}
+		cout << endl;
+	}
+}
+
+int main()
+{
+	int myarray[3][3]={{1,2,3},{4,5,6},{7,8,9}};
+
+	printArray(myarray, 3);
+}

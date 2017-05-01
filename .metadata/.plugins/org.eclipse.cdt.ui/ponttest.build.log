@@ -1,0 +1,17 @@
+
+**** Build of configuration Debug for project ponttest ****
+
+make all 
+Building file: ../src/ponttest.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/ponttest.d" -MT"src/ponttest.d" -o"src/ponttest.o" "../src/ponttest.cpp"
+../src/ponttest.cpp: In function ‘int main(int, char**)’:
+Finished building: ../src/ponttest.cpp
+../src/ponttest.cpp:273:23: warning: deprecated conversion from string constant to ‘char*’
+ 
+Building target: ponttest
+Invoking: GCC C++ Linker
+g++  -o"ponttest"  ./src/ponttest.o   -lSDL -lSDLmain -lGL -lSDL_image -lSDL_mixer -lSDL_ttf
+../src/ponttest.cpp:277:24: warning: deprecated conversion from string constant to ‘char*’
+Finished building target: ponttest
+ 

@@ -1,0 +1,11 @@
+
+**** Build of configuration Debug for project allegro02 ****
+
+make all 
+Building target: allegro02
+Invoking: GCC C++ Linker
+g++  -o"allegro02"  ./allegro02.o   
+/usr/lib/gcc/i686-redhat-linux/4.5.1/../../../crt1.o: In function `_start':
+(.text+0x18): undefined reference to `main'
+collect2: ld returned 1 exit status
+make: *** [allegro02] Error 1

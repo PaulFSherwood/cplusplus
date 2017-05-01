@@ -1,0 +1,14 @@
+
+**** Build of configuration Debug for project arrays ****
+
+make all 
+Building file: ../src/arrays.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/arrays.d" -MT"src/arrays.d" -o"src/arrays.o" "../src/arrays.cpp"
+Finished building: ../src/arrays.cpp
+ 
+Building target: arrays
+Invoking: GCC C++ Linker
+g++  -o"arrays"  ./src/arrays.o   
+Finished building target: arrays
+ 

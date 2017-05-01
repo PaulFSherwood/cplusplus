@@ -1,0 +1,14 @@
+
+**** Build of configuration Debug for project sdltest4 ****
+
+make all 
+Building file: ../src/sdltest4.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/sdltest4.d" -MT"src/sdltest4.d" -o"src/sdltest4.o" "../src/sdltest4.cpp"
+Finished building: ../src/sdltest4.cpp
+ 
+Building target: sdltest4
+Invoking: GCC C++ Linker
+g++  -o"sdltest4"  ./src/sdltest4.o   -lSDL -lSDL_ttf -lSDLmain -lGL -lSDL_image -lSDL_mixer
+Finished building target: sdltest4
+ 

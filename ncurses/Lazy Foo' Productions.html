@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<!-- saved from url=(0046)http://www.lazyfoo.net/SDL_tutorials/index.php -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+
+
+<meta name="KEYWORDS" content="Lazy Foo&#39; Productions C++ SDL Window Linux Mac Game Programming Tutorials">
+
+<meta name="DESCRIPTION" content="Tutorials for those who want to start making video games.">
+
+<title>Lazy Foo' Productions</title>
+
+<link rel="stylesheet" type="text/css" href="./Lazy Foo' Productions_files/lazy.css">
+
+<script src="./Lazy Foo' Productions_files/lazy.js">
+</script>
+
+</head>
+
+<body>
+
+<div class="header">
+
+<h1>Lazy Foo' Productions</h1>
+
+<div class="nav">
+<a class="nav" href="http://lazyfoo.net/index.php">News</a>
+<a class="nav" href="http://lazyfoo.net/faq.php">FAQs</a>
+<a class="nav" href="http://lazyfoo.net/games/index.php">Games</a>
+<a class="nav" href="http://lazyfoo.net/SDL_tutorials/index.php">Tutorials</a>
+<a class="nav" href="http://lazyfoo.net/articles/index.php">Articles</a>
+<a class="nav" href="http://forums.libsdl.org/">SDL Forums</a>
+<a class="nav" href="http://lazyfoo.net/contact.php">Contact</a>
+<a class="nav" href="http://lazyfoo.net/donate.php">Donations</a>
+</div>
+<div class="ads">
+<script type="text/javascript"><!--
+google_ad_client = "pub-5880704953225255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_type = "text_image";
+google_ad_channel ="";
+google_color_border = "6699CC";
+google_color_bg = "003366";
+google_color_link = "FFFFFF";
+google_color_url = "AECCEB";
+google_color_text = "AECCEB";
+//--></script>
+<script type="text/javascript" src="./Lazy Foo' Productions_files/show_ads.js">
+</script><ins style="display:inline-table;border:none;height:60px;margin:0;padding:0;position:relative;visibility:visible;width:468px"><ins id="aswift_0_anchor" style="display:block;border:none;height:60px;margin:0;padding:0;position:relative;visibility:visible;width:468px"><iframe allowtransparency="true" frameborder="0" height="60" hspace="0" marginwidth="0" marginheight="0" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){i+=&#39;.call&#39;;setTimeout(h,0)}else if(h.match){i+=&#39;.nav&#39;;w.location.replace(h)}s.log&amp;&amp;s.log.push(i)}" scrolling="no" vspace="0" width="468" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;"></iframe></ins></ins>
+</div>
+</div>
+<div class="content">
+
+<div class="tutPreface"><h1 class="tutHead">Beginning Game Programming</h1>
+<h6>Last Updated 1/1/11</h6>
+These tutorials were made to help programmers start out in game programming.
+I tried to keep them as simple and to the point as possible.
+They are a perpetual work in progress, and will be improved over time.<br>
+<br>
+They use C++ as the programming language because it is considered the game industry's standard.
+SDL is used as the API because it is cross platform, and relatively easy to use.
+</div>
+
+<table class="tutToC">
+
+	<colgroup><col width="17%">
+	<col width="17%">
+	<col width="17%">
+	<col width="17%">
+	<col width="17%">
+	<col width="17%">
+	
+	</colgroup><tbody><tr>
+	<td class="ToCTitle" colspan="6">Table of Contents</td>
+	</tr>
+	
+	<tr>
+		<td class="tutLink">Lesson 1<br>
+		<a href="http://www.lazyfoo.net/SDL_tutorials/lesson01/index.php" class="tutLink">Setting up SDL</a><br>
+		and<br>
+		<a href="http://www.lazyfoo.net/SDL_tutorials/lesson01/index2.php" class="tutLink">Getting an Image on the Screen</a>
+		</td>
+		<td class="tutLink">Lesson 2<br><a href="http://www.lazyfoo.net/SDL_tutorials/lesson02/index.php" class="tutLink">Optimized Surface Loading and Blitting</a></td>
+		<td class="tutLink">Lesson 3<br><a href="http://www.lazyfoo.net/SDL_tutorials/lesson03/index.php" class="tutLink">Extension Libraries and Loading Other Image Formats</a></td>
+		<td class="tutLink">Lesson 4<br><a href="http://www.lazyfoo.net/SDL_tutorials/lesson04/index.php" class="tutLink">Event Driven Programming</a></td>
+		<td class="tutLink">Lesson 5<br><a href="http://www.lazyfoo.net/SDL_tutorials/lesson05/index.php" class="tutLink">Color Keying</a></td>
+		<td class="tutLink">Lesson 6<br><a href="http://www.lazyfoo.net/SDL_tutorials/lesson06/index.php" class="tutLink">Clip Blitting and Sprite Sheets</a></td>
+	</tr>
+	
+	<tr>
+		<td class="tutLink">Lesson 7<br><a href="http://www.lazyfoo.net/SDL_tutorials/lesson07/index.php" class="tutLink">True Type Fonts</a></td>
+		<td class="tutLink">Lesson 8<br><a href="http://www.lazyfoo.net/SDL_tutorials/lesson08/index.php" class="tutLink">Key Presses</a></td>
+		<td class="tutLink">Lesson 9<br><a href="http://www.lazyfoo.net/SDL_tutorials/lesson09/index.php" class="tutLink">Mouse Events</a></td>
+		<td class="tutLink">Lesson 10<br><a href="http://www.lazyfoo.net/SDL_tutorials/lesson10/index.php" class="tutLink">Key States</a></td>
+		<td class="tutLink">Lesson 11<br><a href="http://www.lazyfoo.net/SDL_tutorials/lesson11/index.php" class="tutLink">Playing Sounds</a></td>
+		<td class="tutLink">Lesson 12<br><a href="http://www.lazyfoo.net/SDL_tutorials/lesson12/index.php" class="tutLink">Timing</a></td>
+	</tr>
+	
+	<tr>
+		<td class="tutLink">Lesson 13<br><a href="http://www.lazyfoo.net/SDL_tutorials/lesson13/index.php" class="tutLink">Advanced Timers</a></td>
+		<td class="tutLink">Lesson 14<br><a href="http://www.lazyfoo.net/SDL_tutorials/lesson14/index.php" class="tutLink">Regulating Frame Rate</a></td>
+		<td class="tutLink">Lesson 15<br><a href="http://www.lazyfoo.net/SDL_tutorials/lesson15/index.php" class="tutLink">Calculating Frame Rate</a></td>
+		<td class="tutLink">Lesson 16<br><a href="http://www.lazyfoo.net/SDL_tutorials/lesson16/index.php" class="tutLink">Motion</a></td>
+		<td class="tutLink">Lesson 17<br><a href="http://www.lazyfoo.net/SDL_tutorials/lesson17/index.php" class="tutLink">Collision Detection</a></td>
+		<td class="tutLink">Lesson 18<br><a href="http://www.lazyfoo.net/SDL_tutorials/lesson18/index.php" class="tutLink">Per-pixel Collision Detection</a></td>
+		
+	</tr>
+	
+	<tr>
+		<td class="tutLink">Lesson 19<br><a href="http://www.lazyfoo.net/SDL_tutorials/lesson19/index.php" class="tutLink">Circular Collision Detection</a></td>
+		<td class="tutLink">Lesson 20<br><a href="http://www.lazyfoo.net/SDL_tutorials/lesson20/index.php" class="tutLink">Animation</a></td>
+		<td class="tutLink">Lesson 21<br><a href="http://www.lazyfoo.net/SDL_tutorials/lesson21/index.php" class="tutLink">Scrolling</a></td>
+		<td class="tutLink">Lesson 22<br><a href="http://www.lazyfoo.net/SDL_tutorials/lesson22/index.php" class="tutLink">Scrolling Backgrounds</a></td>
+		<td class="tutLink">Lesson 23<br><a href="http://www.lazyfoo.net/SDL_tutorials/lesson23/index.php" class="tutLink">Getting String Input</a></td>
+		<td class="tutLink">Lesson 24<br><a href="http://www.lazyfoo.net/SDL_tutorials/lesson24/index.php" class="tutLink">Game Saves</a></td>
+	</tr>
+	
+	<tr>
+		<td class="tutLink">Lesson 25<br><a href="http://www.lazyfoo.net/SDL_tutorials/lesson25/index.php" class="tutLink">Joysticks</a></td>
+		<td class="tutLink">Lesson 26<br><a href="http://www.lazyfoo.net/SDL_tutorials/lesson26/index.php" class="tutLink">Resizable Windows and Window Events</a></td>
+		<td class="tutLink">Lesson 27<br><a href="http://www.lazyfoo.net/SDL_tutorials/lesson27/index.php" class="tutLink">Alpha Blending</a></td>
+		<td class="tutLink">Lesson 28<br><a href="http://www.lazyfoo.net/SDL_tutorials/lesson28/index.php" class="tutLink">Particle Engines</a></td>
+		<td class="tutLink">Lesson 29<br><a href="http://www.lazyfoo.net/SDL_tutorials/lesson29/index.php" class="tutLink">Tiling</a></td>
+		<td class="tutLink">Lesson 30<br><a href="http://www.lazyfoo.net/SDL_tutorials/lesson30/index.php" class="tutLink">Bitmap Fonts</a></td>
+	</tr>
+
+	<tr>
+		<td class="tutLink">Lesson 31<br><a href="http://www.lazyfoo.net/SDL_tutorials/lesson31/index.php" class="tutLink">Pixel Manipulation and Surface Flipping</a></td>
+		<td class="tutLink">Lesson 32<br><a href="http://www.lazyfoo.net/SDL_tutorials/lesson32/index.php" class="tutLink">Frame Independent Movement</a></td>
+		<td class="tutLink">Lesson 33<br><a href="http://www.lazyfoo.net/SDL_tutorials/lesson33/index.php" class="tutLink">Multithreading</a></td>
+		<td class="tutLink">Lesson 34<br><a href="http://www.lazyfoo.net/SDL_tutorials/lesson34/index.php" class="tutLink">Semaphores</a></td>
+		<td class="tutLink">Lesson 35<br><a href="http://www.lazyfoo.net/SDL_tutorials/lesson35/index.php" class="tutLink">Mutexes and Conditions</a></td>
+		<td class="tutLink">Lesson 36<br><a href="http://www.lazyfoo.net/SDL_tutorials/lesson36/index.php" class="tutLink">Using OpenGL with SDL</a></td>
+	</tr>
+</tbody></table>
+
+<div class="tutFooter">
+I am not claiming to know everything there is to know about programming/C++/SDL, but I have gained knowledge over the years.
+These tutorials are made to pass on the knowledge I gained to those just starting out.
+I try to keep my code and tutorials as bug free as possible. If you find any errors please report them to me.
+Suggestions are also welcome.<br>
+<br>
+So if you have any suggestions, comments, questions, bugs reports, typos, or anything else you want to say about the tutorials, feel free to <a href="http://www.lazyfoo.net/contact.php" class="tutLink">contact me</a>.
+</div>
+
+</div>
+
+<div class="footer">
+
+<div class="ads">
+<script type="text/javascript"><!--
+google_ad_client = "pub-5880704953225255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_type = "text_image";
+google_ad_channel ="";
+google_color_border = "6699CC";
+google_color_bg = "003366";
+google_color_link = "FFFFFF";
+google_color_url = "AECCEB";
+google_color_text = "AECCEB";
+//--></script>
+<script type="text/javascript" src="./Lazy Foo' Productions_files/show_ads.js">
+</script><ins style="display:inline-table;border:none;height:60px;margin:0;padding:0;position:relative;visibility:visible;width:468px"><ins id="aswift_1_anchor" style="display:block;border:none;height:60px;margin:0;padding:0;position:relative;visibility:visible;width:468px"><iframe allowtransparency="true" frameborder="0" height="60" hspace="0" marginwidth="0" marginheight="0" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){i+=&#39;.call&#39;;setTimeout(h,0)}else if(h.match){i+=&#39;.nav&#39;;w.location.replace(h)}s.log&amp;&amp;s.log.push(i)}" scrolling="no" vspace="0" width="468" id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;"></iframe></ins></ins>
+</div>
+<div class="nav">
+<a class="nav" href="http://lazyfoo.net/index.php">News</a>
+<a class="nav" href="http://lazyfoo.net/faq.php">FAQs</a>
+<a class="nav" href="http://lazyfoo.net/games/index.php">Games</a>
+<a class="nav" href="http://lazyfoo.net/SDL_tutorials/index.php">Tutorials</a>
+<a class="nav" href="http://lazyfoo.net/articles/index.php">Articles</a>
+<a class="nav" href="http://forums.libsdl.org/">SDL Forums</a>
+<a class="nav" href="http://lazyfoo.net/contact.php">Contact</a>
+<a class="nav" href="http://lazyfoo.net/donate.php">Donations</a>
+</div>
+<h6>
+Copyright Lazy Foo' Productions 2004-2011
+</h6>
+
+
+</div>
+
+</body></html>

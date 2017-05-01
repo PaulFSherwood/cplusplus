@@ -1,0 +1,16 @@
+
+**** Build of configuration Debug for project c_tut ****
+
+make all 
+Building file: ../src/c_tut.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/c_tut.d" -MT"src/c_tut.d" -o"src/c_tut.o" "../src/c_tut.cpp"
+../src/c_tut.cpp: In function ‘int main()’:
+../src/c_tut.cpp:65:6: warning: unused variable ‘currentguess’
+Finished building: ../src/c_tut.cpp
+ 
+Building target: c_tut
+Invoking: GCC C++ Linker
+g++  -o"c_tut"  ./src/c_tut.o   
+Finished building target: c_tut
+ 

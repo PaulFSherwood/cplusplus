@@ -1,0 +1,626 @@
+
+**** Build of configuration Debug for project sdltest9 ****
+
+make all 
+Building file: ../src/article09.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/article09.d" -MT"src/article09.d" -o"src/article09.o" "../src/article09.cpp"
+Finished building: ../src/article09.cpp
+ 
+Building file: ../src/sdltest9.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/sdltest9.d" -MT"src/sdltest9.d" -o"src/sdltest9.o" "../src/sdltest9.cpp"
+../src/sdltest9.cpp: In member function ‘void Dot::handle_input()’:
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_UNKNOWN’ not handled in switch
+Finished building: ../src/sdltest9.cpp
+ 
+Building target: sdltest9
+Invoking: GCC C++ Linker
+g++  -o"sdltest9"  ./src/article09.o ./src/sdltest9.o   
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_FIRST’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_BACKSPACE’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_TAB’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_CLEAR’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_RETURN’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_PAUSE’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_ESCAPE’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_SPACE’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_EXCLAIM’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_QUOTEDBL’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_HASH’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_DOLLAR’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_AMPERSAND’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_QUOTE’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_LEFTPAREN’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_RIGHTPAREN’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_ASTERISK’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_PLUS’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_COMMA’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_MINUS’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_PERIOD’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_SLASH’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_0’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_1’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_2’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_3’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_4’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_5’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_6’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_7’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_8’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_9’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_COLON’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_SEMICOLON’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_LESS’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_EQUALS’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_GREATER’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_QUESTION’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_AT’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_LEFTBRACKET’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_BACKSLASH’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_RIGHTBRACKET’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_CARET’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_UNDERSCORE’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_BACKQUOTE’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_a’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_b’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_c’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_d’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_e’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_f’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_g’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_h’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_i’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_j’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_k’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_l’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_m’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_n’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_o’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_p’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_q’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_r’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_s’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_t’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_u’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_v’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_w’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_x’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_y’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_z’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_DELETE’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_0’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_1’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_2’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_3’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_4’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_5’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_6’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_7’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_8’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_9’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_10’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_11’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_12’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_13’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_14’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_15’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_16’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_17’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_18’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_19’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_20’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_21’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_22’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_23’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_24’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_25’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_26’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_27’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_28’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_29’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_30’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_31’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_32’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_33’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_34’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_35’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_36’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_37’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_38’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_39’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_40’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_41’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_42’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_43’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_44’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_45’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_46’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_47’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_48’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_49’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_50’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_51’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_52’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_53’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_54’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_55’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_56’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_57’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_58’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_59’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_60’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_61’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_62’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_63’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_64’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_65’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_66’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_67’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_68’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_69’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_70’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_71’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_72’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_73’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_74’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_75’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_76’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_77’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_78’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_79’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_80’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_81’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_82’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_83’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_84’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_85’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_86’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_87’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_88’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_89’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_90’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_91’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_92’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_93’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_94’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_WORLD_95’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_KP0’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_KP1’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_KP2’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_KP3’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_KP4’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_KP5’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_KP6’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_KP7’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_KP8’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_KP9’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_KP_PERIOD’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_KP_DIVIDE’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_KP_MULTIPLY’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_KP_MINUS’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_KP_PLUS’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_KP_ENTER’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_KP_EQUALS’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_INSERT’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_HOME’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_END’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_PAGEUP’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_PAGEDOWN’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_F1’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_F2’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_F3’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_F4’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_F5’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_F6’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_F7’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_F8’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_F9’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_F10’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_F11’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_F12’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_F13’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_F14’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_F15’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_NUMLOCK’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_CAPSLOCK’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_SCROLLOCK’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_RSHIFT’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_LSHIFT’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_RCTRL’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_LCTRL’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_RALT’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_LALT’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_RMETA’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_LMETA’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_LSUPER’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_RSUPER’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_MODE’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_COMPOSE’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_HELP’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_PRINT’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_SYSREQ’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_BREAK’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_MENU’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_POWER’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_EURO’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_UNDO’ not handled in switch
+../src/sdltest9.cpp:499:15: warning: enumeration value ‘SDLK_LAST’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_UNKNOWN’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_FIRST’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_BACKSPACE’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_TAB’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_CLEAR’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_RETURN’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_PAUSE’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_ESCAPE’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_SPACE’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_EXCLAIM’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_QUOTEDBL’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_HASH’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_DOLLAR’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_AMPERSAND’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_QUOTE’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_LEFTPAREN’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_RIGHTPAREN’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_ASTERISK’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_PLUS’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_COMMA’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_MINUS’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_PERIOD’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_SLASH’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_0’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_1’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_2’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_3’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_4’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_5’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_6’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_7’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_8’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_9’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_COLON’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_SEMICOLON’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_LESS’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_EQUALS’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_GREATER’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_QUESTION’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_AT’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_LEFTBRACKET’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_BACKSLASH’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_RIGHTBRACKET’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_CARET’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_UNDERSCORE’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_BACKQUOTE’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_a’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_b’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_c’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_d’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_e’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_f’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_g’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_h’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_i’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_j’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_k’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_l’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_m’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_n’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_o’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_p’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_q’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_r’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_s’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_t’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_u’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_v’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_w’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_x’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_y’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_z’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_DELETE’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_0’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_1’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_2’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_3’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_4’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_5’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_6’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_7’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_8’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_9’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_10’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_11’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_12’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_13’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_14’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_15’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_16’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_17’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_18’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_19’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_20’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_21’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_22’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_23’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_24’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_25’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_26’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_27’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_28’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_29’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_30’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_31’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_32’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_33’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_34’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_35’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_36’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_37’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_38’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_39’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_40’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_41’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_42’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_43’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_44’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_45’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_46’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_47’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_48’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_49’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_50’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_51’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_52’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_53’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_54’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_55’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_56’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_57’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_58’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_59’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_60’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_61’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_62’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_63’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_64’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_65’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_66’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_67’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_68’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_69’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_70’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_71’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_72’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_73’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_74’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_75’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_76’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_77’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_78’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_79’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_80’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_81’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_82’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_83’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_84’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_85’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_86’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_87’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_88’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_89’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_90’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_91’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_92’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_93’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_94’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_WORLD_95’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_KP0’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_KP1’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_KP2’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_KP3’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_KP4’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_KP5’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_KP6’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_KP7’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_KP8’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_KP9’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_KP_PERIOD’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_KP_DIVIDE’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_KP_MULTIPLY’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_KP_MINUS’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_KP_PLUS’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_KP_ENTER’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_KP_EQUALS’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_INSERT’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_HOME’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_END’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_PAGEUP’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_PAGEDOWN’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_F1’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_F2’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_F3’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_F4’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_F5’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_F6’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_F7’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_F8’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_F9’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_F10’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_F11’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_F12’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_F13’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_F14’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_F15’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_NUMLOCK’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_CAPSLOCK’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_SCROLLOCK’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_RSHIFT’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_LSHIFT’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_RCTRL’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_LCTRL’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_RALT’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_LALT’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_RMETA’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_LMETA’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_LSUPER’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_RSUPER’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_MODE’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_COMPOSE’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_HELP’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_PRINT’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_SYSREQ’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_BREAK’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_MENU’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_POWER’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_EURO’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_UNDO’ not handled in switch
+../src/sdltest9.cpp:511:15: warning: enumeration value ‘SDLK_LAST’ not handled in switch
+./src/sdltest9.o: In function `load_image(std::basic_string<char, std::char_traits<char>, std::allocator<char> >)':
+/home/grrwood/Documents/src/cplusplus/sdltest9/Debug/../src/sdltest9.cpp:144: multiple definition of `screen'
+./src/article09.o:/home/grrwood/Documents/src/cplusplus/sdltest9/Debug/../src/article09.cpp:111: first defined here
+./src/sdltest9.o: In function `load_image(std::basic_string<char, std::char_traits<char>, std::allocator<char> >)':
+/home/grrwood/Documents/src/cplusplus/sdltest9/Debug/../src/sdltest9.cpp:146: multiple definition of `tileSheet'
+./src/article09.o:/home/grrwood/Documents/src/cplusplus/sdltest9/Debug/../src/article09.cpp:111: first defined here
+./src/sdltest9.o: In function `load_image(std::basic_string<char, std::char_traits<char>, std::allocator<char> >)':
+/home/grrwood/Documents/src/cplusplus/sdltest9/Debug/../src/sdltest9.cpp:152: multiple definition of `clips'
+./src/article09.o:/home/grrwood/Documents/src/cplusplus/sdltest9/Debug/../src/article09.cpp:119: first defined here
+./src/sdltest9.o: In function `load_image(std::basic_string<char, std::char_traits<char>, std::allocator<char> >)':
+/home/grrwood/Documents/src/cplusplus/sdltest9/Debug/../src/sdltest9.cpp:167: multiple definition of `event'
+./src/article09.o:/home/grrwood/Documents/src/cplusplus/sdltest9/Debug/../src/article09.cpp:134: first defined here
+./src/sdltest9.o:(.data+0x0): multiple definition of `camera'
+./src/article09.o:(.data+0x0): first defined here
+./src/sdltest9.o: In function `load_image(std::basic_string<char, std::char_traits<char>, std::allocator<char> >)':
+/home/grrwood/Documents/src/cplusplus/sdltest9/Debug/../src/sdltest9.cpp:144: multiple definition of `load_image(std::basic_string<char, std::char_traits<char>, std::allocator<char> >)'
+./src/article09.o:/home/grrwood/Documents/src/cplusplus/sdltest9/Debug/../src/article09.cpp:111: first defined here
+./src/sdltest9.o: In function `apply_surface(int, int, SDL_Surface*, SDL_Surface*, SDL_Rect*)':
+/home/grrwood/Documents/src/cplusplus/sdltest9/Debug/../src/sdltest9.cpp:176: multiple definition of `apply_surface(int, int, SDL_Surface*, SDL_Surface*, SDL_Rect*)'
+./src/article09.o:/home/grrwood/Documents/src/cplusplus/sdltest9/Debug/../src/article09.cpp:143: first defined here
+./src/sdltest9.o: In function `init()':
+/home/grrwood/Documents/src/cplusplus/sdltest9/Debug/../src/sdltest9.cpp:234: multiple definition of `init()'
+./src/article09.o:/home/grrwood/Documents/src/cplusplus/sdltest9/Debug/../src/article09.cpp:201: first defined here
+./src/sdltest9.o: In function `load_files()':
+/home/grrwood/Documents/src/cplusplus/sdltest9/Debug/../src/sdltest9.cpp:258: multiple definition of `load_files()'
+./src/article09.o:/home/grrwood/Documents/src/cplusplus/sdltest9/Debug/../src/article09.cpp:225: first defined here
+./src/sdltest9.o: In function `clean_up(Tile**)':
+/home/grrwood/Documents/src/cplusplus/sdltest9/Debug/../src/sdltest9.cpp:282: multiple definition of `clean_up(Tile**)'
+./src/article09.o:/home/grrwood/Documents/src/cplusplus/sdltest9/Debug/../src/article09.cpp:240: first defined here
+./src/sdltest9.o: In function `clip_tiles()':
+/home/grrwood/Documents/src/cplusplus/sdltest9/Debug/../src/sdltest9.cpp:298: multiple definition of `clip_tiles()'
+./src/article09.o:/home/grrwood/Documents/src/cplusplus/sdltest9/Debug/../src/article09.cpp:390: first defined here
+./src/sdltest9.o: In function `set_tiles(Tile**)':
+/home/grrwood/Documents/src/cplusplus/sdltest9/Debug/../src/sdltest9.cpp:362: multiple definition of `set_tiles(Tile**)'
+./src/article09.o:/home/grrwood/Documents/src/cplusplus/sdltest9/Debug/../src/article09.cpp:454: first defined here
+./src/sdltest9.o: In function `Tile':
+/home/grrwood/Documents/src/cplusplus/sdltest9/Debug/../src/sdltest9.cpp:446: multiple definition of `Tile::Tile(int, int, int)'
+./src/article09.o:/home/grrwood/Documents/src/cplusplus/sdltest9/Debug/../src/article09.cpp:553: first defined here
+./src/sdltest9.o: In function `Tile::get_type()':
+/home/grrwood/Documents/src/cplusplus/sdltest9/Debug/../src/sdltest9.cpp:471: multiple definition of `Tile::get_type()'
+./src/article09.o:/home/grrwood/Documents/src/cplusplus/sdltest9/Debug/../src/article09.cpp:578: first defined here
+./src/sdltest9.o: In function `Tile::get_box()':
+/home/grrwood/Documents/src/cplusplus/sdltest9/Debug/../src/sdltest9.cpp:476: multiple definition of `Tile::get_box()'
+./src/article09.o:/home/grrwood/Documents/src/cplusplus/sdltest9/Debug/../src/article09.cpp:583: first defined here
+./src/sdltest9.o: In function `Tile':
+/home/grrwood/Documents/src/cplusplus/sdltest9/Debug/../src/sdltest9.cpp:446: multiple definition of `Tile::Tile(int, int, int)'
+./src/article09.o:/home/grrwood/Documents/src/cplusplus/sdltest9/Debug/../src/article09.cpp:553: first defined here
+./src/sdltest9.o: In function `Tile::show()':
+/home/grrwood/Documents/src/cplusplus/sdltest9/Debug/../src/sdltest9.cpp:461: multiple definition of `Tile::show()'
+./src/article09.o:/home/grrwood/Documents/src/cplusplus/sdltest9/Debug/../src/article09.cpp:568: first defined here
+./src/sdltest9.o: In function `Timer':
+/home/grrwood/Documents/src/cplusplus/sdltest9/Debug/../src/sdltest9.cpp:575: multiple definition of `Timer::Timer()'
+./src/article09.o:/home/grrwood/Documents/src/cplusplus/sdltest9/Debug/../src/article09.cpp:587: first defined here
+./src/sdltest9.o: In function `Timer':
+/home/grrwood/Documents/src/cplusplus/sdltest9/Debug/../src/sdltest9.cpp:575: multiple definition of `Timer::Timer()'
+./src/article09.o:/home/grrwood/Documents/src/cplusplus/sdltest9/Debug/../src/article09.cpp:587: first defined here
+./src/sdltest9.o: In function `Timer::start()':
+/home/grrwood/Documents/src/cplusplus/sdltest9/Debug/../src/sdltest9.cpp:585: multiple definition of `Timer::start()'
+./src/article09.o:/home/grrwood/Documents/src/cplusplus/sdltest9/Debug/../src/article09.cpp:597: first defined here
+./src/sdltest9.o: In function `Timer::stop()':
+/home/grrwood/Documents/src/cplusplus/sdltest9/Debug/../src/sdltest9.cpp:597: multiple definition of `Timer::stop()'
+./src/article09.o:/home/grrwood/Documents/src/cplusplus/sdltest9/Debug/../src/article09.cpp:609: first defined here
+./src/sdltest9.o: In function `Timer::pause()':
+/home/grrwood/Documents/src/cplusplus/sdltest9/Debug/../src/sdltest9.cpp:606: multiple definition of `Timer::pause()'
+./src/article09.o:/home/grrwood/Documents/src/cplusplus/sdltest9/Debug/../src/article09.cpp:618: first defined here
+./src/sdltest9.o: In function `Timer::unpause()':
+/home/grrwood/Documents/src/cplusplus/sdltest9/Debug/../src/sdltest9.cpp:619: multiple definition of `Timer::unpause()'
+./src/article09.o:/home/grrwood/Documents/src/cplusplus/sdltest9/Debug/../src/article09.cpp:631: first defined here
+./src/sdltest9.o: In function `Timer::get_ticks()':
+/home/grrwood/Documents/src/cplusplus/sdltest9/Debug/../src/sdltest9.cpp:635: multiple definition of `Timer::get_ticks()'
+./src/article09.o:/home/grrwood/Documents/src/cplusplus/sdltest9/Debug/../src/article09.cpp:647: first defined here
+./src/sdltest9.o: In function `Timer::is_started()':
+/home/grrwood/Documents/src/cplusplus/sdltest9/Debug/../src/sdltest9.cpp:657: multiple definition of `Timer::is_started()'
+./src/article09.o:/home/grrwood/Documents/src/cplusplus/sdltest9/Debug/../src/article09.cpp:669: first defined here
+./src/sdltest9.o: In function `Timer::is_paused()':
+/home/grrwood/Documents/src/cplusplus/sdltest9/Debug/../src/sdltest9.cpp:662: multiple definition of `Timer::is_paused()'
+./src/article09.o:/home/grrwood/Documents/src/cplusplus/sdltest9/Debug/../src/article09.cpp:674: first defined here
+./src/sdltest9.o: In function `main':
+/home/grrwood/Documents/src/cplusplus/sdltest9/Debug/../src/sdltest9.cpp:667: multiple definition of `main'
+./src/article09.o:/home/grrwood/Documents/src/cplusplus/sdltest9/Debug/../src/article09.cpp:679: first defined here
+./src/article09.o: In function `load_image(std::basic_string<char, std::char_traits<char>, std::allocator<char> >)':
+article09.cpp:(.text+0x23): undefined reference to `IMG_Load'
+article09.cpp:(.text+0x37): undefined reference to `SDL_DisplayFormat'
+article09.cpp:(.text+0x45): undefined reference to `SDL_FreeSurface'
+article09.cpp:(.text+0x71): undefined reference to `SDL_MapRGB'
+article09.cpp:(.text+0x88): undefined reference to `SDL_SetColorKey'
+./src/article09.o: In function `apply_surface(int, int, SDL_Surface*, SDL_Surface*, SDL_Rect*)':
+article09.cpp:(.text+0xc1): undefined reference to `SDL_UpperBlit'
+./src/article09.o: In function `init()':
+article09.cpp:(.text+0x1ae): undefined reference to `SDL_Init'
+article09.cpp:(.text+0x1e3): undefined reference to `SDL_SetVideoMode'
+article09.cpp:(.text+0x20c): undefined reference to `SDL_WM_SetCaption'
+./src/article09.o: In function `clean_up(Tile**)':
+article09.cpp:(.text+0x2b9): undefined reference to `SDL_FreeSurface'
+article09.cpp:(.text+0x2ec): undefined reference to `SDL_Quit'
+./src/article09.o: In function `show_type(int)':
+article09.cpp:(.text+0x321): undefined reference to `SDL_WM_SetCaption'
+article09.cpp:(.text+0x33a): undefined reference to `SDL_WM_SetCaption'
+article09.cpp:(.text+0x353): undefined reference to `SDL_WM_SetCaption'
+article09.cpp:(.text+0x36c): undefined reference to `SDL_WM_SetCaption'
+article09.cpp:(.text+0x385): undefined reference to `SDL_WM_SetCaption'
+./src/article09.o:article09.cpp:(.text+0x39e): more undefined references to `SDL_WM_SetCaption' follow
+./src/article09.o: In function `set_camera()':
+article09.cpp:(.text+0x44f): undefined reference to `SDL_GetMouseState'
+./src/article09.o: In function `put_tile(Tile**, int)':
+article09.cpp:(.text+0x57f): undefined reference to `SDL_GetMouseState'
+./src/article09.o: In function `Timer::start()':
+article09.cpp:(.text+0xc31): undefined reference to `SDL_GetTicks'
+./src/article09.o: In function `Timer::pause()':
+article09.cpp:(.text+0xc79): undefined reference to `SDL_GetTicks'
+./src/article09.o: In function `Timer::unpause()':
+article09.cpp:(.text+0xcad): undefined reference to `SDL_GetTicks'
+./src/article09.o: In function `Timer::get_ticks()':
+article09.cpp:(.text+0xcf7): undefined reference to `SDL_GetTicks'
+./src/article09.o: In function `main':
+article09.cpp:(.text+0xe7c): undefined reference to `SDL_PollEvent'
+article09.cpp:(.text+0xed5): undefined reference to `SDL_Flip'
+article09.cpp:(.text+0xf21): undefined reference to `SDL_Delay'
+./src/sdltest9.o: In function `load_image(std::basic_string<char, std::char_traits<char>, std::allocator<char> >)':
+sdltest9.cpp:(.text+0x23): undefined reference to `IMG_Load'
+sdltest9.cpp:(.text+0x37): undefined reference to `SDL_DisplayFormat'
+sdltest9.cpp:(.text+0x45): undefined reference to `SDL_FreeSurface'
+sdltest9.cpp:(.text+0x71): undefined reference to `SDL_MapRGB'
+sdltest9.cpp:(.text+0x88): undefined reference to `SDL_SetColorKey'
+./src/sdltest9.o: In function `apply_surface(int, int, SDL_Surface*, SDL_Surface*, SDL_Rect*)':
+sdltest9.cpp:(.text+0xc1): undefined reference to `SDL_UpperBlit'
+./src/sdltest9.o: In function `init()':
+sdltest9.cpp:(.text+0x18e): undefined reference to `SDL_Init'
+sdltest9.cpp:(.text+0x1c3): undefined reference to `SDL_SetVideoMode'
+sdltest9.cpp:(.text+0x1ec): undefined reference to `SDL_WM_SetCaption'
+./src/sdltest9.o: In function `clean_up(Tile**)':
+sdltest9.cpp:(.text+0x31a): undefined reference to `SDL_FreeSurface'
+sdltest9.cpp:(.text+0x327): undefined reference to `SDL_FreeSurface'
+sdltest9.cpp:(.text+0x35a): undefined reference to `SDL_Quit'
+./src/sdltest9.o: In function `Timer::start()':
+sdltest9.cpp:(.text+0xc17): undefined reference to `SDL_GetTicks'
+./src/sdltest9.o: In function `Timer::pause()':
+sdltest9.cpp:(.text+0xc5f): undefined reference to `SDL_GetTicks'
+./src/sdltest9.o: In function `Timer::unpause()':
+sdltest9.cpp:(.text+0xc93): undefined reference to `SDL_GetTicks'
+./src/sdltest9.o: In function `Timer::get_ticks()':
+sdltest9.cpp:(.text+0xcdd): undefined reference to `SDL_GetTicks'
+./src/sdltest9.o: In function `main':
+sdltest9.cpp:(.text+0xdcf): undefined reference to `SDL_PollEvent'
+sdltest9.cpp:(.text+0xe54): undefined reference to `SDL_Flip'
+sdltest9.cpp:(.text+0xea0): undefined reference to `SDL_Delay'
+collect2: ld returned 1 exit status
+make: *** [sdltest9] Error 1

@@ -1,0 +1,14 @@
+
+**** Build of configuration Debug for project heap_memory ****
+
+make all 
+Building file: ../src/heap_memory.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/heap_memory.d" -MT"src/heap_memory.d" -o"src/heap_memory.o" "../src/heap_memory.cpp"
+Finished building: ../src/heap_memory.cpp
+ 
+Building target: heap_memory
+Invoking: GCC C++ Linker
+g++  -o"heap_memory"  ./src/heap_memory.o   
+Finished building target: heap_memory
+ 

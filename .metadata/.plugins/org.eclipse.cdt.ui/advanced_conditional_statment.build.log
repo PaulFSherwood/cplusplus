@@ -1,0 +1,11 @@
+
+**** Rebuild of configuration Debug for project advanced_conditional_statment ****
+
+**** Internal Builder is used for build               ****
+cl /c /EHs /MD /Zi /nologo /Fosrc\advanced_conditional_statment.obj ..\src\advanced_conditional_statment.cpp
+Internal Builder: Cannot run program "cl": Launching failed
+Error: Program "cl" is not found in PATH
+
+PATH=[C:/Program Files/Java/jre7/bin/client;C:/Program Files/Java/jre7/bin;C:/Program Files/Java/jre7/lib/i386;C:\WinAVR-20100110\bin;C:\WinAVR-20100110\utils\bin;C:\Program Files\PC Connectivity Solution\;C:\Program Files\NVIDIA Corporation\PhysX\Common;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;D:\apps\Eclipse\eclipse-cpp-indigo-SR1-incubation-win32\eclipse;]
+Build error occurred, build is stopped
+Time consumed: 56  ms.  

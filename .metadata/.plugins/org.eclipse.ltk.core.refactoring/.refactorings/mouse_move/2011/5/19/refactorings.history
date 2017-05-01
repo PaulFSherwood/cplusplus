@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;mouse_move/src/allegro.cpp&apos; to &apos;mouse_move.cpp&apos;" description="Rename resource &apos;allegro.cpp&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/allegro.cpp" name="mouse_move.cpp" stamp="1304543616634" updateReferences="true"/>
+</session>

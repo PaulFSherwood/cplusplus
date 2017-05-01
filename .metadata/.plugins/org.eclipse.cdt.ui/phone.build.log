@@ -1,0 +1,15 @@
+
+**** Build of configuration Debug for project phone ****
+
+make all 
+Building file: ../src/phone.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/phone.d" -MT"src/phone.d" -o"src/phone.o" "../src/phone.cpp"
+../src/phone.cpp: In function ‘int main()’:
+../src/phone.cpp:23:21: error: no matching function for call to ‘std::basic_string<char>::length(int&)’
+/usr/lib/gcc/i686-redhat-linux/4.5.1/../../../../include/c++/4.5.1/bits/basic_string.h:707:7: note: candidate is: std::basic_string<_CharT, _Traits, _Alloc>::size_type std::basic_string<_CharT, _Traits, _Alloc>::length() const [with _CharT = char, _Traits = std::char_traits<char>, _Alloc = std::allocator<char>, std::basic_string<_CharT, _Traits, _Alloc>::size_type = unsigned int]
+../src/phone.cpp:23:44: error: no matching function for call to ‘std::basic_string<char>::length(int&)’
+/usr/lib/gcc/i686-redhat-linux/4.5.1/../../../../include/c++/4.5.1/bits/basic_string.h:707:7: note: candidate is: std::basic_string<_CharT, _Traits, _Alloc>::size_type std::basic_string<_CharT, _Traits, _Alloc>::length() const [with _CharT = char, _Traits = std::char_traits<char>, _Alloc = std::allocator<char>, std::basic_string<_CharT, _Traits, _Alloc>::size_type = unsigned int]
+../src/phone.cpp:8:14: warning: unused variable ‘prefix’
+../src/phone.cpp:11:7: warning: unused variable ‘running’
+make: *** [src/phone.o] Error 1

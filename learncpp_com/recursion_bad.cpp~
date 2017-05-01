@@ -1,0 +1,13 @@
+#include <iostream>
+using namespace std;
+
+void CountDown(int nValue)
+{
+	cout << nValue << "---";
+	CountDown(nValue -1);
+}
+
+int main(void)
+{
+	CountDown(10);
+}

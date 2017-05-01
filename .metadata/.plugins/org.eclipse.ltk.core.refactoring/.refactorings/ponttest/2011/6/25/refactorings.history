@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;ponttest/src/bat.bmp&apos; to &apos;pad.bmp&apos;" description="Rename resource &apos;bat.bmp&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/bat.bmp" name="pad.bmp" stamp="1308079666652" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;ponttest/src/TOD&apos; to &apos;TODO&apos;" description="Rename resource &apos;TOD&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/TOD" name="TODO" stamp="1308255068534" updateReferences="true"/>
+</session>

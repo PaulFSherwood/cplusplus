@@ -1,0 +1,78 @@
+
+**** Build of configuration Debug for project sdltutorials_com ****
+
+make all 
+Building file: ../src/CApp.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/CApp.d" -MT"src/CApp.d" -o"src/CApp.o" "../src/CApp.cpp"
+Finished building: ../src/CApp.cpp
+ 
+Building file: ../src/CApp_OnCleanup.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/CApp_OnCleanup.d" -MT"src/CApp_OnCleanup.d" -o"src/CApp_OnCleanup.o" "../src/CApp_OnCleanup.cpp"
+Finished building: ../src/CApp_OnCleanup.cpp
+ 
+Building file: ../src/CApp_OnEvent.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/CApp_OnEvent.d" -MT"src/CApp_OnEvent.d" -o"src/CApp_OnEvent.o" "../src/CApp_OnEvent.cpp"
+Finished building: ../src/CApp_OnEvent.cpp
+ 
+Building file: ../src/CApp_OnInit.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/CApp_OnInit.d" -MT"src/CApp_OnInit.d" -o"src/CApp_OnInit.o" "../src/CApp_OnInit.cpp"
+../src/CApp_OnInit.cpp: In member function ‘bool CApp::OnInit()’:
+Finished building: ../src/CApp_OnInit.cpp
+../src/CApp_OnInit.cpp:14:54: warning: deprecated conversion from string constant to ‘char*’
+ 
+Building file: ../src/CApp_OnLoop.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/CApp_OnLoop.d" -MT"src/CApp_OnLoop.d" -o"src/CApp_OnLoop.o" "../src/CApp_OnLoop.cpp"
+../src/CApp_OnInit.cpp:18:48: warning: deprecated conversion from string constant to ‘char*’
+../src/CApp_OnInit.cpp:22:48: warning: deprecated conversion from string constant to ‘char*’
+Finished building: ../src/CApp_OnLoop.cpp
+ 
+Building file: ../src/CApp_OnRender.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/CApp_OnRender.d" -MT"src/CApp_OnRender.d" -o"src/CApp_OnRender.o" "../src/CApp_OnRender.cpp"
+Finished building: ../src/CApp_OnRender.cpp
+ 
+Building file: ../src/CEvent.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/CEvent.d" -MT"src/CEvent.d" -o"src/CEvent.o" "../src/CEvent.cpp"
+Finished building: ../src/CEvent.cpp
+ 
+Building file: ../src/CSurface.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/CSurface.d" -MT"src/CSurface.d" -o"src/CSurface.o" "../src/CSurface.cpp"
+Finished building: ../src/CSurface.cpp
+ 
+Building target: sdltutorials_com
+Invoking: GCC C++ Linker
+g++  -o"sdltutorials_com"  ./src/CApp.o ./src/CApp_OnCleanup.o ./src/CApp_OnEvent.o ./src/CApp_OnInit.o ./src/CApp_OnLoop.o ./src/CApp_OnRender.o ./src/CEvent.o ./src/CSurface.o   
+./src/CApp.o: In function `CApp::OnExecute()':
+/home/grrwood/Documents/src/cplusplus/sdltutorials_com/Debug/../src/CApp.cpp:26: undefined reference to `SDL_PollEvent'
+./src/CApp_OnCleanup.o: In function `CApp::OnCleanup()':
+/home/grrwood/Documents/src/cplusplus/sdltutorials_com/Debug/../src/CApp_OnCleanup.cpp:6: undefined reference to `SDL_FreeSurface'
+/home/grrwood/Documents/src/cplusplus/sdltutorials_com/Debug/../src/CApp_OnCleanup.cpp:7: undefined reference to `SDL_FreeSurface'
+/home/grrwood/Documents/src/cplusplus/sdltutorials_com/Debug/../src/CApp_OnCleanup.cpp:8: undefined reference to `SDL_FreeSurface'
+/home/grrwood/Documents/src/cplusplus/sdltutorials_com/Debug/../src/CApp_OnCleanup.cpp:9: undefined reference to `SDL_FreeSurface'
+/home/grrwood/Documents/src/cplusplus/sdltutorials_com/Debug/../src/CApp_OnCleanup.cpp:10: undefined reference to `SDL_Quit'
+./src/CApp_OnInit.o: In function `CApp::OnInit()':
+/home/grrwood/Documents/src/cplusplus/sdltutorials_com/Debug/../src/CApp_OnInit.cpp:6: undefined reference to `SDL_Init'
+/home/grrwood/Documents/src/cplusplus/sdltutorials_com/Debug/../src/CApp_OnInit.cpp:10: undefined reference to `SDL_SetVideoMode'
+./src/CApp_OnRender.o: In function `CApp::OnRender()':
+/home/grrwood/Documents/src/cplusplus/sdltutorials_com/Debug/../src/CApp_OnRender.cpp:20: undefined reference to `SDL_Flip'
+./src/CSurface.o: In function `CSurface::OnLoad(char*)':
+/home/grrwood/Documents/src/cplusplus/sdltutorials_com/Debug/../src/CSurface.cpp:13: undefined reference to `SDL_RWFromFile'
+/home/grrwood/Documents/src/cplusplus/sdltutorials_com/Debug/../src/CSurface.cpp:13: undefined reference to `SDL_LoadBMP_RW'
+/home/grrwood/Documents/src/cplusplus/sdltutorials_com/Debug/../src/CSurface.cpp:17: undefined reference to `SDL_DisplayFormat'
+/home/grrwood/Documents/src/cplusplus/sdltutorials_com/Debug/../src/CSurface.cpp:18: undefined reference to `SDL_FreeSurface'
+./src/CSurface.o: In function `CSurface::OnDraw(SDL_Surface*, SDL_Surface*, int, int)':
+/home/grrwood/Documents/src/cplusplus/sdltutorials_com/Debug/../src/CSurface.cpp:34: undefined reference to `SDL_UpperBlit'
+./src/CSurface.o: In function `CSurface::OnDraw(SDL_Surface*, SDL_Surface*, int, int, int, int, int, int)':
+/home/grrwood/Documents/src/cplusplus/sdltutorials_com/Debug/../src/CSurface.cpp:57: undefined reference to `SDL_UpperBlit'
+./src/CSurface.o: In function `CSurface::Transparent(SDL_Surface*, int, int, int)':
+/home/grrwood/Documents/src/cplusplus/sdltutorials_com/Debug/../src/CSurface.cpp:68: undefined reference to `SDL_MapRGB'
+/home/grrwood/Documents/src/cplusplus/sdltutorials_com/Debug/../src/CSurface.cpp:68: undefined reference to `SDL_SetColorKey'
+collect2: ld returned 1 exit status
+make: *** [sdltutorials_com] Error 1

@@ -1,0 +1,9 @@
+
+**** Build of configuration Debug for project 44 ****
+
+make all 
+Building target: 44
+Invoking: GCC C++ Linker
+g++  -o"44"  ./src/44.o ./src/Sally.o   
+Finished building target: 44
+ 

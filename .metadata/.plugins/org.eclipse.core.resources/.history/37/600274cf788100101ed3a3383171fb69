@@ -1,0 +1,23 @@
+//============================================================================
+// Name        : grant_game.cpp
+// Author      : paul
+// Version     :
+// Copyright   : no copyright
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+#include <iostream>
+#include "grant.h"
+using namespace std;
+
+int main() {
+
+	grant grantObject;
+
+	grantObject.setHunger(50);
+
+	cout << grantObject.getHealth() << endl;
+
+
+	return 0;
+}

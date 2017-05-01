@@ -1,0 +1,7 @@
+1304372251442	Rename resource 'userinput'
+1304543585874	Rename resource 'maze'
+1304545742286	Delete resource 'mouse_move/src/allegro'
+1304545750452	Delete resource 'mouse_move/src/allegro.cpp~'
+1304545753877	Delete resource 'mouse_move/src/mouse_move'
+1304545756744	Delete resource 'mouse_move/src/xlib01'
+1304545759217	Delete resource 'mouse_move/src/xlib01.c~'

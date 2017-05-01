@@ -1,0 +1,11 @@
+
+**** Build of configuration Debug for project allegro01 ****
+
+****  WARNING: The "Debug" Configuration may not build  ****
+****  because it uses the "Cygwin GCC"  ****
+****  tool-chain that is unsupported on this system.  ****
+
+****  Attempting to build...  **** 
+
+make all 
+make: Nothing to be done for `all'.

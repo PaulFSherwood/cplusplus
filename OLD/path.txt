@@ -1,0 +1,2 @@
+PATH=C:\Program Files\Microsoft DirectX SDK (April 2007)\Utilities\Bin\x86;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Program Files\CyberLink\Power2Go\;c:\Program Files\Microsoft SQL Server\90\Tools\binn\;C:\Program Files\QuickTime\QTSystem\;C:\Program Files\Autodesk\Backburner\;C:\Program Files\Common
+Files\Autodesk Shared\;C:\Program Files\Common Files\GTK\2.0\bin;C:\Qt\4.4.0\bin;C:\MinGW\bin

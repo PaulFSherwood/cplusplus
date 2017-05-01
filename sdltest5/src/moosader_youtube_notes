@@ -1,0 +1,37 @@
+Game object
+	init sdl
+	init gamestate
+	init library
+	window atributes
+
+input class
+
+timer class
+	regulate frame rate
+
+player class
+	Coordinates
+	Dimensions
+	Movement based on keyboard
+	has specifice type of bullet
+	has score
+	die animation
+	movement animation
+npc class
+	Coordinates
+	Dimensions
+	Movement based on AI
+	Has specifice type of bullet
+	die animation
+	Movement animation
+bullet class
+	Coordinates
+	Dimensions
+	Movement based on bullet path
+	Creates event when player or enemy hits
+power up class
+	Coordinates
+	Dimensions
+	No movement
+	Can be picked up
+	creates event

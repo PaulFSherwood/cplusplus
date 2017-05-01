@@ -1,0 +1,19 @@
+
+**** Build of configuration Debug for project game_example ****
+
+make all 
+Building file: ../src/Soldier.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Soldier.d" -MT"src/Soldier.d" -o"src/Soldier.o" "../src/Soldier.cpp"
+Finished building: ../src/Soldier.cpp
+ 
+Building file: ../src/game_example.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/game_example.d" -MT"src/game_example.d" -o"src/game_example.o" "../src/game_example.cpp"
+Finished building: ../src/game_example.cpp
+ 
+Building target: game_example
+Invoking: GCC C++ Linker
+g++  -o"game_example"  ./src/Soldier.o ./src/game_example.o   
+Finished building target: game_example
+ 

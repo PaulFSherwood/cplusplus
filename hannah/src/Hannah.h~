@@ -1,0 +1,13 @@
+#ifndef HANNAH_H
+#define HANNAH_H
+
+class Hannah
+{
+	public:
+		int num;
+		Hannah();
+		Hannah(int);
+		Sally operator+(Sally);
+};
+
+#endif

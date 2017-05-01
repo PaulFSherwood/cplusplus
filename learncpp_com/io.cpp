@@ -1,0 +1,70 @@
+#include <iostream>
+#include <stdio.h>
+#include "io.h"
+using namespace std;
+
+int getInput(int x)
+{
+	// temp variable to hold the users number
+	int userNum = 0;
+	if (x == 1)// if this is the first one we want to print out first num
+	{
+		cout << "Enter your first number" << endl;
+		cin >> userNum;
+		return userNum;
+	}
+	else // else print out the second num
+	{
+		cout << "Enter your second number" << endl;
+		cin >> userNum;
+		return userNum;
+	}
+}
+
+char getMathSymbol()
+{
+	while (getchar() == '\n') // use this or getchar will not wait for input.
+	{
+		// temp varaible
+		char userSymbol;
+		cout << "please enter yoru math symbol" << endl;
+		// need getchar to get a character from the console
+		userSymbol = getchar();
+		//cout << "getchar done" << endl; // debug code
+		// return your symbol
+		return userSymbol;
+	}
+}
+
+int doMath(int x, int y)
+{
+	// get the users math symbol
+	char symbol = getMathSymbol();
+	switch (symbol)
+	{
+		// do math based on what symbol was inputed.		
+		case '+':
+			return x + y;
+			break;
+		case '-':
+			return x - y;
+			break;
+		case '*':
+			return x * y;
+			break;
+		case '/':
+			if (y == 0)
+			{
+				cout << "error" << endl;
+				break;
+			}
+			else
+			{
+				return x / y;
+			}
+			break;
+		default:
+			cout << "symbol error" << symbol << endl;
+			break;
+	}
+}

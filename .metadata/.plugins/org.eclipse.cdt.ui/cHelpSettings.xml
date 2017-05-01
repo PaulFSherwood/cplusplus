@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<cHelpSettings>
+<project name="sdltest4">
+<provider id="org.eclipse.cdt.ui.provider1"/>
+<provider id="org.eclipse.linuxtools.cdt.libhover.provider">
+<book enabled="true" title="glibc library"/>
+<book enabled="true" title="libstdc++ library"/>
+</provider>
+<provider id="org.eclipse.ptp.pldt.upc.editorHelp.UPCCHelpInfoProvider">
+<book enabled="true" title="UPC C Help Book"/>
+</provider>
+<provider id="org.eclipse.ptp.pldt.lapi.editorHelp.LapiCHelpInfoProvider">
+<book enabled="true" title="LAPI C Help Book"/>
+</provider>
+<provider id="org.eclipse.ptp.pldt.openmp.core.editorHelp.OpenMPCHelpProvider">
+<book enabled="true" title="OpenMP C and Fortran Help Book"/>
+</provider>
+<provider id="org.eclipse.ptp.pldt.mpi.core.editorHelp.MpiCHelpProvider">
+<book enabled="true" title="MPI C Help Book"/>
+</provider>
+<provider id="org.eclipse.ptp.pldt.mpi.core.editorHelp.MpiCPPHelpProvider">
+<book enabled="true" title="MPI C++ Help Book"/>
+</provider>
+</project>
+</cHelpSettings>

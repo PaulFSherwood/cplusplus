@@ -1,0 +1,14 @@
+
+**** Build of configuration Debug for project Friend ****
+
+make all 
+Building file: ../src/Friend.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Friend.d" -MT"src/Friend.d" -o"src/Friend.o" "../src/Friend.cpp"
+Finished building: ../src/Friend.cpp
+ 
+Building target: Friend
+Invoking: GCC C++ Linker
+g++  -o"Friend"  ./src/Friend.o   
+Finished building target: Friend
+ 

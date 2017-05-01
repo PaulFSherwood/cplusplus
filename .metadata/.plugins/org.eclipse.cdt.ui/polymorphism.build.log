@@ -1,0 +1,14 @@
+
+**** Build of configuration Debug for project polymorphism ****
+
+make all 
+Building file: ../src/polymorphism.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/polymorphism.d" -MT"src/polymorphism.d" -o"src/polymorphism.o" "../src/polymorphism.cpp"
+Finished building: ../src/polymorphism.cpp
+ 
+Building target: polymorphism
+Invoking: GCC C++ Linker
+g++  -o"polymorphism"  ./src/polymorphism.o   
+Finished building target: polymorphism
+ 

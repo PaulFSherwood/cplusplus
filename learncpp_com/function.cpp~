@@ -1,0 +1,28 @@
+#include <iostream>
+using namespace std;
+
+int getNumber()
+{	
+	int number;
+	cout << "pls enter a number" << endl;
+	cin >> number;
+	return number;
+}
+int doubleNumber(int x)
+{
+	return x * 2;
+}
+int main()
+{
+	int cNumber; // currnet number palces holder
+	cNumber = getNumber();	// get users number
+	cout << doubleNumber(cNumber) << endl;	// 
+
+	int x, y, z, a;
+	x = 6;
+	y = 5 * 4;
+	z = y % 3;
+	a = y / 3;
+	cout << a << endl;
+	cout << x << "\t" << y << "\t" << a << "." << z << endl;
+}

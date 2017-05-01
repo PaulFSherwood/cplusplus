@@ -1,0 +1,18 @@
+
+**** Build of configuration Debug for project SpaceFlight ****
+
+****  WARNING: The "Debug" Configuration may not build  ****
+****  because it uses the "Cygwin GCC"  ****
+****  tool-chain that is unsupported on this system.  ****
+
+****  Attempting to build...  **** 
+
+make all 
+Building file: ../src/main.cpp
+Invoking: Cygwin C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.d" -o"src/main.o" "../src/main.cpp"
+../src/main.cpp: In function ‘void updateLives()’:
+../src/main.cpp:48:40: error: ‘itoa’ was not declared in this scope
+../src/main.cpp: In function ‘int main()’:
+../src/main.cpp:246:15: warning: deleting array ‘Character myEnemies [10]’
+make: *** [src/main.o] Error 1

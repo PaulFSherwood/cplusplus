@@ -1,0 +1,16 @@
+
+**** Build of configuration Debug for project Project name ****
+
+**** Internal Builder is used for build               ****
+****  WARNING: The "Debug" Configuration may not build  ****
+****  because it uses the "MinGW GCC"  ****
+****  tool-chain that is unsupported on this system.  ****
+
+****  Attempting to build...  **** 
+
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -ohello.o ../hello.c
+gcc -oProject name.exe hello.o -lliballeg44
+/usr/bin/ld: cannot find -lliballeg44
+collect2: ld returned 1 exit status
+Build error occurred, build is stopped
+Time consumed: 562  ms.  

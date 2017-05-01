@@ -1,0 +1,37 @@
+/*
+ * grant.h
+ *
+ *  Created on: May 18, 2011
+ *      Author: grrwood
+ */
+
+#ifndef GRANT_H_
+#define GRANT_H_
+
+class grant
+{
+public:
+	grant();
+	// Setters
+	int setHunger(int Hunger);
+	int setSmarts(int Smarts);
+	int setFun(int Fun);
+	int setMoney(int Money);
+	int setHappy(int Happy);
+
+	// Getters
+	int getHunger();
+	int getSmarts();
+	int getFun();
+	int getMoney();
+	int getHappy();
+
+private:
+	int Hunger;
+	int Smarts;
+	int Fun;
+	int Money;
+	int Happy;
+};
+
+#endif /* GRANT_H_ */

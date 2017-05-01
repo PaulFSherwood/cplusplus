@@ -1,0 +1,18 @@
+#include <iostream>
+using namespace std;
+
+int sumTo(int iSum)
+{
+	int x = 0;
+	for (int i = 1; i <= iSum; i++)
+	{
+		x = x + i;
+	}
+	cout << x << endl;
+
+}
+
+main ()
+{
+	sumTo(5);
+}

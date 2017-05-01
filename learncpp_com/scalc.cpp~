@@ -1,0 +1,24 @@
+#include <iostream>
+#include <stdio.h>
+using namespace std;
+
+int getInput(int x);
+char getMathSymbol();
+int doMath(int x, int y);
+
+int main()
+{
+	// set up variables for user input
+	int inputOne;
+	int inputTwo;
+	//char mathSymbol;
+	
+	// using getInput function .. get user input
+	inputOne = getInput(1);
+	inputTwo = getInput(2);
+	//mathSymbol = getMathSymbol();
+
+	// print out the answer
+	cout << doMath(inputOne, inputTwo) << endl;
+}
+

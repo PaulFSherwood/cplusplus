@@ -1,0 +1,14 @@
+
+**** Build of configuration Debug for project userinput ****
+
+make all 
+Building file: ../src/userinput.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/userinput.d" -MT"src/userinput.d" -o"src/userinput.o" "../src/userinput.cpp"
+Finished building: ../src/userinput.cpp
+ 
+Building target: userinput
+Invoking: GCC C++ Linker
+g++  -o"userinput"  ./src/userinput.o   
+Finished building target: userinput
+ 

@@ -1,0 +1,14 @@
+
+**** Build of configuration Debug for project sdltext ****
+
+make all 
+Building file: ../src/sdltext.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/sdltext.d" -MT"src/sdltext.d" -o"src/sdltext.o" "../src/sdltext.cpp"
+Finished building: ../src/sdltext.cpp
+ 
+Building target: sdltext
+Invoking: GCC C++ Linker
+g++  -o"sdltext"  ./src/sdltext.o   -lSDL -lSDLmain -lGL -lSDL_ttf -lSDL_image
+Finished building target: sdltext
+ 

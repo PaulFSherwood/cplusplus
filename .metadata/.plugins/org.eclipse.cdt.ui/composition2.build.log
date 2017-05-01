@@ -1,0 +1,14 @@
+
+**** Build of configuration Debug for project composition2 ****
+
+make all 
+Building file: ../src/Main.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Main.d" -MT"src/Main.d" -o"src/Main.o" "../src/Main.cpp"
+Finished building: ../src/Main.cpp
+ 
+Building target: composition2
+Invoking: GCC C++ Linker
+g++  -o"composition2"  ./src/Main.o   
+Finished building target: composition2
+ 

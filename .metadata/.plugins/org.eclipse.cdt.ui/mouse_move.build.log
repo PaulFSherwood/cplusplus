@@ -1,0 +1,22 @@
+
+**** Build of configuration Debug for project mouse_move ****
+
+make all 
+Building file: ../src/mouse_move.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/mouse_move.d" -MT"src/mouse_move.d" -o"src/mouse_move.o" "../src/mouse_move.cpp"
+Finished building: ../src/mouse_move.cpp
+ 
+Building file: ../src/xlib01.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/xlib01.d" -MT"src/xlib01.d" -o"src/xlib01.o" "../src/xlib01.c"
+Finished building: ../src/xlib01.c
+ 
+Building target: mouse_move
+Invoking: GCC C++ Linker
+g++ -L/usr/X11R6/lib -o"mouse_move"  ./src/mouse_move.o ./src/xlib01.o   -lX11
+./src/xlib01.o: In function `main':
+/home/grrwood/Documents/src/cplusplus/mouse_move/Debug/../src/xlib01.c:11: multiple definition of `main'
+./src/mouse_move.o:/home/grrwood/Documents/src/cplusplus/mouse_move/Debug/../src/mouse_move.cpp:2: first defined here
+collect2: ld returned 1 exit status
+make: *** [mouse_move] Error 1

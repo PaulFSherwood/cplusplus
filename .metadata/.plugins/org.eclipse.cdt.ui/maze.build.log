@@ -1,0 +1,10 @@
+
+**** Build of configuration Debug for project maze ****
+
+make all 
+Building file: ../src/allegro.cpp
+Invoking: GCC C++ Compiler
+g++ -Ialleg-4.2.3 -I"allegro-config --libs" -O0 -g3 -Wall -c -fmessage-length=0 allegro-config --libs -MMD -MP -MF"src/allegro.d" -MT"src/allegro.d" -o"src/allegro.o" "../src/allegro.cpp"
+g++: allegro-config: No such file or directory
+cc1plus: error: unrecognized command line option "-flibs"
+make: *** [src/allegro.o] Error 1

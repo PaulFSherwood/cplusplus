@@ -1,0 +1,14 @@
+
+**** Build of configuration Debug for project this ****
+
+make all 
+Building file: ../src/Hannah.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Hannah.d" -MT"src/Hannah.d" -o"src/Hannah.o" "../src/Hannah.cpp"
+Finished building: ../src/Hannah.cpp
+ 
+Building target: this
+Invoking: GCC C++ Linker
+g++  -o"this"  ./src/Hannah.o ./src/this.o   
+Finished building target: this
+ 

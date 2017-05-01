@@ -1,0 +1,16 @@
+
+**** Build of configuration Debug for project prototype ****
+
+****  WARNING: The "Debug" Configuration may not build  ****
+****  because it uses the "Cygwin GCC"  ****
+****  tool-chain that is unsupported on this system.  ****
+
+****  Attempting to build...  **** 
+
+make all 
+Building file: ../src/prototype.cpp
+Invoking: Cygwin C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/prototype.d" -MT"src/prototype.d" -o"src/prototype.o" "../src/prototype.cpp"
+../src/prototype.cpp:1:20: fatal error: stdafx.h: No such file or directory
+compilation terminated.
+make: *** [src/prototype.o] Error 1

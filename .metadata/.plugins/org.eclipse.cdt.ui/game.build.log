@@ -1,0 +1,14 @@
+
+**** Build of configuration Debug for project game ****
+
+make all 
+Building file: ../src/xp.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/xp.d" -MT"src/xp.d" -o"src/xp.o" "../src/xp.cpp"
+Finished building: ../src/xp.cpp
+ 
+Building target: game
+Invoking: GCC C++ Linker
+g++  -o"game"  ./src/game.o ./src/ogre.o ./src/warrior.o ./src/xp.o   
+Finished building target: game
+ 

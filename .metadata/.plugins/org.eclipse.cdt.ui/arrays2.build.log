@@ -1,0 +1,14 @@
+
+**** Build of configuration Debug for project arrays2 ****
+
+make all 
+Building file: ../src/arrays2.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/arrays2.d" -MT"src/arrays2.d" -o"src/arrays2.o" "../src/arrays2.cpp"
+Finished building: ../src/arrays2.cpp
+ 
+Building target: arrays2
+Invoking: GCC C++ Linker
+g++  -o"arrays2"  ./src/arrays2.o   
+Finished building target: arrays2
+ 

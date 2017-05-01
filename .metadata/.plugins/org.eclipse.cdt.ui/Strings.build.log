@@ -1,0 +1,14 @@
+
+**** Build of configuration Debug for project Strings ****
+
+make all 
+Building file: ../src/Strings.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Strings.d" -MT"src/Strings.d" -o"src/Strings.o" "../src/Strings.cpp"
+Finished building: ../src/Strings.cpp
+ 
+Building target: Strings
+Invoking: GCC C++ Linker
+g++  -o"Strings"  ./src/Strings.o   
+Finished building target: Strings
+ 

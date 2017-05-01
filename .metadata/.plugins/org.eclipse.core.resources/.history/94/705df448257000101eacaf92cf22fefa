@@ -1,0 +1,4 @@
+#include<ncurse.h>
+int main()
+{
+int ch;

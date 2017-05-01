@@ -1,0 +1,33 @@
+//============================================================================
+// Name        : 10.cpp
+// Author      : 
+// Version     :
+// Copyright   : Your copyright notice
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+#include <iostream>
+#include <stdio.h>
+using namespace std;
+
+int main()
+{
+	int userinput;
+	string operatorchoice1="null";
+
+	cout << "enter number " << endl;
+	cin >> userinput;
+	printf("you entered %d", userinput);
+
+	int testloop = userinput;
+
+	while (testloop < 0){
+		int testvar(testloop);
+		cout << "enter %d variable", testloop);
+		cin >> testloop(testloop);
+		cout << "you number is %d", testloop(testloop);
+	}
+
+
+	return 0;
+}

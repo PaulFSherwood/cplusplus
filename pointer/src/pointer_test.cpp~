@@ -1,0 +1,24 @@
+// pointer test
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int firstvalue = 100;
+	int secondvalue = 200;
+	int *firstpointer = &firstvalue;
+	int *secondpointer = &secondvalue;
+
+	cout << "firstvalue: " << firstvalue << endl;
+	cout << "&firstvalue: " << &firstvalue << endl;
+	cout << "firstpointer: " << firstpointer << endl;
+	cout << "*firstpointer: " << *firstpointer << endl;
+	cout << "&firstpointer: " << &firstpointer << endl;
+	
+	cout << "secondvalue: " << secondvalue << endl;
+	cout << "&secondvalue: " << &secondvalue << endl;
+	cout << "secondpointer: " << secondpointer << endl;
+	cout << "*secondpointer: " << *secondpointer << endl;
+	cout << "&secondpointer: " << &secondpointer << endl;
+	return 0;
+}
