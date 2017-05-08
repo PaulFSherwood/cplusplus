@@ -12,7 +12,7 @@ public:
 	int getHealth();
 	bool getAlive();
 	
-protected:
+private:
 	int m_Health;
 	bool m_Alive;
 };
