@@ -5,15 +5,16 @@
 class Ogre
 {
 public:
-    int health;
-    int strength;
+    Ogre();
 
     void talk();
-
     int getHealth() const;
     void setHealth(int value);
 
-    Ogre();
+private:
+    int health;
+    int strength;
+
 };
 
 #endif // OGRE_H

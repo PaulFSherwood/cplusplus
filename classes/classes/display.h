@@ -1,11 +1,12 @@
 #ifndef DISPLAY_H
 #define DISPLAY_H
 #include "ogre.h"
+#include "player.h"
 
 class Display
 {
 public:
-    void showScene(Ogre & dude);
+    void showScene(Player * dude);
     Display();
 };
 

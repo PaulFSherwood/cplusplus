@@ -6,7 +6,10 @@ Display::Display()
 {
 }
 
-void Display::showScene(Ogre & dude)
+void Display::showScene(Player * dude)
 {
-    cout << dude.getHealth();
+    cout << "==================\n";
+    cout << dude->getHealth();
+    cout << dude->getExperiance();
+    cout << "==================\n";
 }
