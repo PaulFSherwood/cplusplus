@@ -5,6 +5,10 @@
 class Ogre
 {
 public:
+    int health;
+    int strength;
+
+    void talk();
     Ogre();
 };
 
