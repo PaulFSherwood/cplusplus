@@ -10,6 +10,8 @@ void Display::showScene(Player * dude)
 {
     cout << "==================\n";
     cout << dude->getHealth();
+    cout << endl;
     cout << dude->getExperiance();
+    cout << endl;
     cout << "==================\n";
 }

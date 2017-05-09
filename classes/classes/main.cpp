@@ -15,13 +15,30 @@ int main(int argc, char *argv[])
     Player *myDude = new Player(100, 0);
     Display *myDisplay = new Display();
 
+    // display is ready push to screen
+    myDisplay->showScene(myDude);
+
     cout << endl;
     bool isRunning = true;
     while(isRunning) {
-        QTextStream qtin(stdin);
-        QString line = qtin.readLine();
+        char input;
+        cin >> input;
         myDisplay->showScene(myDude);
-        if (line == "false") {
+        /* look for key events */
+        switch( input ) {
+            case 'F':   // Fight
+            {
+                cout << "Fighting" << endl;
+                break;
+            }
+            default:
+            {
+                // I dont have something to put here
+                break;
+            }
+        }
+
+        if (input == 'x') {
             qDebug() << "rEADY TO eXiT" << endl;
             isRunning = false;
         } else {
