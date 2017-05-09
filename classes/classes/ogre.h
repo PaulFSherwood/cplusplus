@@ -9,6 +9,10 @@ public:
     int strength;
 
     void talk();
+
+    int getHealth() const;
+    void setHealth(int value);
+
     Ogre();
 };
 

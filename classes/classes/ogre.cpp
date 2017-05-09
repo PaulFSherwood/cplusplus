@@ -2,6 +2,16 @@
 #include <iostream>
 using namespace std;
 
+int Ogre::getHealth() const
+{
+    return health;
+}
+
+void Ogre::setHealth(int value)
+{
+    health = value;
+}
+
 void Ogre::talk()
 {
     cout << "im attacking" << endl;
