@@ -1,9 +1,10 @@
 #include "player.h"
 
-Player::Player(int a, int b)
+Player::Player(int a, int b, int c)
 {
     health = a;
-    experiance = b;
+    strength = b;
+    experiance = c;
 }
 
 int Player::getHealth() const
@@ -22,4 +23,14 @@ void Player::setHealth(int value)
 void Player::setExperiance(int value)
 {
     experiance = value;
+}
+
+int Player::getStrength() const
+{
+    return strength;
+}
+
+void Player::setStrength(int value)
+{
+    strength = value;
 }

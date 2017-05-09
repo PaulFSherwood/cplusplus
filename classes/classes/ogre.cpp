@@ -2,6 +2,20 @@
 #include <iostream>
 using namespace std;
 
+
+Ogre::Ogre(int a, int b)
+{
+    health = a;
+    strength = b;
+}
+
+void Ogre::talk()
+{
+    cout << "im attacking" << endl;
+    cout << "health: " << getHealth() << endl;
+    cout << "strength: " << getStrength() << endl;
+}
+
 int Ogre::getHealth() const
 {
     return health;
@@ -12,15 +26,12 @@ void Ogre::setHealth(int value)
     health = value;
 }
 
-void Ogre::talk()
+int Ogre::getStrength() const
 {
-    cout << "im attacking" << endl;
-    cout << "health: " << health << endl;
-    cout << "strength: " << strength << endl;
+    return strength;
 }
 
-Ogre::Ogre()
+void Ogre::setStrength(int value)
 {
-        health = 5;
-        strength = 10;
+    strength = value;
 }

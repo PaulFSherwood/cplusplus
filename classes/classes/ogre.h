@@ -5,11 +5,14 @@
 class Ogre
 {
 public:
-    Ogre();
+    Ogre(int a, int b);
 
     void talk();
     int getHealth() const;
+    int getStrength() const;
+
     void setHealth(int value);
+    void setStrength(int value);
 
 private:
     int health;
