@@ -42,6 +42,12 @@ void Display::showFight(Player *dude)
             cout << "Player HP: " << dude->getHealth() << "Player Str: " << dude->getStrength() << endl;
             cout << "Baddie HP: " << baddie->getHealth() << "Baddie Str: " << baddie->getStrength() << endl;
             cout << "YOU WIN!!!" << endl;
+            dude->setExperiance(dude->getExperiance()+10);
+            if (dude->getExperiance() > 100) {
+                dude->setHealth(dude->getHealth() + 10);
+                dude->setStrength(dude->getStrength() + 2);
+            }
+            cout << "Xp awarded" << endl;
             cout << endl;
             break;
         }
@@ -51,6 +57,7 @@ void Display::showFight(Player *dude)
 
 void Display::showHeal(Player *dude)
 {
+    // THIS IS pretty much broken
     cout << "+=+=+=+=+=+=+=+=+=+=+" << endl;
     cout << "cleansing your booboos" << endl;
     dude->setHealth(100);
