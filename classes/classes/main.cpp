@@ -20,11 +20,14 @@ int main(int argc, char *argv[])
 
     cout << endl;
     bool isRunning = true;
+    ///////////////
+    // main loop //
     while(isRunning) {
+        // get user input
         char input;
         cin >> input;
         myDisplay->showScene(myDude);
-        /* look for key events */
+        /* select based on user input */
         switch( input ) {
             case 'F':   // Fight
             {
@@ -44,8 +47,8 @@ int main(int argc, char *argv[])
             }
         }
 
-        if (input == 'x') {
-            qDebug() << "rEADY TO eXiT" << endl;
+        if (input == 'X') {
+            qDebug() << "eXiTiNg ThE lOoP" << endl;
             isRunning = false;
         } else {
 
