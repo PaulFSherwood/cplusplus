@@ -32,6 +32,11 @@ int main(int argc, char *argv[])
                 myDisplay->showFight(myDude);
                 break;
             }
+            case 'H': // restore health
+            {
+                myDisplay->showHeal(myDude);
+                break;
+            }
             default:
             {
                 // I dont have something to put here
