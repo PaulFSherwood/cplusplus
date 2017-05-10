@@ -7,6 +7,7 @@ class Display
 {
 public:
     void showScene(Player * dude);
+    void showFight(Player * dude);
     Display();
 };
 

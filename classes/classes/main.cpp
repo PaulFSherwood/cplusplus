@@ -13,7 +13,6 @@ int main(int argc, char *argv[])
     QCoreApplication a(argc, argv);
     // create a new player set health and experience
     Player *myDude = new Player(100, 25, 0);
-    Ogre *myBaddie = new Ogre(90, 15);
     Display *myDisplay = new Display();
 
     // display is ready push to screen
@@ -30,6 +29,7 @@ int main(int argc, char *argv[])
             case 'F':   // Fight
             {
                 cout << "Fighting" << endl;
+                myDisplay->showFight(myDude);
                 break;
             }
             default:
