@@ -3,6 +3,7 @@
 Player::Player(int a, int b, int c)
 {
     health = a;
+    tempHealth = a;
     strength = b;
     experiance = c;
 }
@@ -10,6 +11,10 @@ Player::Player(int a, int b, int c)
 int Player::getHealth() const
 {
     return health;
+}
+int Player::getTempHealth() const
+{
+    return tempHealth;
 }
 int Player::getExperiance() const
 {
@@ -19,6 +24,10 @@ int Player::getExperiance() const
 void Player::setHealth(int value)
 {
     health = value;
+}
+void Player::setTempHealth(int value)
+{
+    tempHealth = value;
 }
 void Player::setExperiance(int value)
 {

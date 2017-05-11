@@ -1,5 +1,6 @@
-#include "display.h"
+#include <QProcess>
 #include <iostream>
+#include "display.h"
 using namespace std;
 
 Display::Display()
@@ -12,12 +13,11 @@ void Display::showScene(Player * dude)
     cout << "==================\n";
     cout << "Health: " << dude->getHealth() << endl;
     cout << "Strength: " << dude->getStrength() << endl;
-    cout << "Exeperiance" << dude->getExperiance() << endl;
+    cout << "Exeperiance: " << dude->getExperiance() << endl;
     cout << "==================\n\n";
     cout << "(F)ight" << endl;
     cout << "(H)eal" << endl;
     cout << "(X)it" << endl;
-
 }
 
 void Display::showFight(Player *dude)
@@ -51,6 +51,7 @@ void Display::showFight(Player *dude)
             // level up stats for the player if they have over 100 exp.
             if (dude->getExperiance() > 100) {
                 dude->setHealth(dude->getHealth() + 10);
+                dude->setTempHealth(dude->getTempHealth() + 10);
                 dude->setStrength(dude->getStrength() + 2);
             }
             cout << "Xp awarded" << endl;
@@ -66,6 +67,6 @@ void Display::showHeal(Player *dude)
     // THIS IS pretty much broken
     cout << "+=+=+=+=+=+=+=+=+=+=+" << endl;
     cout << "cleansing your booboos" << endl;
-    dude->setHealth(100);
+    dude->setHealth(dude->getTempHealth());
     showScene(dude);
 }
