@@ -12,7 +12,7 @@
 
 int main() {
 	// Setup / INIT
-	//	       dt, max,  min,  Kp,   Kd,  Ki
+	//	           dt, max,  min,  Kp,   Kd,  Ki
 	PID pid = PID(0.1, 100, -100, 0.1, 0.01, 0.5);
 	int setTemp = 0;
 	double val = 20;
