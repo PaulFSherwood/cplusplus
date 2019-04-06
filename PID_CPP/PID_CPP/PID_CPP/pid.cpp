@@ -49,13 +49,13 @@ PIDImpl::PIDImpl(double dt, double max, double min, double Kp, double Kd, double
 {}
 
 double PIDImpl::calculate(double setpoint, double pv) {
-	// Calculate error
+	// Calculate error --=====-- ( Output proportianal to error value )
 	double error = setpoint - pv;
 
-	// Proportional term
+	// Proportional term --=====-- ( Rate of past change )
 	double Pout = _Kp * error;
 
-	// Integral term
+	// Integral term --=====-- ( Rate of future change )
 	_integral += error * _dt;
 	double Iout = _Ki * _integral;
 
