@@ -21,7 +21,7 @@ int main() {
 		printf("[%d]\tSet: %d | Reading: %7.3f | Change: %7.3f\n", i, setTemp, val, change);
 		val += change;
 		
-		std::this_thread::sleep_for(std::chrono::milliseconds(30)); // wait for, in milliseconds
+		std::this_thread::sleep_for(std::chrono::milliseconds(300)); // wait for, in milliseconds
 	}
 	return 0;
 }
