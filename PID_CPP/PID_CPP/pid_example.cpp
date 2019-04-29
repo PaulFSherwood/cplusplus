@@ -2,6 +2,7 @@
 #include <chrono>    // g++ -std=c++0x pid_example.cpp pid.cpp -o PID
 #include <thread>
 #include "pid.h"
+#include <graphics.h>
 
 int main() {
 	// Setup / INIT
@@ -23,5 +24,16 @@ int main() {
 		
 		std::this_thread::sleep_for(std::chrono::milliseconds(300)); // wait for, in milliseconds
 	}
+
+	int gd = DETECT, gm;
+	int x = 320, y = 240, radius;
+
+	initgraph(&gd, &gm, "C:\\TC\\BGI");
+
+	for (radius = 25; radius <= 125; radius = radius + 20)
+		circle(x, y, radius);
+
+	getch();
+	closegraph();
 	return 0;
 }

@@ -19,14 +19,14 @@ int main(int argc, char *argv[])
     std::cin >> setTemp;
 
     // loop for 300 * 300 milliseconds
-    for (int i = 0; i < 300; i++) {
+    for (int i = 0; i < 300; i++)
+    {
         // get the current change in temp requested by the PID controller
         double change = pid.calculate(setTemp, val);
-        printf("[%d]\tSet: %d | Reading: %7.3f | Change: %7.3f\n", i, setTemp, val, change);
+        printf("[%d]\tSet: %d | Reading: %7.10f | Change: %7.2f\n", i, setTemp, val, change);
         val += change;
-
+        if (qFuzzyCompare(setTemp, val)) { printf("\nDONE"); break;}
         std::this_thread::sleep_for(std::chrono::milliseconds(300)); // wait for, in milliseconds
     }
-
     return a.exec();
 }
