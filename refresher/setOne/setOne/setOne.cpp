@@ -1,7 +1,12 @@
 // setOne.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 #include <iostream>
+#include <cmath>
 using std::cout;  // alternative to using namespace std and pulling in everthing.
+using std::cin;
+using std::endl;
+
+void printVariables(char a, int b, float c, double d, bool e);  // function declaration
 
 int main()
 {
@@ -20,8 +25,21 @@ int main()
     float c = 1.1;
     double d = 2.2;
     bool e = false;
+    // Signed numbers can be neg. or pos. but half the max value of Unsigned
 
-    cout << "a: " << a << ", b: " << b << ", c: " << c << ", d: " << d << ", e: " << e << std::endl;
+
+    printVariables(a, b, c, d, e);
+    for (int i = 1; i < 5; i++) {
+
+        printVariables(a, b++, c++, d++, e);
+    }
+    // double result = pow(10, 3);
+    // cout << result << std::endl;
+}
+
+// function defenitions
+void printVariables(char a, int b, float c, double d, bool e) {
     printf("=====================\n");
-    printf("a:%c, b:%d, c:%.2f, d:%.2f, e:%s ", a, b, c, d, e ? "true" : "false");
+    cout << "a: " << a << ", b: " << b << ", c:  " << c << ", d:  " << d << ", e: " << e << endl;
+    printf("a: %c, b: %d, c: %.2f, d: %.2f, e: %s\n\n", a, b, c, d, e ? "true" : "false");
 }
