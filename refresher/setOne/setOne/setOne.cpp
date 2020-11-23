@@ -22,4 +22,6 @@ int main()
     bool e = false;
 
     cout << "a: " << a << ", b: " << b << ", c: " << c << ", d: " << d << ", e: " << e << std::endl;
+    printf("=====================\n");
+    printf("a:%c, b:%d, c:%.2f, d:%.2f, e:%s ", a, b, c, d, e ? "true" : "false");
 }
