@@ -1,8 +1,9 @@
 // setOne.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 #include <iostream>
-#include <cmath>
 #include <climits>
+#include <string>
+#include <cmath>
 using std::cout;  // alternative to using namespace std and pulling in everthing.
 using std::cin;
 using std::endl;
@@ -41,6 +42,23 @@ int main()
     // }
     // double result = pow(10, 3);
     // cout << result << std::endl;
+
+    // remainder function over modulas
+    // cout << 10 % 3.25 << endl;  // this is an error
+    cout << remainder(10, 3.25) << endl;
+    cout << fmod(10, 3.25) << endl;
+    cout << ceil(fmax(10, 3.25)) << endl;
+    cout << floor(fmin(10, 3.25)) << endl;
+
+    std::string greeting = "hellos";
+    std::cout << &greeting << " " << greeting << ": " << greeting.length() << std::endl;
+    greeting = "hell";
+    std::cout << &greeting << " " << greeting << ": " << greeting.length() << std::endl;
+    std::cout << &greeting << " ";
+    for (int i = 0; i < 4; i++) {
+        cout << greeting[i];
+    }
+    cout << ": " << greeting.length() << std::endl;
 
 }
 
