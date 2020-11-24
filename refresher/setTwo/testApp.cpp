@@ -4,81 +4,42 @@
 #include <time.h>   // time
 #include <ctype.h>
 
-int distance(int groundSpeed, int time);	// 1
-int groundSpeed(int distance, int time);	// 2
-int time(int distance, int speed);			// 3
-int fuelConsumed(int gph, int time);		// 4
-int gph(int fuelConsumed, int time);		// 5
 void showMenu();
+int verifyInput(int value);
+void distance();		// 1
+void groundSpeed();		// 2
+void time();			// 3
+void fuelConsumed();	// 4
+void gph();				// 5
 
 int main()
 {
     bool isRunning = true;
     int menuNumber = 0;
-	int value1 = 0;
-	int value2 = 0;
 	
     while (isRunning)
     {
         // first we display the menu
         showMenu();
         // then we need to get the users choice of what to do
-        std::cin >> menuNumber; // this input needs verification
-		// test user input
-		while (std::cin.fail()) {
-			printf("Input error please try again.\n");	// show error
-			std::cin.clear();							// clear input
-			std::cin.ignore(256, '\n');					// clear input
-			std::cin >> menuNumber;						// get input again
-		}
-		
+        menuNumber = verifyInput(menuNumber);
 		
         // now we can act on that choice
         switch (menuNumber) {
                 case 1: // Find distance
-					// get some values first
-					printf("Enter the ground speed.\n");
-					std::cin >> value1;
-					printf("Enter the time.\n");
-					std::cin >> value2;
-					printf("Distance is: %d\n", distance(value1, value2));
-					printf("===============================\n");
+					distance();
                     break;
-                case 2: // Find distance
-					// get some values first
-					printf("Enter the distance.\n");
-					std::cin >> value1;
-					printf("Enter the time.\n");
-					std::cin >> value2;
-					printf("Ground speed is: %d\n", groundSpeed(value1, value2));
-					printf("===============================\n");
+                case 2: // Find Ground speed
+					groundSpeed();
                     break;
-                case 3: // Find distance
-					// get some values first
-					printf("Enter the distance.\n");
-					std::cin >> value1;
-					printf("Enter the speed.\n");
-					std::cin >> value2;
-					printf("Time is: %d\n", time(value1, value2));
-					printf("===============================\n");
+                case 3: // Find Time
+					time();
                     break;
-                case 4: // Find distance
-					// get some values first
-					printf("Enter the gallons per hour.\n");
-					std::cin >> value1;
-					printf("Enter the time.\n");
-					std::cin >> value2;
-					printf("Fuel consumed is: %d\n", fuelConsumed(value1, value2));
-					printf("===============================\n");
+                case 4: // Find Fuel consumed
+					fuelConsumed();
                     break;
-                case 5: // Find distance
-					// get some values first
-					printf("Enter the fuel consumed.\n");
-					std::cin >> value1;
-					printf("Enter the time.\n");
-					std::cin >> value2;
-					printf("Gallons per hour is: %d\n", gph(value1, value2));
-					printf("===============================\n");
+                case 5: // Find Gallons per hour
+					gph();
                     break;
 				case 6: // exit the program
                     isRunning = false;
@@ -99,8 +60,62 @@ void showMenu()
     printf("5) GPH = Fuel Consumed / Time(min)\n");
     printf("6) Exit\n");
 }
-int distance(int groundSpeed, int time)	{ return groundSpeed  * time;  }
-int groundSpeed(int distance, int time)	{ return distance     * time;  }
-int time(int distance, int speed)		{ return distance     * speed; }
-int fuelConsumed(int gph, int time)		{ return gph		  * time;  }
-int gph(int fuelConsumed, int time)		{ return fuelConsumed * time;  }
+int verifyInput(int value)
+{
+	std::cin >> value; // this input needs verification
+	// test user input
+	while (std::cin.fail()) {
+		printf("Input error please try again.\n");	// show error
+		std::cin.clear();							// clear input
+		std::cin.ignore(256, '\n');					// clear input
+		std::cin >> value;						// get input again
+	}
+	return value;
+}
+void distance() 
+{
+	printf("Enter the ground speed. ");
+	int value1 = verifyInput(value1);
+	printf("Enter the time. ");
+	int value2 = verifyInput(value2);
+	printf("Distance is: %d\n", value1 * value2);
+	printf("===============================\n");
+}
+void groundSpeed() 
+{
+	printf("Enter the distance. ");
+	int value1 = verifyInput(value1);
+	printf("Enter the time. ");
+	int value2 = verifyInput(value2);
+	printf("Ground speed is: %d\n", value1 * value2);
+	printf("===============================\n");
+}
+void time() 
+{ 
+	printf("Enter the distance. ");
+	int value1 = verifyInput(value1);
+	printf("Enter the speed. ");
+	int value2 = verifyInput(value2);
+	printf("Time is: %d\n", value1 * value2);
+	printf("===============================\n");
+}
+void fuelConsumed()
+{ 
+	// get some values first
+	printf("Enter the gallons per hour. ");
+	int value1 = verifyInput(value1);
+	printf("Enter the time. ");
+	int value2 = verifyInput(value2);
+	printf("Fuel consumed is: %d\n", value1 * value2);
+	printf("===============================\n");
+}
+void gph()
+{ 
+	// get some values first
+	printf("Enter the fuel consumed. ");
+	int value1 = verifyInput(value1);
+	printf("Enter the time. ");
+	int value2 = verifyInput(value2);
+	printf("Gallons per hour is: %d\n", value1 * value2);
+	printf("===============================\n");
+}
