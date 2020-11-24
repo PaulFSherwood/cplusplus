@@ -26,26 +26,26 @@ int main()
 		
         // now we can act on that choice
         switch (menuNumber) {
-                case 1: // Find distance
-					distance();
-                    break;
-                case 2: // Find Ground speed
-					groundSpeed();
-                    break;
-                case 3: // Find Time
-					time();
-                    break;
-                case 4: // Find Fuel consumed
-					fuelConsumed();
-                    break;
-                case 5: // Find Gallons per hour
-					gph();
-                    break;
-				case 6: // exit the program
-                    isRunning = false;
-					break;
-                default:  // exit on anything else
-					break; // something went wrong loop back around
+			case 1: // Find distance
+				distance();
+				break;
+			case 2: // Find Ground speed
+				groundSpeed();
+				break;
+			case 3: // Find Time
+				time();
+				break;
+			case 4: // Find Fuel consumed
+				fuelConsumed();
+				break;
+			case 5: // Find Gallons per hour
+				gph();
+				break;
+			case 6: // exit the program
+				isRunning = false;
+				break;
+			default:  // exit on anything else
+				break; // something went wrong loop back around
         }
     }
     return 0;
