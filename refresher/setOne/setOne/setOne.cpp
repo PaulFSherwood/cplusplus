@@ -33,8 +33,6 @@ int main()
     // Signed numbers can be neg. or pos. but half the max value of Unsigned
     cout << "[int: " << sizeof(b) << "][char: " << sizeof(a) << "][short: " << sizeof(z) << "][long: " << sizeof(y) << "][long long:" << sizeof(x) << "]" << endl;
 
-    
-    
     printVariables(a, b, c, d, e);
     // for (int i = 1; i < 5; i++) {
     // 
