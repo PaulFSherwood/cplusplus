@@ -218,12 +218,7 @@ pip-log.txt
 #############
 # sub folders
 #############
-LOTGD-Clone
 LOTGD-Clone/
 SDL-Collision-Events/
 mangosbot/
 classes/build-classes-Desktop_Qt_5_9_0_MSVC2015_64bit-Debug/
-LOTGD-Clone
-mangosbot/Source
-mangosbot/Build/CMakeFiles/3.3.1/CompilerIdC/CompilerIdC.vcxproj
-mangosbot/Build/CMakeFiles/3.3.1/CompilerIdCXX/CompilerIdCXX.vcxproj
