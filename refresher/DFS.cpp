@@ -22,6 +22,7 @@ class DFSGraph
         }
         void DFS(); // DFS traversal function
 };
+// Helper function?  to mark visited leafs
 void DFSGraph::DFS_util(int v, bool visited[])
 {
     // current node v is visited
@@ -34,6 +35,7 @@ void DFSGraph::DFS_util(int v, bool visited[])
     {
         if (!visited[*i])
         {
+            // cout << " [" << *i << "] ";
             DFS_util(*i, visited);
         }
     }
