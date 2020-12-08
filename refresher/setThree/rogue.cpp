@@ -1,14 +1,9 @@
 #include <iostream>
 #include <cmath>
-#include "Warrior.h"
+#include "Rogue.h"
 
 Rogue::Rogue(int startLevel):Level(startLevel)
-{
-    setAgility (startLevel);
-    setStrength(startLevel);
-    setStamina (startLevel);
-    std::cout << "\nAgility: " << getAgility() << "\tStrength: " << getStrength() << "\nStamina: " << getStamina() << "\tLevel: " << getLevel() <<  std::endl;
-}
+{}
 int Rogue::getAgility()    { return Agility;   }
 int Rogue::getStrength()   { return Strength;  }
 int Rogue::getStamina()    { return Stamina;   }
