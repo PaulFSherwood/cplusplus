@@ -1,30 +1,31 @@
 using namespace std;
 
 bool isValidSubsequence(vector<int> array, vector<int> sequence) {
-	int lastNumber = 0;
-  // We need to go through the array vector one set at a time.
-	for (int i = 0; i < array.size(); i++)
+  // using the sequence number search throught the array for matches
+	int counter = 0;
+	// 1 2 3 4
+	// ^      
+	//   ^
+	// go throught the sequence set one at a time.
+	for (int i = 0; i < sequence.size(); i++)
 	{
-		// Next we use the second vector to test if all of those numbers are in this array
-  	for (int j = 0; j < sequence.size(); j++)
+		// look for a match startinf from the beginning
+		for (int j = i; j < array.size(); j++)
 		{
-			// check if the number in sequence[i] is anywhere in array[n]
-			if (array[i] == sequence[j] && lastNumber <= i)
+			std::cout << "s[" << i << "]" << sequence[i] << ":" << "a[" << j << "]" << array[j] << std::endl;
+			if (sequence[i] == array[j])
 			{
-				lastNumber = i;
-				std::cout << i << ":" << j << ": " << "s[" << sequence[i] << "] - a[" << array[j] << "] " <<  lastNumber << std::endl;
-				// if we find a match remove it from the vector
-				sequence.erase(sequence.begin() + j);
+				i++;  // move the test case to the next in sequence 
+				counter++;  // for testing pass / fail
 			}
 		}
+		
 	}
-	// if the vector is empty then everything must have matched
-	if (sequence.size() == 0)
+	// if the good tests equal the size of the sequnce then reutnr true.
+	if (counter == sequence.size())
 	{
 		return true;
-	}
-	else
-	{
-		return false;
+	} else {
+	return false;
 	}
 }
