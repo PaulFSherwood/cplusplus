@@ -9,43 +9,31 @@ public:
 };
 
 int findClosestValueInBst(BST *tree, int target) {
+	int counter = 0;
   // keep going if you have some data
 	while (tree != NULL)
 	{
-		// std::cout << "tree->value: " << tree->value << std::endl;
-		// std::cout << tree->left->value << ":" << tree->right->value << std::endl;
-		// check for higher values
-		// if ((target > tree->right->value || tree->right == NULL)  && (target < tree->left->value || tree->left == NULL))
 		
-		if (tree->right == NULL)
-		{
-			cout << "1" << endl;
-			// right is null so just check left
-			if (target < tree->left->value)
-			{
-				return tree->value;
-			}
-		} 
-		if (tree->left == NULL && target > tree->right->value)
-		{
-			cout << "2" << endl;
-			// Left is null so just check left
-			if (target < tree->right->value)
-			{
-				return tree->value;
-			}
-		} 
-		
+		//std::cout << ": " << std::abs (tree->value) << std::endl;
+				
 		// check for higher values
-		else if (target > tree->value)
+		if (target > tree->value && tree->right != NULL)
 		{
+			std::cout << "[" << target << "]:[" << tree->value;
 			tree = tree->right;
+			std::cout  << "]:Right: " << std::endl;
+			std::cout  << tree->value << std::endl;
 		}
 		// check for lower values
-		else if (target < tree->value)
+		else if (target < tree->value && tree->left != NULL)
 		{
+			std::cout << "[" << target << "]:[" << tree->value;
 			tree = tree->left;
+			std::cout  << "]:Left: " << std::endl;
+			std::cout << tree->value << std::endl;
 		} else {
+			std::cout << "Retrun: ";
+			std::cout << tree->value << std::endl;
 			return tree->value;
 		}
 	}
