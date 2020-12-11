@@ -12,19 +12,29 @@ public:
 
 int findClosestValueInBst(BST *tree, int target) {
 	int counter = 0;
+	int one, two, three = 0;
   // keep going if you have some data
+	cout << "T: (" << target << ")\n"; 
 	while (tree != NULL)
 	{
+		if (tree        != NULL){ one   = tree->value;        } else { one   = 0; }
+		if (tree->left  != NULL){ two   = tree->left->value;  } else { two   = 0; }
+		if (tree->right != NULL){ three = tree->right->value; } else { three = 0; }
+		cout << "[" << one << "]{" << two << "}[" << three << "]" << endl;
 		
-		//std::cout << ": " << std::abs (tree->value) << std::endl;
-				
 		// check for higher values
 		if (target > tree->value && tree->right != NULL)
 		{
-			std::cout << "\t    {" << abs(tree->value - target) << "}::{" << abs(tree->right->value - target) << "}" << std::endl;
-			std::cout << "[" << target << "]:Right: [" << tree->value;
+			// if the current spot is smaller than the right
+			if (tree->right != NULL) {
+				if ((abs(tree->value) - target) < (abs(tree->right->value)-target))
+				{
+					cout << "Good R: " << tree->value << endl;
+				}
+			}
+			//std::cout << "[" << target << "]:Right: [" << tree->value;
 			tree = tree->right;
-			std::cout  << "]:[" << tree->value <<  "]" << std::endl;
+			//std::cout  << "]:[" << tree->value <<  "]" << std::endl;
 			
 			// if ((abs(tree->right->value - target)) < (abs(tree->value - target)))
 			// {
@@ -36,16 +46,21 @@ int findClosestValueInBst(BST *tree, int target) {
 		{
 			int one = abs(tree->value - target);
 			int two = abs(tree->left->value - target);
-			std::cout << "\t    {" << abs(tree->value - target) << "}::{" << abs(tree->left->value - target) << "}" << std::endl;
+			if (tree->left != NULL) {
+				if ((abs(tree->value) - target) > (abs(tree->left->value) - target))
+				{
+					cout << "Good L: " << tree->value << endl;
+				}
+			}
 			if (one > two)
 			{
 				tree = tree->left;
 			} else {
 				return tree->value;
 			}
-			std::cout << "[" << target << "]:Left: [" << tree->value;
+			//std::cout << "[" << target << "]:Left: [" << tree->value;
 			//tree = tree->left;
-			std::cout  << "]:[" << tree->value << "]" << std::endl;
+			//std::cout  << "]:[" << tree->value << "]" << std::endl;
 		} else {
 			std::cout << "Retrun: ";
 			std::cout << tree->value << std::endl;
