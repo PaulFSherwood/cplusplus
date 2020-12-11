@@ -11,56 +11,39 @@ public:
 };
 
 int findClosestValueInBst(BST *tree, int target) {
-	int counter = 0;
+	int closest = 2147483647;
 	int one, two, three = 0;
   // keep going if you have some data
 	cout << "T: (" << target << ")\n"; 
 	while (tree != NULL)
 	{
-		if (tree        != NULL){ one   = tree->value;        } else { one   = 0; }
-		if (tree->left  != NULL){ two   = tree->left->value;  } else { two   = 0; }
-		if (tree->right != NULL){ three = tree->right->value; } else { three = 0; }
-		cout << "[" << one << "]{" << two << "}[" << three << "]" << endl;
+		if (tree        != NULL){ one     = tree->value;        } else { one     = 0; }
+		if (tree->left  != NULL){ two     = tree->left->value;  } else { two     = 0; }
+		if (tree->right != NULL){ three   = tree->right->value; } else { three   = 0; }
+		//if (tree        != NULL){ closest = tree->value;        } else { closest = 0; }
+		cout << "[" << one << "]{" << two << "}[" << three << "]=[" << closest << "]" << endl;
 		
 		// check for higher values
 		if (target > tree->value && tree->right != NULL)
 		{
-			// if the current spot is smaller than the right
-			if (tree->right != NULL) {
-				if ((abs(tree->value) - target) < (abs(tree->right->value)-target))
-				{
-					cout << "Good R: " << tree->value << endl;
-				}
-			}
-			//std::cout << "[" << target << "]:Right: [" << tree->value;
+			if ((abs(tree->value) - target) < (abs(tree->right->value) - target)) { closest = tree->value; }
+			cout << "R-V: " << target - abs(tree->value) << " R-R: " << target - abs(tree->right->value) << " c: " << closest << endl;
 			tree = tree->right;
-			//std::cout  << "]:[" << tree->value <<  "]" << std::endl;
-			
-			// if ((abs(tree->right->value - target)) < (abs(tree->value - target)))
-			// {
-			// 	cout << "found a low match" << endl;
-			// }
 		}
 		// check for lower values
 		else if (target < tree->value && tree->left != NULL)
 		{
+			if ((abs(tree->value) - target) < (abs(tree->left->value) - target)) { closest = tree->value; }
+			cout << "L-V: " << abs(tree->value) - target << " R-L: " << abs(tree->left->value) - target << " c: " << closest << endl;
 			int one = abs(tree->value - target);
 			int two = abs(tree->left->value - target);
-			if (tree->left != NULL) {
-				if ((abs(tree->value) - target) > (abs(tree->left->value) - target))
-				{
-					cout << "Good L: " << tree->value << endl;
-				}
-			}
+			
 			if (one > two)
 			{
 				tree = tree->left;
 			} else {
 				return tree->value;
 			}
-			//std::cout << "[" << target << "]:Left: [" << tree->value;
-			//tree = tree->left;
-			//std::cout  << "]:[" << tree->value << "]" << std::endl;
 		} else {
 			std::cout << "Retrun: ";
 			std::cout << tree->value << std::endl;
