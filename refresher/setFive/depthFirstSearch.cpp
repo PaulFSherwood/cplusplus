@@ -14,16 +14,18 @@ public:
 
   vector<string> depthFirstSearch(vector<string> *array) {
 		// this array size must be packed before it is used.
-		std::cout << this->children.size() << ":" << this->name << std::endl;
+		// std::cout << this->children.size() << ":" << this->name << std::endl;
 		
     array->push_back(this->name); // add node name to the vector
 		// go through vector
 		for(int i = 0; i < this->children.size(); i++)
 		{
+			std::cout << "Size: " << this->children.size() << "|| Name:" << this->name << "|| " << "children[" << i << "]" << std::endl;
 			// never seen this before but using the index of the vector
 			// node to pull out all the data.
 			children[i]->depthFirstSearch(array);
 		}
+		cout << "=========================" << endl;
     return *array;
   }
 
