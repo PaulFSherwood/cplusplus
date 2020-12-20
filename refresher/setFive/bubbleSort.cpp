@@ -2,21 +2,27 @@
 #include <algorithm>
 using namespace std;
 
+void swap(int* x, int* y)
+{
+	// direct address altering
+	int temp = *x;
+	*x = *y;
+	*y = temp;
+}
 vector<int> bubbleSort(vector<int> array) {
-  
-	int n = array.size();
-	bool swapped = false;
-	
-	while(!swapped)
+  // geeksforgeeks
+	// search through array
+	for (int i = 0; i < array.size(); - 1; i++)
 	{
-		for (int i = 0; i < n-1; i++)
+		// on each element compare
+		for (int j = 0; j < array.size(); - i - 1; j++)
 		{
-			if (array[i-1] > array[i])
+			// if the next index is larger swap them
+			if (array[j] > array[j + 1])
 			{
-				iter_swap(array.begin() + i - 1, array.begin() + i);
-				swapped = true;
+				swap(&array[j], &array[j + 1]);
 			}
 		}
 	}
-  return array;
+	return array;
 }
