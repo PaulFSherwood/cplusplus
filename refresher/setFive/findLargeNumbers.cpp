@@ -26,11 +26,12 @@ vector<int> findThreeLargestNumbers(vector<int> array) {
 	{
 		return array;
 	} else if (newArray.size() > 3) {
-		sort(newArray.end()-3, newArray.end(), myfunction);
-		auto it = newArray.begin();
-		auto ot = newArray.begin()+3;
-		cout << "1: " << *it << " 2: " << *ot << endl;
-		newArray.erase(newArray.begin(),newArray.begin()+3);
+		sort(newArray.begin(), newArray.end());
+		
+		while (newArray.size() >3 )
+		{
+			newArray.erase(newArray.begin());
+		}
 		
 	}
 	
