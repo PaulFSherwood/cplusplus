@@ -8,7 +8,8 @@ void updateLargest(vector<int> &threeLargest, int num);
 void shiftAndUpdate(vector<int> &largest, int num, int idx);
 bool myfunction (int i,int j) { return (i<j); }
 
-
+// http://www.cplusplus.com/reference/algorithm/sort/
+// http://www.cplusplus.com/reference/vector/vector/erase/
 
 struct myclass {
   bool operator() (int i,int j) { return (i<j);}
@@ -18,10 +19,20 @@ struct myclass {
 vector<int> findThreeLargestNumbers(vector<int> array) {
 	vector<int> newArray;
 	newArray = array;
-	
-	sort(newArray.begin()+3, newArray.end(), myfunction);
-	
-	newArray.erase(newArray.end()-3,newArray.end());
+	if (array.size() == 3)
+	{
+		sort(newArray.begin(), newArray.end());
+	} else if (newArray.size() < 3)
+	{
+		return array;
+	} else if (newArray.size() > 3) {
+		sort(newArray.end()-3, newArray.end(), myfunction);
+		auto it = newArray.begin();
+		auto ot = newArray.begin()+3;
+		cout << "1: " << *it << " 2: " << *ot << endl;
+		newArray.erase(newArray.begin(),newArray.begin()+3);
+		
+	}
 	
 	for (int i = 0; i < newArray.size(); i++)
 	{
