@@ -23,6 +23,11 @@ vector<int> findThreeLargestNumbers(vector<int> array) {
 	
 	newArray.erase(newArray.end()-3,newArray.end());
 	
+	for (int i = 0; i < newArray.size(); i++)
+	{
+		cout << newArray[i] << " ";
+	} cout << "\n";
+	
 	return newArray;
 	// vector<int> threeLargest{INT_MIN, INT_MIN, INT_MIN};
 	// for (int num : array)
