@@ -17,9 +17,11 @@ vector<int> selectionSort(vector<int> array) {
 		// iMin := i;
 		iMin = i;
 		// for j:= i+1 to size – 1 do
+		// counter shifter
 		for (int j = i + 1; j < array.size(); j++)
 		{
 			// if array[j] < array[iMin] then
+			// Selection
 			if (array[j] < array[iMin])
 			{
 				// iMin := j
@@ -27,7 +29,8 @@ vector<int> selectionSort(vector<int> array) {
 			}
 			// done
 		}
-			swap(&array[iMin], &array[i]);  
+		// swap
+		swap(&array[iMin], &array[i]);  
 		// swap array[i] with array[iMin].
 		// swap(array.begin() + i, array.begin() + iMin);
 		
