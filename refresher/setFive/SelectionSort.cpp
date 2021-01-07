@@ -1,11 +1,18 @@
 #include <vector>
 using namespace std;
 
+void swap(int *xp, int *yp)  
+{  
+    int temp = *xp;  
+    *xp = *yp;  
+    *yp = temp;  
+} 
+
 vector<int> selectionSort(vector<int> array) {
 	int iMin;
 	// Begin
 	// for i := 0 to size-2 do //find minimum from ith location to size
-	for (int i = 0; i < array.size()-2; i++)
+	for (int i = 0; i < array.size()-1; i++)
 	{
 		// iMin := i;
 		iMin = i;
@@ -18,12 +25,14 @@ vector<int> selectionSort(vector<int> array) {
 				// iMin := j
 				iMin = j;
 			}
-		// done
+			// done
 		}
+			swap(&array[iMin], &array[i]);  
 		// swap array[i] with array[iMin].
-		iter_swap(array.begin() + i, array.begin() + iMin);
+		// swap(array.begin() + i, array.begin() + iMin);
+		
 		// done
 	}
 	// End
-  return {};
+  return array;
 }
