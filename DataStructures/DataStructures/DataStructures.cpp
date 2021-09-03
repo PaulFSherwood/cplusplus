@@ -3,18 +3,36 @@
 
 #include <iostream>
 
+/*
+      A             200         100        300
+    [200]--------->[2|100]---->[4|300]---->[6|0]---->NULL
+      |             ^   ^                   ^ ^
+      V             |    \                  |  \
+Pointer to node   data   Link              int  Node*
+*/
+
 int main()
 {
     std::cout << "Hello World!\n";
+
+    struct node
+    {
+        int data;
+        node *next;
+    };
+    // creating a memory block to store a node
+    // malloc(sizeof(node))
+    node* a;
+    a = NULL;
+
+    /*node* temp = (node*)malloc(sizeof(node));
+    (*temp).data = 2;*/
+    node* temp = new node();
+    temp->data = 2;
+    temp->next = NULL;
+    a = temp;
+
+    
+
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
