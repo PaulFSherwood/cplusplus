@@ -29,9 +29,14 @@ int main()
 
     head = NULL;   // empty list
     Insert(2, 1);  // List: 2
+    Print();
     Insert(3, 2);  // List: 2, 3
+    Print();
     Insert(4, 1);  // List: 4, 2, 3
+    Print();
     Insert(5, 2);  // List: 4, 5, 2, 3
+    Print();
+    Insert(8, 5);  // List: 4, 5, 2, 3, 8
     Print();
 
     //node *head = NULL;  // empty list;
@@ -91,6 +96,11 @@ void Insert(int data, int n)
     }
     temp1->next = temp2->next;
     temp2->next = temp1;
+
+
+    //std::cout << "[" << temp1->data << " | " << temp1->next << "]" << std::endl;
+    //std::cout << "[" << temp2->data << " | " << temp2->next << "]" << std::endl;
+    //std::cout << std::endl;
 }
 void Print() {
     node* temp = head;
@@ -98,11 +108,13 @@ void Print() {
     {
         if (temp->next == 0)
         {
-            std::cout << temp->data;
+            //std::cout << temp->data;
+            std::cout << "[" << temp->data << " | " << temp->next << "]" << std::endl;
             temp = temp->next;
         }
         else {
-            std::cout << temp->data << ", ";
+            //std::cout << temp->data << ", ";
+            std::cout << "[" << temp->data << " | " << temp->next << "]-->";// << std::endl;
             temp = temp->next;
         }
     }
