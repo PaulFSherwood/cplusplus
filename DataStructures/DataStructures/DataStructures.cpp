@@ -16,28 +16,38 @@ struct node
     int data;
     struct node* next;
 };
+
 struct node* head;  // global variable, that can be accessed from anywhere
-node *Insert(node *head, int x);
-void Print(node *head);
+
+//node *Insert(node *head, int x);
+//void Print(node* head);
+void Insert(int data, int n);
+void Print();
 
 int main()
 {
-    std::cout << "Hello World!\n";
 
-    node *head = NULL;  // empty list;
-    printf("How many numbers?\n");
-    int n, i, x;
-    std::cin >> n;
+    head = NULL;   // empty list
+    Insert(2, 1);  // List: 2
+    Insert(3, 2);  // List: 2, 3
+    Insert(4, 1);  // List: 4, 2, 3
+    Insert(5, 2);  // List: 4, 5, 2, 3
+    Print();
 
-    std::cout << "Head: [" << head << "]\n";
+    //node *head = NULL;  // empty list;
+    //printf("How many numbers?\n");
+    //int n, i, x;
+    //std::cin >> n;
 
-    for (i = 0; i < n; i++)
-    {
-        printf("Enter the number \n");
-        std::cin >> x;
-        head = Insert(head, x);
-        Print(head);
-    }
+    //std::cout << "Head: [" << head << "]\n";
+
+    //for (i = 0; i < n; i++)
+    //{
+    //    printf("Enter the number \n");
+    //    std::cin >> x;
+    //    head = Insert(head, x);
+    //    Print(head);
+    //}
     
     // creating a memory block to store a node
     // malloc(sizeof(node))
@@ -63,28 +73,64 @@ int main()
 
 }
 
-node *Insert(node *head, int x)
+void Insert(int data, int n)
 {
-    // create a node
-    struct node *temp = (node*)malloc(sizeof(struct node));
-    // node* temp = new node;
-    temp->data = x;
-    temp->next = NULL;
-    if (head != NULL) temp->next = head;
-    head = temp;
-    std::cout << x << ": [" << head << "]";
-
-    return head;
-}
-
-void Print(node *head)
-{
-    //struct node* temp = head;
-    printf("List is: ");
-    while (head != NULL)
+    node* temp1 = new node();
+    temp1->data = data;
+    temp1->next = NULL;
+    if (n == 1)
     {
-        printf(" %d", head->data);
-        head = head->next;
+        temp1->next = head;
+        head = temp1;
+        return;
+    }
+    node* temp2 = head;
+    for (int i = 0; i < n - 2; i++)
+    {
+        temp2 = temp2->next;
+    }
+    temp1->next = temp2->next;
+    temp2->next = temp1;
+}
+void Print() {
+    node* temp = head;
+    while (temp != NULL)
+    {
+        /*if (temp->next == NULL)
+        {
+            printf("%d", temp->data);
+        }
+        else {*/
+            printf("%d -|- %d \n", temp->data, temp->next);
+            temp = temp->next;
+        //}
+            if (temp->next == 0) { std::cout << "its zero" << std::endl; }
     }
     printf("\n");
 }
+
+// Insert at the beginning
+//node *Insert(node *head, int x)
+//{
+//    // create a node
+//    struct node *temp = (node*)malloc(sizeof(struct node));
+//    // node* temp = new node;
+//    temp->data = x;
+//    temp->next = NULL;
+//    if (head != NULL) temp->next = head;
+//    head = temp;
+//    std::cout << x << ": [" << head << "]";
+//
+//    return head;
+//}
+//void Print(node *head)
+//{
+//    //struct node* temp = head;
+//    printf("List is: ");
+//    while (head != NULL)
+//    {
+//        printf(" %d", head->data);
+//        head = head->next;
+//    }
+//    printf("\n");
+//}
