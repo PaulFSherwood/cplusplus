@@ -96,15 +96,15 @@ void Print() {
     node* temp = head;
     while (temp != NULL)
     {
-        /*if (temp->next == NULL)
+        if (temp->next == 0)
         {
-            printf("%d", temp->data);
-        }
-        else {*/
-            printf("%d -|- %d \n", temp->data, temp->next);
+            std::cout << temp->data;
             temp = temp->next;
-        //}
-            if (temp->next == 0) { std::cout << "its zero" << std::endl; }
+        }
+        else {
+            std::cout << temp->data << ", ";
+            temp = temp->next;
+        }
     }
     printf("\n");
 }
