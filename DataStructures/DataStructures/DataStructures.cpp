@@ -17,14 +17,14 @@ struct node
     struct node* next;
 };
 struct node* head;  // global variable, that can be accessed from anywhere
-void Insert(int x);
-void Print();
+node *Insert(node *head, int x);
+void Print(node *head);
 
 int main()
 {
     std::cout << "Hello World!\n";
 
-    head = NULL;  // empty list;
+    node *head = NULL;  // empty list;
     printf("How many numbers?\n");
     int n, i, x;
     std::cin >> n;
@@ -35,8 +35,8 @@ int main()
     {
         printf("Enter the number \n");
         std::cin >> x;
-        Insert(x);
-        Print();
+        head = Insert(head, x);
+        Print(head);
     }
     
     // creating a memory block to store a node
@@ -63,25 +63,28 @@ int main()
 
 }
 
-void Insert(int x)
+node *Insert(node *head, int x)
 {
     // create a node
     struct node *temp = (node*)malloc(sizeof(struct node));
     // node* temp = new node;
     temp->data = x;
-    temp->next = head;
+    temp->next = NULL;
+    if (head != NULL) temp->next = head;
     head = temp;
     std::cout << x << ": [" << head << "]";
+
+    return head;
 }
 
-void Print()
+void Print(node *head)
 {
-    struct node* temp = head;
+    //struct node* temp = head;
     printf("List is: ");
-    while (temp != NULL)
+    while (head != NULL)
     {
-        printf(" %d", temp->data);
-        temp = temp->next;
+        printf(" %d", head->data);
+        head = head->next;
     }
     printf("\n");
 }
