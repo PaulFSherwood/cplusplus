@@ -139,19 +139,26 @@ void Delete(int n)
     }
 
     int i;
+    std::cout << "temp1: " << temp1->next << std::endl;
     for (i = 0; i < n - 2; i++)
     {
         if (temp1->next == NULL) { return; }
         temp1 = temp1->next;
+        std::cout << i << "temp1: " << temp1->next << std::endl;
+
     }
     // This section below is to move the pointer location and free the temp memory
     // temp1 points to (n-1)th node
-    struct node* temp2 = temp1->next;  // temp2 = temp1->2Friend
-    temp1->next = temp2->next; // temp1->
+    struct node* temp2 = temp1->next;  // temp2 = address that temp1 points to
+    /*std::cout << "&temp2: " << temp2 << std::endl;
+    std::cout << "temp2: " << temp2->next << std::endl;*/
+    temp1->next = temp2->next; // Move temp1->next pointer to what temp2->next points to
+    //std::cout << "temp1: " << temp1->next << std::endl;
     free(temp2);
 }
 void Print() {
     node* temp = head;
+    std::cout << head << "::" << head->next << std::endl;
     while (temp != NULL)
     {
         if (temp->next == 0)
