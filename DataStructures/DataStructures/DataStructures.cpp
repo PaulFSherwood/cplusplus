@@ -22,22 +22,37 @@ struct node* head;  // global variable, that can be accessed from anywhere
 //node *Insert(node *head, int x);
 //void Print(node* head);
 void Insert(int data, int n);
+void InsertEnd(int data);
+void Delete(int n);
 void Print();
 
 int main()
 {
+    head = NULL;  // list is empyt
+    InsertEnd(2);
+    InsertEnd(4);
+    InsertEnd(6);
+    InsertEnd(5);  // List: 2,4,6,5
+    Print();
+    int n;
+    std::cout << "Enter a position\n";
+    std::cin >> n;
+    Delete(n);
+    Print();
 
-    head = NULL;   // empty list
-    Insert(2, 1);  // List: 2
-    Print();
-    Insert(3, 2);  // List: 2, 3
-    Print();
-    Insert(4, 1);  // List: 4, 2, 3
-    Print();
-    Insert(5, 2);  // List: 4, 5, 2, 3
-    Print();
-    Insert(8, 5);  // List: 4, 5, 2, 3, 8
-    Print();
+
+    // Insert anywhere testing
+    //head = NULL;   // empty list
+    //Insert(2, 1);  // List: 2
+    //Print();
+    //Insert(3, 2);  // List: 2, 3
+    //Print();
+    //Insert(4, 1);  // List: 4, 2, 3
+    //Print();
+    //Insert(5, 2);  // List: 4, 5, 2, 3
+    //Print();
+    //Insert(8, 5);  // List: 4, 5, 2, 3, 8
+    //Print();
 
     //node *head = NULL;  // empty list;
     //printf("How many numbers?\n");
@@ -101,6 +116,39 @@ void Insert(int data, int n)
     //std::cout << "[" << temp1->data << " | " << temp1->next << "]" << std::endl;
     //std::cout << "[" << temp2->data << " | " << temp2->next << "]" << std::endl;
     //std::cout << std::endl;
+}
+void InsertEnd(int data)
+{
+    // geeksforgeeks.com https://www.geeksforgeeks.org/linked-list-set-2-inserting-a-node/
+    // allocate node
+    struct node *temp = (node*)malloc(sizeof(struct node));
+    // insert the data
+    temp->data = data;
+    temp->next = head;
+    
+    head = temp;
+}
+void Delete(int n)
+{
+    struct node* temp1 = head; // head now points to second node
+    if (n == 1)
+    {
+        head = temp1->next;
+        free(temp1);
+        return;
+    }
+
+    int i;
+    for (i = 0; i < n - 2; i++)
+    {
+        if (temp1->next == NULL) { return; }
+        temp1 = temp1->next;
+    }
+    // This section below is to move the pointer location and free the temp memory
+    // temp1 points to (n-1)th node
+    struct node* temp2 = temp1->next;  // temp2 = temp1->2Friend
+    temp1->next = temp2->next; // temp1->
+    free(temp2);
 }
 void Print() {
     node* temp = head;
