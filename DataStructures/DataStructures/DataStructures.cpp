@@ -25,6 +25,7 @@ void Insert(int data, int n);
 void InsertEnd(int data);
 void Delete(int n);
 void Print();
+void reverseList(struct node *p);
 
 int main()
 {
@@ -33,12 +34,17 @@ int main()
     InsertEnd(4);
     InsertEnd(6);
     InsertEnd(5);  // List: 2,4,6,5
+    std::cout << "Pre: \n";
     Print();
-    int n;
+    /*int n;
     std::cout << "Enter a position\n";
     std::cin >> n;
     Delete(n);
+    Print();*/
+
+    reverseList(head);
     Print();
+    std::cout << "Post!\n";
 
 
     // Insert anywhere testing
@@ -174,6 +180,24 @@ void Print() {
         }
     }
     printf("\n");
+}
+
+void reverseList(struct node *p)
+{
+    if (p->next == NULL)
+    {
+        head = p;
+        return;
+    }
+    reverseList(p->next);
+    /*
+    p->next->next = p;
+    */
+    
+    struct node* q = p->next;
+    q->next = p;
+    p->next = NULL;
+
 }
 
 // Insert at the beginning
