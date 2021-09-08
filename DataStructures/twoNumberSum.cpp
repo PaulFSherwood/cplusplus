@@ -17,7 +17,7 @@ vector<int> twoNumberSum(vector<int> array, int targetSum) {
 	{
 		for (int j = 0; j < array.size()+1; j++)
 		{
-			if (array[j] + array[i] == targetSum)
+			if (array[j] + array[i] == targetSum  && j != i)
 			{
 				// This output is not matching what is pushed
 				cout << "target: " << targetSum << "Total: " << array[j] << " + " << array[i] << " = " << array[j] + array[i] << endl;
