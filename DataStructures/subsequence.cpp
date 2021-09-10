@@ -7,25 +7,36 @@
 using namespace std;
 
 bool isValidSubsequence(vector<int> array, vector<int> sequence) {
-  // Write your code here.
+    bool isGud = false;
 
     // first loop to track the first array
     for (int i = 0; i < array.size(); i++)
     {
+				cout << endl;
         // second loop to track the second array
-        for (int i = 0; i < sequence.size(); i++)
+        for (int j = 0; j < sequence.size(); j++)
         {
+            cout << "sequence[" << j << "] = " << sequence[j] << endl;
+            cout << "array["    << i << "] = " << array[i]    << endl;
+            
+            if (sequence[j] == array[i]) { cout << sequence[j] << endl; }
+            
+            // causes one run failure
+            // if (array[i] != sequence[j])
+            // {
+            // 		return false;
+            // }
+
             if (array[i] != sequence[j])
             {
-                return false;
+                isGud = false;
             }
-            if (i = array.size() && array[i] == sequence[j])
+            if (array[i] == sequence[j])
             {
-                return true;
+                cout << "GOOOOOOOOOOOOOOOOOD\n";
+                isGud = true;
             }
         }
     }
-    
-
-  return false;
+  return isGud;
 }
