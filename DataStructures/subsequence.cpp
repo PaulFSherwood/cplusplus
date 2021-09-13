@@ -13,6 +13,7 @@ bool isValidSubsequence(vector<int> array, vector<int> sequence) {
     for (int j = 0; j < sequence.size(); j++)
     {
 				cout << endl;
+			isGud = false;
         // second loop to track the second array
         for (int i = 0; i < array.size(); i++)
         {
@@ -24,7 +25,7 @@ bool isValidSubsequence(vector<int> array, vector<int> sequence) {
 						// causes one run failure
 						// if (array[i] != sequence[j])
 						// {
-						// 		return false;
+						// 		return false; 
 						// }
 					  if (array[i] != sequence[j] && i == array.size())
 						{
@@ -35,6 +36,9 @@ bool isValidSubsequence(vector<int> array, vector<int> sequence) {
             {
 							cout << "GOOOOOOOOOOOOOOOOOD\n";
                 isGud = true;
+							j++;
+							i=array.size();
+							
             }
         }
     }
