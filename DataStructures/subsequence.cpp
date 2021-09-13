@@ -27,18 +27,21 @@ bool isValidSubsequence(vector<int> array, vector<int> sequence) {
 						// {
 						// 		return false; 
 						// }
-					  if (array[i] != sequence[j] && i == array.size())
+						// if we finished the loop and found nothing, then everything should fail
+						// this should go first in case the next test passes.
+					  if (i == array.size()-1 && array[i] != sequence[j])
 						{
 							isGud = false;
+							cout << "Fail FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF\n";
+							return false;
 						}
-					
+						// If we found what we needed
             if (array[i] == sequence[j])
             {
 							cout << "GOOOOOOOOOOOOOOOOOD\n";
                 isGud = true;
 							j++;
-							i=array.size();
-							
+							//i=array.size();
             }
         }
     }
