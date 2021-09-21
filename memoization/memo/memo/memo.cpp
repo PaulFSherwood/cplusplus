@@ -8,8 +8,9 @@ int lookup_table[N];
 
 void init()
 {
-    for (int i = 0; i < N; i++)
+    for (int i = 0; i < N; i++) {
         lookup_table[i] = NIL;
+    }
 }
 int fib_mem(int n) {
     if (lookup_table[n] == NIL) {
