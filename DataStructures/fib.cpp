@@ -40,10 +40,13 @@ int fib(int n)
 
 int main()
 {
-    cout << fib(9);
-    cout << fib(18);
-    cout << fib(50);
-    
+    init();
+    // cout << fib(9);
+    // cout << fib(18);
+    // cout << fib(50);
+    cout << fib_mem(9) << endl;
+    cout << fib_mem(18) << endl;
+    cout << fib_mem(50) << endl;
 
     cout << endl;
 
