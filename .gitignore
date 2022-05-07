@@ -222,3 +222,38 @@ LOTGD-Clone/
 SDL-Collision-Events/
 mangosbot/
 classes/build-classes-Desktop_Qt_5_9_0_MSVC2015_64bit-Debug/
+
+
+#############
+# QT stuff we don't want
+#############
+# In repository we don't need to have:
+# Compiled object files
+*.o
+
+# Generated MOC, resource and UI files
+moc_*.cpp
+qrc_*.cpp
+ui_*.h
+
+# Debug and Release directories (created under Windows, not Linux)
+QT/*Debug/
+QT/*Release/
+
+# .log files (usually created by QtTest - thanks to VestniK)
+*.log
+
+# Built windows .exe and linux binaries
+# NOTE: PROJECT is a your project's name, analog of PROJECT.exe in Linux
+*.exe
+*.dll
+PROJECT
+
+# Windows-specific files
+Thumbs.db
+desktop.ini
+# Mac-specific things (thanks to Michael Aaron Safyan)
+.DS_Store
+
+# Editors temporary files 
+*~
