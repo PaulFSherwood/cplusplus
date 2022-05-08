@@ -1,4 +1,5 @@
 #include <QCoreApplication>
+#include <iostream>
 #include <QDebug>
 #include <QTime>
 #include <array>
@@ -77,11 +78,16 @@ int main(int argc, char *argv[])
         //delay(100);
         bacon *= 2;
         qInfo() << "Bacon*10=" << bacon;
-        delay(2000);
+        delay(1000);
     }
 
 
-
+    cout << "//C++ way" << endl;
+    qInfo() << "//Qt way";
+    // old stuff
+    // cout << age;
+    // cout << endl;
+    // cout << flush;
 
     return a.exec();
 }
