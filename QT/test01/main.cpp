@@ -89,5 +89,9 @@ int main(int argc, char *argv[])
     // cout << endl;
     // cout << flush;
 
+    int number = 0;
+    cin >> number;
+    qInfo() << "Num:" << number;
+
     return a.exec();
 }
