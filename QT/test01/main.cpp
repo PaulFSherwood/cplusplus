@@ -1,5 +1,6 @@
 #include <QCoreApplication>
 #include <QDebug>
+#include <QTime>
 #include <array>
 using namespace std;
 
@@ -8,6 +9,13 @@ enum Colors {
     green,
     blue
 };
+
+void delay(int a)
+{
+    QTime dieTime= QTime::currentTime().addSecs(1);
+    while (QTime::currentTime() < dieTime)
+        QCoreApplication::processEvents(QEventLoop::AllEvents, a);
+}
 
 // Precursor to classes
 struct product
@@ -58,6 +66,22 @@ int main(int argc, char *argv[])
     qInfo() << "x greater than 20 or greater than 8" << (x > 20 || x > 8);
     qInfo() << "x not not = to 10" << !(x != 10);
     qInfo() << "complex" << (x > 11 && x < 20 || x == 10);
+
+    int bacon = 1;
+    delay(5000);
+
+    for (int i = 0; i < 10; i++)
+    {
+        system("CLS");
+
+        //delay(100);
+        bacon *= 2;
+        qInfo() << "Bacon*10=" << bacon;
+        delay(2000);
+    }
+
+
+
 
     return a.exec();
 }
