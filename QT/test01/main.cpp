@@ -1,5 +1,6 @@
 #include <QCoreApplication>
 #include <iostream>
+#include <QString>
 #include <QDebug>
 #include <QTime>
 #include <array>
@@ -68,18 +69,18 @@ int main(int argc, char *argv[])
     qInfo() << "x not not = to 10" << !(x != 10);
     qInfo() << "complex" << (x > 11 && x < 20 || x == 10);
 
-    int bacon = 1;
-    delay(5000);
+//    int bacon = 1;
+//    delay(1000);
 
-    for (int i = 0; i < 10; i++)
-    {
-        system("CLS");
+//    for (int i = 0; i < 10; i++)
+//    {
+//        system("CLS");
 
-        //delay(100);
-        bacon *= 2;
-        qInfo() << "Bacon*10=" << bacon;
-        delay(1000);
-    }
+//        //delay(100);
+//        bacon *= 2;
+//        qInfo() << "Bacon*10=" << bacon;
+//        delay(500);
+//    }
 
 
     cout << "//C++ way" << endl;
@@ -89,9 +90,29 @@ int main(int argc, char *argv[])
     // cout << endl;
     // cout << flush;
 
-    int number = 0;
-    cin >> number;
-    qInfo() << "Num:" << number;
+//    int number = 0;
+//    cin >> number;
+//    qInfo() << "Num:" << number;
+
+//    int iInput = 0;
+//    string sInput = "";
+//    string buffer = "";
+
+//    qInfo() << "Enter String:";
+//    getline(cin, sInput);
+//    qInfo() << "Enter Integer:";
+//    cin >> iInput;
+//    cout << "Int:" << iInput << "\nStr:" << sInput;
+
+    string name = "";
+    int age = 0;
+
+    cout << "Enter name:" << endl;
+    cin >> name;
+    cout << "Enter age:" << endl;
+    cin >> age;
+    qInfo() << name.c_str() << "is" << age << "years.";
+
 
     return a.exec();
 }
