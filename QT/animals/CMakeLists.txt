@@ -24,5 +24,7 @@ add_executable(animals
   feline.cpp
   mammal.h
   mammal.cpp
+  monster.h
+  monster.cpp
 )
 target_link_libraries(animals Qt${QT_VERSION_MAJOR}::Core)
