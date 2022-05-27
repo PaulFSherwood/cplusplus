@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.14)
 
-project(animals LANGUAGES CXX)
+project(ageCalc LANGUAGES CXX)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -14,17 +14,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core)
 
-add_executable(animals
+add_executable(ageCalc
   main.cpp
-  animal.h
-  animal.cpp
-  canine.h
-  canine.cpp
-  feline.h
-  feline.cpp
-  mammal.h
-  mammal.cpp
-#  monster.h
-#  monster.cpp
+  agecalc.cpp
+  agecalc.h
 )
-target_link_libraries(animals Qt${QT_VERSION_MAJOR}::Core)
+target_link_libraries(ageCalc Qt${QT_VERSION_MAJOR}::Core)
