@@ -72,6 +72,7 @@ build/
 *.tmp_proj
 *.log
 *.vspscc
+*.vscode
 *.vssscc
 .builds
 *.pidb
