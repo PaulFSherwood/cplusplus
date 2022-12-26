@@ -1,5 +1,7 @@
 #include <iostream>
-#include <stdio>
+#include <string>
+#include <stdio.h>
+using namespace std;
 
 class dog
 {
@@ -7,8 +9,10 @@ class dog
 		int numberOfDogs;
 		int numberOflegs;
 	public:
-		void getDogName();
-}
+		string getDogName(string name) {
+			return name;
+		}
+};
 
 class people
 {
@@ -16,9 +20,15 @@ class people
 		int numberOfPeoples;
 		int numberOfLegs;
 	public:
-		void getPersonName();
-}
+		string getPersonName(string name){
+			return name;
+		}
+};
 
-dog::dog()
-{
+int main() {
+	people p;
+	cout << "I am " << p.getPersonName("Baul") << endl;
+}
+// dog::dog()
+// {
 

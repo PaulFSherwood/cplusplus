@@ -4,8 +4,12 @@ int pin2 = 11;
 int pin3 = 10;
 int pin4 = 9;
 int pin5 = 8;
-int speed = 500;
+int speed = 50;
 int speed2 = 50;
+int inputPin = A0;
+int readVal;
+float V2;
+
 String toBinary(int n) {
   if (n==0) return "0";
   else if (n == 1) return "1";
@@ -48,7 +52,10 @@ void loop() {
   // loop through the array once if it is a 1 flip it to a 0 and move on
   // if it is a 0 flip it to a 1 and stop
   int arr[] = {0, 0, 0, 0, 0, 0};
-
+  
+  readVal = analogRead(inputPin);
+  V2 = (5./1023.) * readVal;
+  Serial.println(V2);
   for (int i = 000000; i <= 63; i++) {
     String res = toBinary(i);
     if (res.length() == 5) {
@@ -66,7 +73,8 @@ void loop() {
     if (res.length() == 1) {
       res = "00000" + res;
     }
-    
+    // Serial.println(res);
+    // delay(speed2);
     // Serial.print(res);    
     // Serial.println();
     if (res[0] == '1') {
