@@ -65,6 +65,38 @@ build CMakeFiles/HelloWorld.dir/main.cpp.obj: CXX_COMPILER__HelloWorld_Debug D$:
   OBJECT_DIR = CMakeFiles\HelloWorld.dir
   OBJECT_FILE_DIR = CMakeFiles\HelloWorld.dir
 
+build CMakeFiles/HelloWorld.dir/destination.cpp.obj: CXX_COMPILER__HelloWorld_Debug D$:/Documents/src/cplusplus/QT/HelloWorld/HelloWorld/destination.cpp || cmake_object_order_depends_target_HelloWorld
+  DEFINES = -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+  DEP_FILE = CMakeFiles\HelloWorld.dir\destination.cpp.obj.d
+  FLAGS = -g -std=gnu++17
+  INCLUDES = -ID:/Documents/src/cplusplus/QT/HelloWorld/build-HelloWorld-Desktop_Qt_6_2_4_MinGW_64_bit-Debug -ID:/Documents/src/cplusplus/QT/HelloWorld/HelloWorld -ID:/Documents/src/cplusplus/QT/HelloWorld/build-HelloWorld-Desktop_Qt_6_2_4_MinGW_64_bit-Debug/HelloWorld_autogen/include -isystem C:/Qt/6.2.4/mingw_64/include/QtCore -isystem C:/Qt/6.2.4/mingw_64/include -isystem C:/Qt/6.2.4/mingw_64/mkspecs/win32-g++
+  OBJECT_DIR = CMakeFiles\HelloWorld.dir
+  OBJECT_FILE_DIR = CMakeFiles\HelloWorld.dir
+
+build CMakeFiles/HelloWorld.dir/source.cpp.obj: CXX_COMPILER__HelloWorld_Debug D$:/Documents/src/cplusplus/QT/HelloWorld/HelloWorld/source.cpp || cmake_object_order_depends_target_HelloWorld
+  DEFINES = -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+  DEP_FILE = CMakeFiles\HelloWorld.dir\source.cpp.obj.d
+  FLAGS = -g -std=gnu++17
+  INCLUDES = -ID:/Documents/src/cplusplus/QT/HelloWorld/build-HelloWorld-Desktop_Qt_6_2_4_MinGW_64_bit-Debug -ID:/Documents/src/cplusplus/QT/HelloWorld/HelloWorld -ID:/Documents/src/cplusplus/QT/HelloWorld/build-HelloWorld-Desktop_Qt_6_2_4_MinGW_64_bit-Debug/HelloWorld_autogen/include -isystem C:/Qt/6.2.4/mingw_64/include/QtCore -isystem C:/Qt/6.2.4/mingw_64/include -isystem C:/Qt/6.2.4/mingw_64/mkspecs/win32-g++
+  OBJECT_DIR = CMakeFiles\HelloWorld.dir
+  OBJECT_FILE_DIR = CMakeFiles\HelloWorld.dir
+
+build CMakeFiles/HelloWorld.dir/radio.cpp.obj: CXX_COMPILER__HelloWorld_Debug D$:/Documents/src/cplusplus/QT/HelloWorld/HelloWorld/radio.cpp || cmake_object_order_depends_target_HelloWorld
+  DEFINES = -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+  DEP_FILE = CMakeFiles\HelloWorld.dir\radio.cpp.obj.d
+  FLAGS = -g -std=gnu++17
+  INCLUDES = -ID:/Documents/src/cplusplus/QT/HelloWorld/build-HelloWorld-Desktop_Qt_6_2_4_MinGW_64_bit-Debug -ID:/Documents/src/cplusplus/QT/HelloWorld/HelloWorld -ID:/Documents/src/cplusplus/QT/HelloWorld/build-HelloWorld-Desktop_Qt_6_2_4_MinGW_64_bit-Debug/HelloWorld_autogen/include -isystem C:/Qt/6.2.4/mingw_64/include/QtCore -isystem C:/Qt/6.2.4/mingw_64/include -isystem C:/Qt/6.2.4/mingw_64/mkspecs/win32-g++
+  OBJECT_DIR = CMakeFiles\HelloWorld.dir
+  OBJECT_FILE_DIR = CMakeFiles\HelloWorld.dir
+
+build CMakeFiles/HelloWorld.dir/station.cpp.obj: CXX_COMPILER__HelloWorld_Debug D$:/Documents/src/cplusplus/QT/HelloWorld/HelloWorld/station.cpp || cmake_object_order_depends_target_HelloWorld
+  DEFINES = -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+  DEP_FILE = CMakeFiles\HelloWorld.dir\station.cpp.obj.d
+  FLAGS = -g -std=gnu++17
+  INCLUDES = -ID:/Documents/src/cplusplus/QT/HelloWorld/build-HelloWorld-Desktop_Qt_6_2_4_MinGW_64_bit-Debug -ID:/Documents/src/cplusplus/QT/HelloWorld/HelloWorld -ID:/Documents/src/cplusplus/QT/HelloWorld/build-HelloWorld-Desktop_Qt_6_2_4_MinGW_64_bit-Debug/HelloWorld_autogen/include -isystem C:/Qt/6.2.4/mingw_64/include/QtCore -isystem C:/Qt/6.2.4/mingw_64/include -isystem C:/Qt/6.2.4/mingw_64/mkspecs/win32-g++
+  OBJECT_DIR = CMakeFiles\HelloWorld.dir
+  OBJECT_FILE_DIR = CMakeFiles\HelloWorld.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target HelloWorld
@@ -73,7 +105,7 @@ build CMakeFiles/HelloWorld.dir/main.cpp.obj: CXX_COMPILER__HelloWorld_Debug D$:
 #############################################
 # Link the executable HelloWorld.exe
 
-build HelloWorld.exe: CXX_EXECUTABLE_LINKER__HelloWorld_Debug CMakeFiles/HelloWorld.dir/HelloWorld_autogen/mocs_compilation.cpp.obj CMakeFiles/HelloWorld.dir/main.cpp.obj | C$:/Qt/6.2.4/mingw_64/lib/libQt6Core.a || HelloWorld_autogen HelloWorld_autogen_timestamp_deps
+build HelloWorld.exe: CXX_EXECUTABLE_LINKER__HelloWorld_Debug CMakeFiles/HelloWorld.dir/HelloWorld_autogen/mocs_compilation.cpp.obj CMakeFiles/HelloWorld.dir/main.cpp.obj CMakeFiles/HelloWorld.dir/destination.cpp.obj CMakeFiles/HelloWorld.dir/source.cpp.obj CMakeFiles/HelloWorld.dir/radio.cpp.obj CMakeFiles/HelloWorld.dir/station.cpp.obj | C$:/Qt/6.2.4/mingw_64/lib/libQt6Core.a || HelloWorld_autogen HelloWorld_autogen_timestamp_deps
   FLAGS = -g
   LINK_LIBRARIES = C:/Qt/6.2.4/mingw_64/lib/libQt6Core.a  -lmpr  -luserenv  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\HelloWorld.dir
@@ -133,7 +165,7 @@ build HelloWorld_autogen/timestamp HelloWorld_autogen/mocs_compilation.cpp | ${c
 #############################################
 # Phony custom command for CMakeFiles\HelloWorld_autogen_timestamp_deps
 
-build CMakeFiles/HelloWorld_autogen_timestamp_deps | ${cmake_ninja_workdir}CMakeFiles/HelloWorld_autogen_timestamp_deps: phony C$:/Qt/6.2.4/mingw_64/./bin/moc.exe C$:/Qt/6.2.4/mingw_64/bin/Qt6Core.dll
+build CMakeFiles/HelloWorld_autogen_timestamp_deps | ${cmake_ninja_workdir}CMakeFiles/HelloWorld_autogen_timestamp_deps: phony C$:/Qt/6.2.4/mingw_64/bin/Qt6Core.dll C$:/Qt/6.2.4/mingw_64/./bin/moc.exe
 
 
 #############################################

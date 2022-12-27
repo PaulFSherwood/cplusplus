@@ -146,7 +146,33 @@
 	"CMAKE_SOURCE_DIR" : "D:/Documents/src/cplusplus/QT/HelloWorld/HelloWorld",
 	"DEP_FILE" : "D:/Documents/src/cplusplus/QT/HelloWorld/build-HelloWorld-Desktop_Qt_6_2_4_MinGW_64_bit-Debug/HelloWorld_autogen/deps",
 	"DEP_FILE_RULE_NAME" : "HelloWorld_autogen/timestamp",
-	"HEADERS" : [],
+	"HEADERS" : 
+	[
+		[
+			"D:/Documents/src/cplusplus/QT/HelloWorld/HelloWorld/destination.h",
+			"MU",
+			"EWIEGA46WW/moc_destination.cpp",
+			null
+		],
+		[
+			"D:/Documents/src/cplusplus/QT/HelloWorld/HelloWorld/radio.h",
+			"MU",
+			"EWIEGA46WW/moc_radio.cpp",
+			null
+		],
+		[
+			"D:/Documents/src/cplusplus/QT/HelloWorld/HelloWorld/source.h",
+			"MU",
+			"EWIEGA46WW/moc_source.cpp",
+			null
+		],
+		[
+			"D:/Documents/src/cplusplus/QT/HelloWorld/HelloWorld/station.h",
+			"MU",
+			"EWIEGA46WW/moc_station.cpp",
+			null
+		]
+	],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
 	"INCLUDE_DIR" : "D:/Documents/src/cplusplus/QT/HelloWorld/build-HelloWorld-Desktop_Qt_6_2_4_MinGW_64_bit-Debug/HelloWorld_autogen/include",
 	"MOC_COMPILATION_FILE" : "D:/Documents/src/cplusplus/QT/HelloWorld/build-HelloWorld-Desktop_Qt_6_2_4_MinGW_64_bit-Debug/HelloWorld_autogen/mocs_compilation.cpp",
@@ -207,7 +233,27 @@
 	"SOURCES" : 
 	[
 		[
+			"D:/Documents/src/cplusplus/QT/HelloWorld/HelloWorld/destination.cpp",
+			"MU",
+			null
+		],
+		[
 			"D:/Documents/src/cplusplus/QT/HelloWorld/HelloWorld/main.cpp",
+			"MU",
+			null
+		],
+		[
+			"D:/Documents/src/cplusplus/QT/HelloWorld/HelloWorld/radio.cpp",
+			"MU",
+			null
+		],
+		[
+			"D:/Documents/src/cplusplus/QT/HelloWorld/HelloWorld/source.cpp",
+			"MU",
+			null
+		],
+		[
+			"D:/Documents/src/cplusplus/QT/HelloWorld/HelloWorld/station.cpp",
 			"MU",
 			null
 		]

@@ -16,5 +16,13 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core)
 
 add_executable(HelloWorld
   main.cpp
+  destination.cpp
+  destination.h
+  source.cpp
+  source.h
+  radio.cpp
+  radio.h
+  station.cpp
+  station.h
 )
 target_link_libraries(HelloWorld Qt${QT_VERSION_MAJOR}::Core)
