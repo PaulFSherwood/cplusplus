@@ -1,0 +1,5 @@
+D:/Documents/src/cplusplus/QT/HelloWorld/build-HelloWorld-Desktop_Qt_6_2_4_MinGW_64_bit-Debug/CMakeFiles/HelloWorld.dir
+D:/Documents/src/cplusplus/QT/HelloWorld/build-HelloWorld-Desktop_Qt_6_2_4_MinGW_64_bit-Debug/CMakeFiles/edit_cache.dir
+D:/Documents/src/cplusplus/QT/HelloWorld/build-HelloWorld-Desktop_Qt_6_2_4_MinGW_64_bit-Debug/CMakeFiles/rebuild_cache.dir
+D:/Documents/src/cplusplus/QT/HelloWorld/build-HelloWorld-Desktop_Qt_6_2_4_MinGW_64_bit-Debug/CMakeFiles/HelloWorld_autogen_timestamp_deps.dir
+D:/Documents/src/cplusplus/QT/HelloWorld/build-HelloWorld-Desktop_Qt_6_2_4_MinGW_64_bit-Debug/CMakeFiles/HelloWorld_autogen.dir
