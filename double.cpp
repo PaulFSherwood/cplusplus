@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
 
+// Simple function that * 2 any integer given.
 int double_int(int x)
 {
 	return 2 * x;
