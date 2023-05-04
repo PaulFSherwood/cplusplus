@@ -262,3 +262,6 @@ desktop.ini
 
 # Editors temporary files 
 *~
+
+# Hide other project folder that are in github
+LOTGD-Clone
