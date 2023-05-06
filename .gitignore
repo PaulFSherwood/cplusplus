@@ -175,6 +175,9 @@ App_Data/*.ldf
 Thumbs.db
 ehthumbs.db
 
+# hide compressed files
+*.zip
+
 # Folder config file
 Desktop.ini
 
@@ -219,6 +222,7 @@ pip-log.txt
 #############
 # sub folders
 #############
+clanlib/
 LOTGD-Clone/
 SDL-Collision-Events/
 mangosbot/
@@ -244,6 +248,7 @@ ui_*.h
 # Debug and Release directories (created under Windows, not Linux)
 QT/*Debug/
 QT/*Release/
+QT/build-*/
 
 # .log files (usually created by QtTest - thanks to VestniK)
 *.log
