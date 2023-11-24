@@ -1,0 +1,20 @@
+CFLAGS = -Wall -pedantic -Werror
+LFLAGS = `sdl-config --libs` -lSDL -lSDLmain -lSDLmain -lGL -lGLU
+OBJS = opengl01.o
+PROG = opengl01
+CXX = g++
+
+# top-level rule to create the program.
+all: $(PROG)
+
+# compiling other source files.
+%.o: %.cpp
+	$(CXX) $(CFLAGS) -c -s $<
+
+# linking the program.
+$(PROG): $(OBJS)
+	$(CXX) $(OBJS) -o $(PROG) $(LFLAGS)
+
+# cleaning everything that can be automaticllay recreated with "make"
+clean:
+	rm $(OBJS)
