@@ -91,6 +91,7 @@ ipch/
 *.VC.db-shm
 *.VC.db-wal
 *.vs/
+**/.vs/
 
 # Visual Studio profiler
 *.psess
