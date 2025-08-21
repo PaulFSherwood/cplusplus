@@ -1,0 +1,3 @@
+[submodule "SDL-Collision-Events"]
+	path = SDL-Collision-Events
+	url = https://github.com/PaulFSherwood/SDL-Collision-Events
