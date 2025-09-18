@@ -85,6 +85,13 @@ void myFunction()
 void myFunction2()
 {
 	cout << "My function2" << endl;
+	int x = 1;
+	cout << "Scope1: " << x << endl;
+	{
+		int x = 2;
+		cout << "Scope2: " << x << endl;
+	}
+	cout << "Scope1: " << x << endl;
 }
 int getInteger()
 {
