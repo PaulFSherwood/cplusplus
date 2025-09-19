@@ -18,3 +18,11 @@ OBJ_NAME = antiRTFMtutorial
 all : $(OBJS)
 	$(CC) $(OBJS) $(COMPILER_FLAGS) -o $(OBJ_NAME)
 	#$(CC) $(OBJS) $(COMPILER_FLAGS) $(LINKER_FLAGS) -o $(OBJ_NAME)
+
+# Run target (build + run)
+run: all
+	./$(OBJ_NAME)
+
+# Clean target (remove executable)
+clean:
+	rm -f $(OBJ_NAME)

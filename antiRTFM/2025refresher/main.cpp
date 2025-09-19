@@ -1,99 +1,49 @@
 #include <iostream>
+#include <random>  // For rand() and srand()
 using namespace std;
 
-// Section 3
-void myFunction();
-void myFunction2();
+// Section 4
 int getInteger();
+
+class Ogre
+{
+    public:
+        void attack();
+        void setHealth(int hp);
+        void setStrength(int str);
+    private:
+        int health;
+        int strength;        
+};
 
 int main()
 {
-	// Section 1
-	// cout << "Here is some text \n";
-	// cout << "Here is a number: ";
-	// cout << 10 << endl;
+    Ogre me;
+	cout << getInteger();
+    cout << endl;
+    me.setHealth(10);
+    me.setStrength(10);
+	me.attack();
 
-	// cout << "10 + 7 = " << 10+7 << endl;
-	// 
-	// int x, y = 0;
-	// x = 7;
-	// y = 10;
-
-	// cout << x << " + " << y << " = " << x+y << endl;
-
-	// Section 2
-	// float a = 5.1234567890;  // 5.123456
-	// double b = 6.1234567890; // 6.123456
-
-	// cout << "a:" << a << "\nb:" << b << endl;
-
-	// int x = 3;    //   3
-	// char y = 'u'; // 117
-	// cout << x+y <<endl;
-
-	// if (x == 3)
-	// {
-	// 	cout << "X is three" << endl;
-	// }
-	// 
-	// int  number = 76;
-	// int  playerNumber = 0;
-	// bool isRunning = true;
-	// int  maxGuesses = 10;
-
-	// while (isRunning)
-	// //while(isRunning || playerNumber != number)
-	// {
-	// 	cout << "Guess a number: ";
-	// 	cin >> playerNumber;
-	// 	if(playerNumber == number)
-	// 	{
-	// 		isRunning = false;
-	// 		cout << "You guessed the number" << endl;
-	// 	}
-	// 	else
-	// 	{
-	// 		if (playerNumber <= number)
-	// 		{
-	// 			cout << "Your number is too low: " << maxGuesses << " left" << endl;
-	// 		}
-	// 		if (playerNumber >= number)
-	// 		{
-	// 			cout << "Your number is too high " << maxGuesses << " left" << endl;
-	// 		}
-	// 	}
-	// 	maxGuesses -= 1;
-	// 	if(maxGuesses <= 0)
-	// 	{
-	// 		isRunning = false;
-	// 	}
-	// }
-	
-	// Section 3
-	myFunction();
-	getInteger();
-	cout << getInteger() << endl;
-	return 0;
+    return 0;
 }
 
-// Section 3
-void myFunction()
-{
-	cout << "My function" << endl;
-	myFunction2();
-}
-void myFunction2()
-{
-	cout << "My function2" << endl;
-	int x = 1;
-	cout << "Scope1: " << x << endl;
-	{
-		int x = 2;
-		cout << "Scope2: " << x << endl;
-	}
-	cout << "Scope1: " << x << endl;
-}
 int getInteger()
 {
-	return 5;
+	static mt19937 gen(random_device{}()); // Seed once
+	static uniform_int_distribution<int> dist(1, 100);
+	return dist(gen);
 }
+
+void Ogre::attack()
+{
+    cout << "Ogre attack with " << strength << endl;
+};
+void Ogre::setHealth(int hp)
+{
+    health = hp;
+};
+void Ogre::setStrength(int str)
+{
+    strength = str;
+};
