@@ -1,86 +1,107 @@
 #define OLC_PGE_APPLICATION
 #include "olcPixelGameEngine.h"
 
-// g++ globe.cpp -o globe -std=c++17 -lGL -lX11 -lpthread -lpng -lstdc++fs
 class EarthGlobe : public olc::PixelGameEngine
 {
 public:
     EarthGlobe() { sAppName = "Spinning Earth"; }
 
+    // Textures
     olc::Sprite* earthTex = nullptr;
-    olc::Sprite* skyTex = nullptr;
-    olc::Decal* skyDecal = nullptr;
+    olc::Sprite* skyTex   = nullptr;
+
+    // Decals
+    olc::Decal* skyDecal   = nullptr;
+    // olc::Sprite* globeSpr  = nullptr;
+    // olc::Decal* globeDecal = nullptr;
+    olc::Decal* earthDecal = nullptr;
+
     float angle = 0.0f; // rotation angle
 
-    int starLayer = -1;
-    int globeLayer = -1;
 
     bool OnUserCreate() override
     {
         // Load assets
-        earthTex = new olc::Sprite("earth.png");
-        skyTex   = new olc::Sprite("skymap.png");
+        earthTex   = new olc::Sprite("earth_small.png");
+        earthDecal = new olc::Decal(earthTex); // <-- assign to member, not new local
+
+
+        skyTex   = new olc::Sprite("skymap_small.png");
         skyDecal = new olc::Decal(skyTex);
 
-        // Create 2 extra layers above default layer 0
-        starLayer  = CreateLayer();
-        globeLayer = CreateLayer();
-
-        EnableLayer(starLayer, true);
-        EnableLayer(globeLayer, true);
-
-        // Draw stars ONCE into starLayer
-        SetDrawTarget(starLayer);
-        Clear(olc::BLACK); // black background for empty space
-        float sx = (float)ScreenWidth()  / (float)skyTex->width;
-        float sy = (float)ScreenHeight() / (float)skyTex->height;
-        DrawDecal({0,0}, skyDecal, {sx, sy});  // starfield
-        SetDrawTarget(nullptr); // <- critical: back to default (layer 0)
-
+        // Create an empty sprite for the globe, same size as screen
+        // globeSpr  = new olc::Sprite(ScreenWidth(), ScreenHeight());
+        // globeDecal = new olc::Decal(globeSpr);
         return true;
     }
 
     bool OnUserUpdate(float fElapsedTime) override
     {
-        // Always clear layer 0 (default buffer) to black
+        // Clear screen
         Clear(olc::BLACK);
 
-        // Draw globe into globeLayer
-        SetDrawTarget(globeLayer);
-        Clear(olc::BLANK); // blank = transparent, so stars shine through
+        // --- Draw starfield first ---
+        float sx = (float)ScreenWidth()  / (float)skyTex->width;
+        float sy = (float)ScreenHeight() / (float)skyTex->height;
+        DrawDecal({0.0f,0.0f}, skyDecal, {sx, sy});
 
         int radius = std::min(ScreenWidth(), ScreenHeight()) / 3;
         olc::vi2d center(ScreenWidth()/2, ScreenHeight()/2);
+
+        // for (int y = -radius; y < radius; y++)
+        //     for (int x = -radius; x < radius; x++)
+        //         globeSpr->SetPixel(center.x+x, center.y+y, olc::BLANK);
+
 
         angle += fElapsedTime * 0.05f;
         float cosA = cos(angle);
         float sinA = sin(angle);
 
-        for (int y=-radius; y<radius; y++)
-        for (int x=-radius; x<radius; x++)
+        int step = 2;
+        for (int y=-radius; y<radius; y+= step)
         {
-            float nx = (float)x / radius;
-            float ny = (float)y / radius;
-            float r2 = nx*nx + ny*ny;
-
-            if (r2 <= 1.0f)
+            for (int x=-radius; x<radius; x+= step)
             {
-                float nz = sqrtf(1.0f - r2);
-                float xr = cosA*nx + sinA*nz;
-                float zr = -sinA*nx + cosA*nz;
+                float nx = (float)x / radius;
+                float ny = (float)y / radius;
+                float r2 = nx*nx + ny*ny;
 
-                float lon = atan2(zr, xr);
-                float lat = asinf(ny);
+                if (r2 <= 1.0f)
+                {
+                    float nz = sqrtf(1.0f - r2);
 
-                int u = (int)((-lon + 3.14159f) / (2.0f * 3.14159f) * earthTex->width);
-                int v = (int)((0.5f + lat / 3.14159f) * earthTex->height);
+                    // Rotate around Y axis
+                    float xr = cosA*nx + sinA*nz;
+                    float zr = -sinA*nx + cosA*nz;
 
-                if (u>=0 && u<earthTex->width && v>=0 && v<earthTex->height)
-                    Draw(center.x+x, center.y+y, earthTex->GetPixel(u,v));
+                    // Spherical coords
+                    float lon = atan2(zr, xr);
+                    float lat = asinf(ny);
+
+                    // Map to texture coords
+                    int u = (int)((-lon + 3.14159f) / (2.0f * 3.14159f) * earthTex->width);
+                    int v = (int)((0.5f + lat / 3.14159f) * earthTex->height);
+
+                    if (u >= 0 && u < earthTex->width && v >= 0 && v < earthTex->height)
+                    {
+                        // Screen destination: one pixel at globe location
+                        olc::vf2d destPos  = { (float)(center.x + x), (float)(center.y + y) };
+                        olc::vf2d destSize = { 1.0f, 1.0f };
+
+                        // Source region in texture: 1x1 pixel at (u,v)
+                        olc::vf2d srcPos   = { (float)u, (float)v };
+                        olc::vf2d srcSize  = { 1.0f, 1.0f };
+
+                        // DrawPartialDecal(destPos, destSize, earthDecal, srcPos, srcSize, olc::WHITE);
+                        DrawPartialDecal(destPos, {(float)step,(float)step}, earthDecal, srcPos, {1.0f,1.0f}, olc::WHITE);
+                    }
+                }
             }
         }
 
-        SetDrawTarget(nullptr); // back to default
+        // --- Blit globe as decal ---
+        // DrawDecal({0,0}, globeDecal);
+
         return true;
     }
 };
