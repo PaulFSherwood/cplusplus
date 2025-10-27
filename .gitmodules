@@ -2,3 +2,6 @@
 	path = SDL-Collision-Events
 	url = https://github.com/PaulFSherwood/SDL-Collision-Events.git
 
+[submodule "PlantSimulator"]
+	path = PlantSimulator
+	url = https://github.com/PaulFSherwood/PlantSimulator.git
