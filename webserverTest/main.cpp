@@ -46,6 +46,7 @@ void mqtt_thread() {
       std::cerr << "MQTT Error: " << e.what() << std::endl;
    }
 }
+
 // -----------------------------
 // Main Web Server (Crow) 
 // -----------------------------
@@ -102,7 +103,6 @@ int main() {
        }
       });
 
-
    // -----------------------------
    // API TEST 
    // -----------------------------
@@ -117,4 +117,5 @@ int main() {
    // Start Server
    std::cout << "Web running at: http://localhost:8080\n";
    app.port(8080).multithreaded().run();
+
 }
