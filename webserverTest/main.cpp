@@ -27,7 +27,7 @@ class Callback : public virtual mqtt::callback {
 void mqtt_thread() {
    mqtt::async_client client(MQTT_BROKER, "cpp_client_ed");
    Callback db;
-   client.set_callback(cb);
+   client.set_callback(db);
 
    mqtt::connect_options connOpts;
    connOpts.set_clean_session(true);
@@ -93,7 +93,7 @@ int main() {
 
          std::string html = "<h3>Published MQTT Setpoint: ";
          html += val;
-         html += "</h3><a href='/'>Back</a>;
+         html += "</h3><a href='/'>Back</a>";
 
          return crow::response(html);
        }

@@ -43,7 +43,7 @@ ECS_SOURCE := $(wildcard ecs/*.cpp)
 SOURCES = $(SIM_SOURCE) $(CORE_SOURCE) $(ECS_SOURCE) main.cpp
 
 OBJECTS = $(SOURCES:.cpp=.o)
-TARGET = ecs-prototype
+TARGET = webServer
 
 all: release
 
