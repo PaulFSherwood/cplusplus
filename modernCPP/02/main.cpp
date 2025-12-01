@@ -1,4 +1,4 @@
-#include <print>
+#include <print>    // Improved version of printf.
 
 int main() {
    int    a   =       4;
@@ -7,7 +7,7 @@ int main() {
 
    std::print("Hello World!\n");
 
-   std::print("Hello World!\n {}, {}, {}, {}\n", a, b, c, "Hey Paul");
+   std::print("Hello World!\n{}, {}, {}, {}\n", a, b, c, "Hey Paul");
 
    return 0;
 }
