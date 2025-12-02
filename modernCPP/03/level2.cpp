@@ -43,7 +43,7 @@ int main() {
   // Demonstrating a small concept-constrained template
   auto add = [](Arithmetic auto a, Arithmetic auto b) {
     return a + b;
-  }
+  };
 
   std::print("add(2, 5) = {}\n", add(2,5));
   std::print("add(2.5, 3.1) = {}\n", add(2.5, 3.1));
