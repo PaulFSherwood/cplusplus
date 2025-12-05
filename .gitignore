@@ -309,7 +309,6 @@ LOTGD-Clone
 # Generated files
 *.dvi
 *.ps
-*.pdf
 # Editor and IDE files
 *.swp
 *~
