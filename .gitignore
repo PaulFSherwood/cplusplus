@@ -306,9 +306,11 @@ LOTGD-Clone
 *.stt
 *.xdy
 *.tdo
+*.fdb_latexmk
 # Generated files
 *.dvi
 *.ps
+*.synctex
 # Editor and IDE files
 *.swp
 *~
