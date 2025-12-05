@@ -39,6 +39,16 @@ int main() {
     }
   }
 
+  std::array<int,3> arr2{1,3,5};
+  for (int i=0; i< arr2.size(); i=i+1) {
+    std::print("{}",arr2[i]);
+  } std::print("\n");
+
+  // range based loop
+  for (int& element: arr2) {
+    std::print("{}", element);
+  } std::print("\n");
+
   std::iota(std::begin(idThree), std::end(idThree), 0);
   // out of bounds at 10
   for (int i = 0; i < 20; i++) {
