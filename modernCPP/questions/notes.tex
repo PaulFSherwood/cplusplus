@@ -1,0 +1,92 @@
+\documentclass{report}
+
+\input{preamble}
+\input{macros}
+
+\title{\Huge{CPP}\\Book of Questions}
+\author{\huge{Paul Sherwood}}
+\date{December 05, 2025}
+
+\begin{document}
+
+\maketitle
+\newpage% or \cleardoublepage
+% \pdfbookmark[<level>]{<title>}{<dest>}
+% \pdfbookmark[section]{\contentsname}{toc}
+% \tableofcontents
+\pagebreak
+
+\chapter{}
+\section{Level 1}
+% 1
+\qs{std::print}
+{
+   What does std::print provide compared to printf or std::cout?
+}
+\ans{std::print}
+{
+   Type safety, checked at compile time.
+   Can format cutom types (with std::formatter)
+   Uses python formatting
+   Very concise and easy to use.
+}
+% 2
+\qs{auto}{
+   What is the advantage of auto and type deduction in moder C++?
+}
+\ans{auto}{
+
+}
+% 3
+\qs{Passing by \_}{
+   What is the difference between passing by value, reference, and const reference?
+}
+\ans{auto}{
+
+}
+% 4
+\qs{bindings}{
+   What are structrued bindings and when would you use them?
+}
+\ans{auto}{
+
+}
+% 5
+\qs{Ranges}{
+   What are C++23 ranges and views?
+}
+\ans{auto}{
+
+}
+% 6
+\qs{constexpr}{
+   What does constexpr mean and when is it evaluated?
+}
+\ans{auto}{
+
+}
+% 7
+\qs{Vector vs Arrays}{
+   What is the difference between std::vector and raw arrays?
+}
+\ans{auto}{
+
+}
+% 8
+\qs{string\_view}{
+   What is std::string\_view and why is it more efficient than std\::string?
+}
+\ans{}{}
+% 9
+\qs{ranges} {
+   What is the purpose of \#include $\llless$ranges$>$
+}
+% 10
+\qs{lifetime}{
+   What is the lifetime of a temporary returned from a function?
+}
+
+
+
+
+\end{document}
