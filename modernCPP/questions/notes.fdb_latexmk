@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1764943726.06183 "/home/sherwood/Documents/cplusplus/modernCPP/questions/notes.tex" "notes.pdf" "notes" 1764943761.37847 0
-  "/home/sherwood/Documents/cplusplus/modernCPP/questions/notes.tex" 1764943724.71145 1491 2595d2621476ee855344f916da240c7c ""
+["pdflatex"] 1764948596.90898 "/home/sherwood/Documents/cplusplus/modernCPP/questions/notes.tex" "notes.pdf" "notes" 1764948616.82962 0
+  "/home/sherwood/Documents/cplusplus/modernCPP/questions/notes.tex" 1764948595.34689 1567 c31049858356bc66a7037b0b76e566ab ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/newpx/NewPXMI_gnu.pfb" 1570136818 16003 379767f2e95213e4cfc7bfd5823fb860 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/newtx/txsym.pfb" 1692649180 44726 c0c4f2d62278d1adbb6a666ba2cb0447 ""
   "/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii" 1461363279 71627 94eb9990bed73c364d7f53f960cc8c5b ""
@@ -216,10 +216,10 @@
   "/usr/share/texmf/fonts/type1/public/lm/lmr17.pfb" 1255129361 119752 1bd8d06e4079df624bf59ce3ad7c9aa6 ""
   "/usr/share/texmf/tex/latex/lm/lmodern.sty" 1616454256 1608 b00724785a9e9c599e5181bb8729160b ""
   "/usr/share/texmf/tex/latex/lm/ot1lmr.fd" 1616454256 1882 28c08db1407ebff35a658fd141753d16 ""
-  "macros.tex" 1764940557.36028 2292 a8b7815d58e9c1916d1145104461951c ""
-  "notes.aux" 1764943759.87596 913 8632727072cadca61f5128cc83a5e6f2 "pdflatex"
-  "notes.tex" 1764943724.71145 1491 2595d2621476ee855344f916da240c7c ""
-  "preamble.tex" 1764942317.38507 8607 63a73bdf8af72f1783712dda48ff6da9 ""
+  "macros.tex" 1764948040.35604 2292 a8b7815d58e9c1916d1145104461951c ""
+  "notes.aux" 1764948616.54741 913 8632727072cadca61f5128cc83a5e6f2 "pdflatex"
+  "notes.tex" 1764948595.34689 1567 c31049858356bc66a7037b0b76e566ab ""
+  "preamble.tex" 1764948040.46309 8607 63a73bdf8af72f1783712dda48ff6da9 ""
   (generated)
   "notes.aux"
   "notes.log"
