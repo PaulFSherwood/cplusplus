@@ -1,92 +1,47 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% PACKAGE IMPORTS
+% BASIC PACKAGES
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
 \usepackage[tmargin=2cm,rmargin=1in,lmargin=1in,margin=0.85in,bmargin=2cm,footskip=.2in]{geometry}
-\usepackage{amsmath,lmodern,amsthm,amssymb,mathtools}
-\usepackage[varbb]{newpxmath}
-\usepackage{xfrac}
-\usepackage[makeroom]{cancel}
-\usepackage{mathtools}
-\usepackage{bookmark}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{lmodern}
 \usepackage{enumitem}
-\usepackage{hyperref,theoremref}
-\hypersetup{
-	pdftitle={Assignment},
-	colorlinks=true, linkcolor=doc!90,
-	bookmarksnumbered=true,
-	bookmarksopen=true
-}
-\usepackage[most,many,breakable]{tcolorbox}
 \usepackage{xcolor}
 \usepackage{varwidth}
-\usepackage{varwidth}
-\usepackage{etoolbox}
-%\usepackage{authblk}
-\usepackage{nameref}
-\usepackage{multicol,array}
-\usepackage{tikz-cd}
-\usepackage[ruled,vlined,linesnumbered]{algorithm2e}
-\usepackage{comment} % enables the use of multi-line comments (\ifx \fi) 
 \usepackage{import}
-\usepackage{xifthen}
-\usepackage{pdfpages}
-\usepackage{transparent}
-
-\newcommand\mycommfont[1]{\footnotesize\ttfamily\textcolor{blue}{#1}}
-\SetCommentSty{mycommfont}
-\newcommand{\incfig}[1]{%
-    \def\svgwidth{\columnwidth}
-    \import{./figures/}{#1.pdf_tex}
+\usepackage{tikz}
+\usepackage{hyperref}
+\hypersetup{
+    pdftitle={Assignment},
+    colorlinks=true,
+    linkcolor=doc!90,
+    bookmarksnumbered=true,
+    bookmarksopen=true
 }
 
-\usepackage{tikzsymbols}
-\renewcommand\qedsymbol{$\Laughey$}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TCOLORBOX (your question / answer boxes)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[most,many,breakable]{tcolorbox}
 
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% SELF MADE COLORS
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
-\definecolor{myg}{RGB}{56, 140, 70}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% COLORS USED BY YOUR BOXES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \definecolor{myb}{RGB}{45, 111, 177}
-\definecolor{myr}{RGB}{199, 68, 64}
-\definecolor{mytheorembg}{HTML}{F2F2F9}
-\definecolor{mytheoremfr}{HTML}{00007B}
-\definecolor{mylenmabg}{HTML}{FFFAF8}
-\definecolor{mylenmafr}{HTML}{983b0f}
-\definecolor{mypropbg}{HTML}{f2fbfc}
-\definecolor{mypropfr}{HTML}{191971}
-\definecolor{myexamplebg}{HTML}{F2FBF8}
-\definecolor{myexamplefr}{HTML}{88D6D1}
-\definecolor{myexampleti}{HTML}{2A7F7F}
-\definecolor{mydefinitbg}{HTML}{E5E5FF}
-\definecolor{mydefinitfr}{HTML}{3F3FA3}
-\definecolor{notesgreen}{RGB}{0,162,0}
-\definecolor{myp}{RGB}{197, 92, 212}
+\definecolor{myg}{RGB}{56,140,70}
 \definecolor{mygr}{HTML}{2C3338}
-\definecolor{myred}{RGB}{127,0,0}
-\definecolor{myyellow}{RGB}{169,121,69}
-\definecolor{myexercisebg}{HTML}{F2FBF8}
-\definecolor{myexercisefg}{HTML}{88D6D1}
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% TCOLORBOX SETUPS
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\setlength{\parindent}{1cm}
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% QUESTION, ANSWER
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %================================
-% DEFINITION BOX
+% Solution BOX
 %================================
 
-\newtcbtheorem[number within=section]{Definition}{Definition}{enhanced,
+\makeatletter
+% \newtcbtheorem{question}{Question}{enhanced,
+\newtcbtheorem[]{Question}{Question}{enhanced,
 	before skip=2mm,after skip=2mm, colback=red!5,colframe=red!80!black,boxrule=0.5mm,
 	attach boxed title to top left={xshift=1cm,yshift*=1mm-\tcboxedtitleheight}, varwidth boxed title*=-3cm,
 	boxed title style={frame code={
@@ -97,22 +52,24 @@
 					arc[start angle=180,end angle=0,radius=1mm];
 					\path[left color=tcbcolback!60!black,right color=tcbcolback!60!black,
 						middle color=tcbcolback!80!black]
-					([xshift=-2mm]frame.north west) \-- ([xshift=2mm]frame.north east)
+					([xshift=-2mm]frame.north west) -- ([xshift=2mm]frame.north east)
 					[rounded corners=1mm]-- ([xshift=1mm,yshift=-1mm]frame.north east)
-					\-- (frame.south east) \-- (frame.south west)
-					\-- ([xshift=-1mm,yshift=-1mm]frame.north west)
+					-- (frame.south east) -- (frame.south west)
+					-- ([xshift=-1mm,yshift=-1mm]frame.north west)
 					[sharp corners]-- cycle;
 				},interior engine=empty,
 		},
 	fonttitle=\bfseries,
 	title={#2},#1}{def}
+\makeatother
+
 
 %================================
 % ANSWER BOX
 %================================
 
-\newtcbtheorem[number within=section]{Answer}{Answer}{enhanced,
-	before skip=2mm,after skip=2mm, colback=red!5,colframe=green!80!black,boxrule=0.5mm,
+\newtcbtheorem[]{Answer}{Answer}{enhanced,
+	before skip=2mm,after skip=2mm, colback=green!5,colframe=green!80!black,boxrule=0.5mm,
 	attach boxed title to top left={xshift=1cm,yshift*=1mm-\tcboxedtitleheight}, varwidth boxed title*=-3cm,
 	boxed title style={frame code={
 					\path[fill=tcbcolback]
@@ -133,167 +90,10 @@
 	title={#2},#1}{def}
 
 
-%================================
-% Solution BOX
-%================================
-
-\makeatletter
-\newtcbtheorem{question}{Question}{enhanced,
-	breakable,
-	colback=white,
-	colframe=myb!80!black,
-	attach boxed title to top left={yshift*=-\tcboxedtitleheight},
-	fonttitle=\bfseries,
-	title={#2},
-	boxed title size=title,
-	boxed title style={%
-			sharp corners,
-			rounded corners=northwest,
-			colback=tcbcolframe,
-			boxrule=0pt,
-		},
-	underlay boxed title={%
-			\path[fill=tcbcolframe] (title.south west)--(title.south east)
-			to[out=0, in=180] ([xshift=5mm]title.east)--
-			(title.center-|frame.east)
-			[rounded corners=\kvtcb@arc] |-
-			(frame.north) -| cycle;
-		},
-	#1
-}{def}
-\makeatother
-
-%================================
-% SOLUTION BOX
-%================================
-
-\makeatletter
-\newtcolorbox{solution}{enhanced,
-	breakable,
-	colback=white,
-	colframe=myg!80!black,
-	attach boxed title to top left={yshift*=-\tcboxedtitleheight},
-	title=Solution,
-	boxed title size=title,
-	boxed title style={%
-			sharp corners,
-			rounded corners=northwest,
-			colback=tcbcolframe,
-			boxrule=0pt,
-		},
-	underlay boxed title={%
-			\path[fill=tcbcolframe] (title.south west)--(title.south east)
-			to[out=0, in=180] ([xshift=5mm]title.east)--
-			(title.center-|frame.east)
-			[rounded corners=\kvtcb@arc] |-
-			(frame.north) -| cycle;
-		},
-}
-\makeatother
-
-%================================
-% Question BOX
-%================================
-
-\makeatletter
-\newtcbtheorem{qstion}{Question}{enhanced,
-	breakable,
-	colback=white,
-	colframe=mygr,
-	attach boxed title to top left={yshift*=-\tcboxedtitleheight},
-	fonttitle=\bfseries,
-	title={#2},
-	boxed title size=title,
-	boxed title style={%
-			sharp corners,
-			rounded corners=northwest,
-			colback=tcbcolframe,
-			boxrule=0pt,
-		},
-	underlay boxed title={%
-			\path[fill=tcbcolframe] (title.south west)--(title.south east)
-			to[out=0, in=180] ([xshift=5mm]title.east)--
-			(title.center-|frame.east)
-			[rounded corners=\kvtcb@arc] |-
-			(frame.north) -| cycle;
-		},
-	#1
-}{def}
-\makeatother
-
-\newtcbtheorem[number within=chapter]{wconc}{Wrong Concept}{
-	breakable,
-	enhanced,
-	colback=white,
-	colframe=myr,
-	arc=0pt,
-	outer arc=0pt,
-	fonttitle=\bfseries\sffamily\large,
-	colbacktitle=myr,
-	attach boxed title to top left={},
-	boxed title style={
-			enhanced,
-			skin=enhancedfirst jigsaw,
-			arc=3pt,
-			bottom=0pt,
-			interior style={fill=myr}
-		},
-	#1
-}{def}
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % SELF MADE COMMANDS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\newcommand{\qstn}[2]{\begin{Question}[colbacktitle=red!75!black]{#1}{}#2\end{Question}}
 \newcommand{\ans}[2]{\begin{Answer}[colbacktitle=green!75!black]{#1}{}#2\end{Answer}}
 \newcommand{\dfn}[2]{\begin{Definition}[colbacktitle=red!75!black]{#1}{}#2\end{Definition}}
-\newcommand{\dfnc}[2]{\begin{definition}[colbacktitle=red!75!black]{#1}{}#2\end{definition}}
-\newcommand{\qs}[2]{\begin{question}{#1}{}#2\end{question}}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% TABLE OF CONTENTS
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\usepackage{tikz}
-\definecolor{doc}{RGB}{0,60,110}
-\usepackage{titletoc}
-\contentsmargin{0cm}
-\titlecontents{chapter}[3.7pc]
-{\addvspace{30pt}%
-	\begin{tikzpicture}[remember picture, overlay]%
-		\draw[fill=doc!60,draw=doc!60] (-7,-.1) rectangle (-0.9,.5);%
-		\pgftext[left,x=-3.5cm,y=0.2cm]{\color{white}\Large\sc\bfseries Chapter\ \thecontentslabel};%
-	\end{tikzpicture}\color{doc!60}\large\sc\bfseries}%
-{}
-{}
-{\;\titlerule\;\large\sc\bfseries Page \thecontentspage
-	\begin{tikzpicture}[remember picture, overlay]
-		\draw[fill=doc!60,draw=doc!60] (2pt,0) rectangle (4,0.1pt);
-	\end{tikzpicture}}%
-\titlecontents{section}[3.7pc]
-{\addvspace{2pt}}
-{\contentslabel[\thecontentslabel]{2pc}}
-{}
-{\hfill\small \thecontentspage}
-[]
-\titlecontents*{subsection}[3.7pc]
-{\addvspace{-1pt}\small}
-{}
-{}
-{\ --- \small\thecontentspage}
-[ \textbullet\ ][]
-
-\makeatletter
-\renewcommand{\tableofcontents}{%
-	\chapter*{%
-	  \vspace*{-20\p@}%
-	  \begin{tikzpicture}[remember picture, overlay]%
-		  \pgftext[right,x=15cm,y=0.2cm]{\color{doc!60}\Huge\sc\bfseries \contentsname};%
-		  \draw[fill=doc!60,draw=doc!60] (13,-.75) rectangle (20,1);%
-		  \clip (13,-.75) rectangle (20,1);
-		  \pgftext[right,x=15cm,y=0.2cm]{\color{white}\Huge\sc\bfseries \contentsname};%
-	  \end{tikzpicture}}%
-	\@starttoc{toc}}
-\makeatother

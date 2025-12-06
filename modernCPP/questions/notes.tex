@@ -1,25 +1,14 @@
 \documentclass{report}
 
 \input{preamble}
-\input{macros}
-
-\title{\Huge{CPP}\\Book of Questions}
-\author{\huge{Paul Sherwood}}
-\date{December 05, 2025}
+% \input{macros}
 
 \begin{document}
-
-\maketitle
-\newpage% or \cleardoublepage
-% \pdfbookmark[<level>]{<title>}{<dest>}
-% \pdfbookmark[section]{\contentsname}{toc}
-% \tableofcontents
-\pagebreak
 
 \chapter{}
 \section{Level 1}
 % 1
-\qs{std::print}
+\qstn{std::print}
 {
    What does std::print provide compared to printf or std::cout?
 }
@@ -31,7 +20,7 @@
    Very concise and easy to use.
 }
 % 2
-\qs{auto}{
+\qstn{auto}{
    What is the advantage of auto and type deduction in moder C++?
 }
 \ans{auto}{
@@ -40,7 +29,7 @@
    clean syntax
 }
 % 3
-\qs{Passing by \_}{
+\qstn{Passing by \_}{
    What is the difference between passing by value, reference, and const reference?
 }
 \ans{auto}{
@@ -49,44 +38,44 @@
    const ref \: used like a read only of the original variable
 }
 % 4
-\qs{bindings}{
+\qstn{bindings}{
    What are structured bindings and when would you use the?
 }
 \ans{auto}{
 
 }
 % 5
-\qs{Ranges}{
+\qstn{Ranges}{
    What are C++23 ranges and views?
 }
 \ans{auto}{
 
 }
 % 6
-\qs{constexpr}{
+\qstn{constexpr}{
    What does constexpr mean and when is it evaluated?
 }
 \ans{auto}{
 
 }
 % 7
-\qs{Vector vs Arrays}{
+\qstn{Vector vs Arrays}{
    What is the difference between std::vector and raw arrays?
 }
 \ans{auto}{
 
 }
 % 8
-\qs{string\_view}{
+\qstn{string\_view}{
    What is std::string\_view and why is it more efficient than std\::string?
 }
 \ans{}{}
 % 9
-\qs{ranges} {
+\qstn{ranges} {
    What is the purpose of \#include $\llless$ranges$>$
 }
 % 10
-\qs{lifetime}{
+\qstn{lifetime}{
    What is the lifetime of a temporary returned from a function?
 }
 
