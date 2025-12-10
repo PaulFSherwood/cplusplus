@@ -1,4 +1,5 @@
 #include <iostream>
+#include <functional>
 
 typedef int (*PFnIntegerOperations)(int, int);
 int add(int x, int y) {
@@ -28,7 +29,19 @@ int main(){
 
    // std::cout << "Operation: " <<       op(x, y) << std::endl;
    // op = multiply;
-   std::cout << "Operation: " <<       op(x, y) << std::endl;
+   std::cout << "op Operation: " <<       op(x, y) << std::endl;
+
+
+   PFnIntegerOperations ip;
+   ip = add;
+   std::cout << "ip Operation: " <<       ip(x, y) << std::endl;
+
+   std::function<int(int, int)> lp;
+   lp = add;
+   std::cout << "lp Operation: " <<       lp(x, y) << std::endl;
+
+
+
 
    return 0;
 }
