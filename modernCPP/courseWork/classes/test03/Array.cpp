@@ -33,8 +33,9 @@ Array& Array::operator=(const Array& rhs) {
 void Array::PrintingData() {
 	std::cout << "{";
 	for (int i = 0; i < data.size(); i++) {
-		std::cout << data[i] << std::endl;
+		std::cout << data[i];
 	}
+	std::cout << "}" << std::endl;
 }
 
 void Array::SetData(int index, int value) {
