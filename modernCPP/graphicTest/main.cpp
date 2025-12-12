@@ -1,3 +1,13 @@
+/*
+┌──────── ORBITAL VIEW ────────┐
+│╭──────────────────────────╮  │ ← cockpit window frame
+ │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓      ▓▓▓ │ ← near ground (moves fastest)
+ │▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒      │ ← mid ground
+ │····················      │ ← far ground / horizon
+ ╰──────────────────────────╯
+└────────────────────────────┘
+*/
+
 #include <ftxui/component/screen_interactive.hpp>
 #include <ftxui/component/component.hpp>
 #include <ftxui/dom/elements.hpp>
@@ -12,13 +22,13 @@ double terrain(double x) {
       + 0.3 * std::sin(x * 0.31);
 }
 
-Element terrain_layer(double t, int width, double speed, char glyph) {
-   std::string line;
-   for (int x = 0; x < width; ++x) {
-      double h = terrain(x + t * speed);
-      line += (h > 0.0 ? glyph : ' ');
-   }
-   return text(line);
+Element terrain_layer(double t, int width, double speed, const std::string& glyph) {
+    std::string line;
+    for (int x = 0; x < width; ++x) {
+        double h = terrain(x + t * speed);
+        line += (h > 0.0 ? glyph : " ");
+    }
+    return text(line);
 }
 
 int main() {
@@ -27,19 +37,19 @@ int main() {
    double time = 0.0;
 
    screen.Loop(Renderer([&] {
-      time += 0.05;
+      time += 0.15;
 
          return vbox({
-            text("     |---------- ORBITAL VIEW ----------|"),
+            text("   ┌──────── ORBITAL VIEW ────────┐"),
             hbox({
-               text("   |"),
+               text("   │"),
                vbox({
-                  terrain_layer(time, 40, 1.5, '#'),
-                  terrain_layer(time, 40, 1.0, '@'),
-                  terrain_layer(time, 40, 0.6, '^'),
+                  terrain_layer(time, 40, 1.5, u8"▓"),
+                  terrain_layer(time, 40, 1.0, u8"▒"),
+                  terrain_layer(time, 40, 0.6, u8"·"),
                }) | border,
             }),
-            text("     |----------------------------------|"),
+            text("   └───────────────────────────────┘"),
          });
    }));
 }

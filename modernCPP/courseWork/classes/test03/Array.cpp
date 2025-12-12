@@ -3,22 +3,19 @@
 
 Array::Array(){
 	std::cout << "Constructor" << std::endl;
-	data = new int[10];
-	for (int i = 0; i < 10; i++) {
-		data[i] = i * i;
+	for (int i = 0; i < 1; i++) {
+		data.push_back(i);
 	}
 }
 
 Array::~Array(){
-	delete[] data;
 }
 // Copy Constructor
 // Array myNewArray = someExistingArray
 Array::Array(const Array& rhs) {
 	std::cout << "Copy Constructor" << std::endl;
-	data = new int[10];
-	for (int i = 0; i < 10; i++) {
-		data[i] = rhs.data[i];
+	for (int i = 0; i < rhs.data.size(); i++) {
+		data.push_back(rhs.data[i]);
 	}
 }
 // Copy Assignment operator
@@ -27,19 +24,22 @@ Array& Array::operator=(const Array& rhs) {
 	if (&rhs == this) {
 		return *this;
 	}
-	delete[] data;
-	data = new int[10];
-	for (int i = 0; i < 10; i++) {
-		data[i] = rhs.data[i];
+	data.clear();
+	for (int i = 0; i < rhs.data.size(); i++) {
+		data.push_back(rhs.data[i]);
 	}
 	return *this;
 }
 void Array::PrintingData() {
-	for (int i = 0; i < 10; i++) {
+	std::cout << "{";
+	for (int i = 0; i < data.size(); i++) {
 		std::cout << data[i] << std::endl;
 	}
 }
 
 void Array::SetData(int index, int value) {
-   data[index] = value;
+    if (index >= data.size()) {
+        data.resize(index + 1);
+    }
+    data[index] = value;
 }
