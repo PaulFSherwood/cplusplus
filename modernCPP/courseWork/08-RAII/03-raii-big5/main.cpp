@@ -18,6 +18,5 @@ int main() {
         IntArray temp(std::to_string(i));
         myArrays.push_back(std::move(temp));
     }
-
     return 0;
 }
