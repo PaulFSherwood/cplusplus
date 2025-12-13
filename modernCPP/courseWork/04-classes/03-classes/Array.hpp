@@ -14,11 +14,11 @@ class Array {
 		// (3 or 4) Copy Assignment operator
 		Array& operator=(const Array& rhs);
 		
-      void PrintingData();
-      void SetData(int index, int value);
+		void PrintingData();
+		void SetData(int index, int value);
 
-   private:
-      std::vector<int> data;
+	private:
+		std::vector<int> data;
 };
 
 #endif

@@ -7,7 +7,6 @@ Array::Array(){
 		data.push_back(i);
 	}
 }
-
 Array::~Array(){
 }
 // Copy Constructor
@@ -39,8 +38,8 @@ void Array::PrintingData() {
 }
 
 void Array::SetData(int index, int value) {
-    if (index >= data.size()) {
-        data.resize(index + 1);
-    }
-    data[index] = value;
+	if (index >= data.size()) {
+		data.resize(index + 1);
+	}
+	data[index] = value;
 }
