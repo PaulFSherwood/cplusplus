@@ -9,6 +9,6 @@ class Vector3f {
 
         // Constructor
         Vector3f() = default;
-        Vector3f(int inX, int inY, int inZ);
+        Vector3f(float inX, float inY, float inZ);
 };
 
