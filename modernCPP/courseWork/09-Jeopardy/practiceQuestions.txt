@@ -1,26 +1,84 @@
-Classes 100:
+Notes to lookup:  "How to write SOLID C++"
+Classes Basic 100:
 In C++, what keyword(s) do we used to create a user-defined type?
     + Class declaration, new, struct
     - Classes and structs are user-defined types, defined by class-specifier, which appears in decl-specifier-seq of the declaration syntax.  The class specifier has the following syntax:
         - class (and / or struct)
 
-Classes 200:
+Classes Basic 200:
 Describe what a class is.  You may use a concrete example.
     + A class describes real world objects, like a car with car subsets, dog with dog subsets.
     - A class is a way for a user to create a concrete type.  We often think of it as a 'blueprint', and create 'instances objects' from that blueprint.  Classes consist of attributes (member variables) and actions (member functions) that utilize the class blueprint.
 
-Classes 300:
+Classes Basic 300:
 What is a copy constructor?
     + A type used to describe how to clone an object.
     - A copy constructor is a special member function that is called when an instance of an object is created from another object of the same type.
 
-Class 400:
+Classes Basic 400:
 What happens if you do not provide a constructor, destructor, or copy constructor when creating a class?
     + The compilier creates those for you as defaults.
     - The C++ compiler will provide defaults for you.  (Doing a trivial initialization of your member variables)
 
-Class 500:
+Classes Basic 500:
 What is a Move Constructor?
     + A pointer points to a set of data, it is moved to another object.  So a new name holds that data.  The old object should be cleared.
     - A special member function that is claled when an object is initialized from an 'rvalue'.  When creating a new object, this effectively transfers ownership to a new object.
+
+==================================================
+Classes Rules 100:
+What are the three special member functions in the Rule of Three?
+    + Constructor, Destructor, copy constructor?
+    - Constructor, Destructor, Copy Constructor
+
+Classes Rules 200:
+In what scenario do you have to provide a custom copy constructor?
+    + When you have complex data to copy, and a generic copy constructor can't do it.
+    - When performing a deep copy.  Thus, anytime you have a member variable that is not trivially copyable, you need to perform the deep copy.
+
+Classes Rules 300:
+What are the five member functions in the rule of 5?
+    + Constructor, Destructor, Copy Constructor, Copy Assignment
+    - Constructor, Destructor, Copy Constructor (and Copy Assignment Operator), Move Constructor, and Move Assignment Operator.
+
+Classes Rule 400:
+When should you initialize an object with {} as opposed to ()?
+e.g.
+UDT type{1,2};
+UDT type(1,2);
+    + I suppose the {} would force variables to be a specific type.
+    - UDT type{1,2};  Useful to call the constructor and prevents narrowing.  If a constructor has an initializer list, this will initialize the initializer list.
+    - UDT type(1,2);  Calls the constructor with two parameters, and does not prevent narrowing.
+
+Classes Rule 500:
+What are the three uses of const? (i.e. what is const correctness)
+    + to not change local variables, not change passed in reference variables, ...
+    - const int pi = 3.14f;  // Local variable
+    - foo(const T& param);  // parameter
+    - member_func() const;  // read-only access of member variables
+
+Structs 100:
+What is the difference between a Struct and a Class in C++?
+    + A struct has all public variables, a class can have private, protected, and public.  Also it has differnt type of constructors.
+    - The default privacy level is public in a struct, and private in a class. Bonus (Structs are publicly inherited by default.)
+
+Structs 200:
+Why do we create separate .hpp and .cpp files for user-defined types?
+    + I would say to hid implementation.
+    - The .hpp file serves as an interface with the class declaration, member function declarations, and member variables.  The .cpp is the compiled file with the implementation.  We separate them out to 'hide code', 'improve compilation', and the .hpp also serves as a high-level overview of our code.
+
+Struts 300:
+What does RAII stand for?
+    + Resource Allication is init.
+    - Resource Acquisition is Initializtion.
+
+Structs 400:
+What is a 'POD' type?
+    + ?
+    - A Plain old Data type or a piece of data.  In C++ again, there is no disticnction, but stylistically you may encounter developers delineate between using classes and using structs strictly as POD types.
+
+Structs 500:
+What is operating overloading and name some specifci operators you can overload.
+    + '<<' to give a use to a currently accepted operator addition, multiplication, std::cout and others.  For our user created data types these may not normally work or we need them to work a differnt way than normal.
+    - Operator overloading allows you to deine operators (e.g. +, -, <=, <<, new, delete) for functions and classes.
 
