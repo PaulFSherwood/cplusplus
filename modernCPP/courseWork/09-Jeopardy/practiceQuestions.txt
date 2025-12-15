@@ -1,0 +1,26 @@
+Classes 100:
+In C++, what keyword(s) do we used to create a user-defined type?
+    + Class declaration, new, struct
+    - Classes and structs are user-defined types, defined by class-specifier, which appears in decl-specifier-seq of the declaration syntax.  The class specifier has the following syntax:
+        - class (and / or struct)
+
+Classes 200:
+Describe what a class is.  You may use a concrete example.
+    + A class describes real world objects, like a car with car subsets, dog with dog subsets.
+    - A class is a way for a user to create a concrete type.  We often think of it as a 'blueprint', and create 'instances objects' from that blueprint.  Classes consist of attributes (member variables) and actions (member functions) that utilize the class blueprint.
+
+Classes 300:
+What is a copy constructor?
+    + A type used to describe how to clone an object.
+    - A copy constructor is a special member function that is called when an instance of an object is created from another object of the same type.
+
+Class 400:
+What happens if you do not provide a constructor, destructor, or copy constructor when creating a class?
+    + The compilier creates those for you as defaults.
+    - The C++ compiler will provide defaults for you.  (Doing a trivial initialization of your member variables)
+
+Class 500:
+What is a Move Constructor?
+    + A pointer points to a set of data, it is moved to another object.  So a new name holds that data.  The old object should be cleared.
+    - A special member function that is claled when an object is initialized from an 'rvalue'.  When creating a new object, this effectively transfers ownership to a new object.
+
