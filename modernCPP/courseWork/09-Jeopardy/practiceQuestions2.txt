@@ -1,0 +1,212 @@
+Classes Basics
+Classes Basic 100
+
+Question:
+What is the difference between a type and an object in C++?
+
+Answer:
+A type defines the structure and behavior (e.g., a class), while an object is an instance of that type created at runtime.
+
+Classes Basic 200
+
+Question:
+What is the difference between a constructor and a factory function?
+
+Answer:
+A constructor initializes an object directly, while a factory function creates and returns an object (often controlling ownership, allocation, or polymorphism).
+
+Classes Basic 300
+
+Question:
+When is the copy constructor called instead of the copy assignment operator?
+
+Answer:
+When a new object is being created from an existing object, not when assigning to an already existing object.
+
+Classes Basic 400
+
+Question:
+What does it mean for a constructor to be marked explicit?
+
+Answer:
+It prevents implicit conversions and copy-initialization using that constructor.
+
+Classes Basic 500
+
+Question:
+What happens to an object after it has been moved from?
+
+Answer:
+It is left in a valid but unspecified state and must still be safe to destroy or assign to.
+
+Rule of Three / Five
+Classes Rules 100
+
+Question:
+Why does managing a raw pointer often trigger the Rule of Three or Five?
+
+Answer:
+Because ownership must be explicitly handled for copying, destruction, and moving to avoid leaks or double frees.
+
+Classes Rules 200
+
+Question:
+Why does defining a destructor often imply you should think about copy/move behavior?
+
+Answer:
+Because a custom destructor suggests ownership of resources that require correct copy and move semantics.
+
+Classes Rules 300
+
+Question:
+What happens if you define a copy constructor but delete the copy assignment operator?
+
+Answer:
+Objects can be copied during initialization but cannot be assigned after creation.
+
+Classes Rules 400
+
+Question:
+Why might a move constructor be marked noexcept?
+
+Answer:
+To allow containers like std::vector to safely move elements during reallocation instead of falling back to copying.
+
+Classes Rules 500
+
+Question:
+What is the Rule of Zero?
+
+Answer:
+Design classes so they manage no resources directly, relying on RAII types (like std::vector or std::unique_ptr) and requiring no special member functions.
+
+Structs / RAII / Operators
+Structs 100
+
+Question:
+Why are many configuration or data-transfer objects implemented as structs?
+
+Answer:
+Because they emphasize public data, simplicity, and aggregate initialization.
+
+Structs 200
+
+Question:
+What is aggregate initialization?
+
+Answer:
+Initialization using braces {} without calling a user-defined constructor, typically for structs with public members.
+
+Structs 300
+
+Question:
+Give a concrete example of RAII.
+
+Answer:
+A std::lock_guard<std::mutex> that locks a mutex on construction and unlocks it automatically on destruction.
+
+Structs 400
+
+Question:
+Why is POD mostly a historical term in modern C++?
+
+Answer:
+Because modern C++ replaces POD with more precise traits like trivial, standard-layout, and aggregate types.
+
+Structs 500
+
+Question:
+Why should operator overloading preserve intuitive meaning?
+
+Answer:
+Because unexpected behavior breaks readability and violates the principle of least surprise.
+
+Inheritance / Polymorphism
+Inheritance 100
+
+Question:
+Why is composition often preferred over inheritance?
+
+Answer:
+Because it reduces coupling and avoids fragile base class problems.
+
+Inheritance 200
+
+Question:
+What happens if a base class destructor is not virtual and an object is deleted through a base pointer?
+
+Answer:
+Only the base destructor runs, causing resource leaks in derived classes.
+
+Inheritance 300
+
+Question:
+What is the difference between overriding and hiding a function?
+
+Answer:
+Overriding uses virtual dispatch; hiding occurs when a derived function has the same name but does not override.
+
+Inheritance 400
+
+Question:
+What problem does virtual inheritance solve?
+
+Answer:
+The diamond problem, where multiple inheritance would otherwise create duplicate base subobjects.
+
+Inheritance 500
+
+Question:
+Why should base classes usually have protected (not public) data members?
+
+Answer:
+To preserve encapsulation while allowing controlled access in derived classes.
+
+Miscellaneous
+Classes Misc 100
+
+Question:
+How can you make a class movable but not copyable?
+
+Answer:
+Delete the copy constructor and copy assignment operator, but define move operations.
+
+Classes Misc 200
+
+Question:
+Why must references and const members be initialized in the initializer list?
+
+Answer:
+Because they cannot be assigned after construction.
+
+Classes Misc 300
+
+Question:
+What is the downside of friend classes?
+
+Answer:
+They break encapsulation and increase coupling.
+
+Classes Misc 400
+
+Question:
+What is object slicing?
+
+Answer:
+When a derived object is copied into a base object, losing derived-specific data.
+
+Classes Misc 500
+
+Question:
+What is a pure virtual destructor and why might you use one?
+
+Answer:
+A destructor declared = 0 to make a class abstract while still allowing proper cleanup.
+
+Final Jeopardy (New)
+
+Question:
+Why is this a pointer instead of a reference?
+
+Answer:
+Because it must be reseatable internally, support null checks historically, and references did not exist when this was introduced.

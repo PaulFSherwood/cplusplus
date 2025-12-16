@@ -1,4 +1,4 @@
-Notes to lookup:  "How to write SOLID C++"
+
 Classes Basic 100:
 In C++, what keyword(s) do we used to create a user-defined type?
     + Class declaration, new, struct
@@ -81,4 +81,75 @@ Structs 500:
 What is operating overloading and name some specifci operators you can overload.
     + '<<' to give a use to a currently accepted operator addition, multiplication, std::cout and others.  For our user created data types these may not normally work or we need them to work a differnt way than normal.
     - Operator overloading allows you to deine operators (e.g. +, -, <=, <<, new, delete) for functions and classes.
+
+Classes Inheritance 100:
+Is inheritance an 'is-a' or 'has-a' relationship?
+    + I think it is both but I am not sure.
+    - 'is-a' for inheritance
+    - 'has-a' for composition
+
+Classes Inheritance 200:
+In what order are the constructors and destructors called when creating a new 'Golden'
+    + I suppose first in last out (Dog -> Golden) (Golden -> Dog)
+    - Dog Constructor -> Gold Constructor -> Golden Destructor -> Dog Destructor
+    class Dog {
+        public:
+            Dog() {}
+            void Bark() {}
+            void Walk() {}
+            float x,y;
+            };
+    class Godlen : public Dog {
+        public:
+            Golden() {}
+            void Retrieve() {}
+            float m_sticksRetrieved;
+            };
+
+Classes Inheritance 300:
+What is 'virtual function' in C++
+    + A function that will have to be implemented.
+    - Virtual is the C++ way of supporting dynamic dispatch.  This is necessary to ensure that the correct memeber function is called from the instantiated object.
+
+Classes Inheritance 400:
+What is vtable?
+    + it is a table that list all virtual calls.  Stores which member function to call.
+    - The vtable contains entries in a class for each virtual function call.  One vtable per class is created and shared by all instances of classes.
+
+Classes Inheritance 500:
+What is 'virtual inheritance' in C++?
+    +
+    - Virtual inheritance ensures that derived classes only contain one of the base classes if it appears multiple times.
+
+Classes Misc 100:
+Describe a strategy to prevent copies of objects from being made?
+    + is that const?
+    - Delete the copy constructor or (if pre c++11) make the copy constructor private.
+
+Classes Misc 200:
+Why should you use a member initializer list?
+    +
+    - Using the member initializer list can avoid a copy, as we can directly construct the member variable inside the object.
+
+Classes Misc 300:
+What is a friend class?
+    + has access to the same stuff as the original
+    - Similar to a friend function, a friend class gets access to all (including private) member variables of a class.
+
+Classes Misc 400:
+Why would you make a classes destructor virtual?
+    + If it is a base class to have other classes run their own destructor
+    - In genera, we always make a base class virtual, to ensure that the base classes destructor will be called.
+    - When we have a derived class that is going to use inheritane-based polymorphism, adding 'virutal' ensures that the base classes destructor is also called.
+
+Classes Misc 500:
+How do you make an 'abstract class' in C++?
+    +
+    - We do not truly have 'abstract classes' in C++, but we can make 'pure virtual functions' that must be implemented from subclasses.
+
+Final Jeopardy!
+
+Why is 'this' not a reference?
+    + 
+    - Because "this" was introduced into C++ (really into C with Classes) before referneces were added.  Also, I chose "this" to follow Simula usage, rather than the (later) Smalltalk use of "self".
 
