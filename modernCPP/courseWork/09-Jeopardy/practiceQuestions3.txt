@@ -1,0 +1,217 @@
+C++ Classes Jeopardy – Set 3
+Classes Basics
+Classes Basic 100
+
+Question:
+What is the difference between struct S {} and struct S;?
+
+Answer:
+The first defines the type; the second is a forward declaration that declares the type without defining it.
+
+Classes Basic 200
+
+Question:
+What is the difference between copy initialization and direct initialization?
+
+T a = b;
+T a(b);
+
+
+Answer:
+Copy initialization may invoke implicit conversions and copy constructors, while direct initialization directly calls the constructor.
+
+Classes Basic 300
+
+Question:
+What is the purpose of a default constructor?
+
+Answer:
+To allow objects to be created without arguments and to establish a valid initial state.
+
+Classes Basic 400
+
+Question:
+What happens if you define a constructor that takes arguments but no default constructor?
+
+Answer:
+The compiler will not generate a default constructor, and the object cannot be default-constructed.
+
+Classes Basic 500
+
+Question:
+Why might you want a private constructor?
+
+Answer:
+To control object creation (e.g., singleton pattern or factory-only construction).
+
+Rule of Three / Five / Zero
+Classes Rules 100
+
+Question:
+What special member functions does the compiler generate automatically?
+
+Answer:
+Default constructor, destructor, copy constructor, copy assignment operator, move constructor, and move assignment operator (depending on context).
+
+Classes Rules 200
+
+Question:
+Why does defining any copy operation suppress implicit move operations?
+
+Answer:
+Because the compiler assumes manual ownership management and disables automatic move generation.
+
+Classes Rules 300
+
+Question:
+What happens if you delete the destructor?
+
+Answer:
+Objects of the type cannot be destroyed, making the class unusable except in very limited contexts.
+
+Classes Rules 400
+
+Question:
+Why is std::unique_ptr non-copyable but movable?
+
+Answer:
+Because it enforces exclusive ownership while still allowing transfer of that ownership.
+
+Classes Rules 500
+
+Question:
+Why does the Rule of Zero improve exception safety?
+
+Answer:
+Because resource management is delegated to RAII types that already handle cleanup correctly during stack unwinding.
+
+Structs / POD / RAII
+Structs 100
+
+Question:
+When should a struct have member functions?
+
+Answer:
+When behavior logically belongs with the data, even if the data is public.
+
+Structs 200
+
+Question:
+What disqualifies a type from being an aggregate?
+
+Answer:
+User-defined constructors, private/protected members, virtual functions, or base classes.
+
+Structs 300
+
+Question:
+Why is RAII preferable to manual new / delete?
+
+Answer:
+It guarantees deterministic cleanup and prevents leaks even when exceptions occur.
+
+Structs 400
+
+Question:
+Why should destructors generally not throw exceptions?
+
+Answer:
+Because throwing during stack unwinding can cause program termination.
+
+Structs 500
+
+Question:
+Why is overloading operator= often more complex than overloading arithmetic operators?
+
+Answer:
+Because it must handle self-assignment, resource cleanup, and exception safety.
+
+Inheritance & Polymorphism
+Inheritance 100
+
+Question:
+What is upcasting and why is it safe?
+
+Answer:
+Treating a derived object as a base object; it is safe because the base subobject always exists.
+
+Inheritance 200
+
+Question:
+Why should virtual functions usually be overridden with override?
+
+Answer:
+To catch signature mismatches at compile time and improve readability.
+
+Inheritance 300
+
+Question:
+What is dynamic dispatch?
+
+Answer:
+Selecting the correct function implementation at runtime based on the object’s dynamic type.
+
+Inheritance 400
+
+Question:
+What memory cost does polymorphism typically introduce?
+
+Answer:
+An extra pointer per object (vptr) and a shared vtable per class.
+
+Inheritance 500
+
+Question:
+Why is multiple inheritance considered dangerous?
+
+Answer:
+Because it increases complexity, ambiguity, and the risk of diamond inheritance issues.
+
+Miscellaneous C++ Class Design
+Classes Misc 100
+
+Question:
+What does = default do?
+
+Answer:
+Explicitly requests the compiler-generated implementation of a special member function.
+
+Classes Misc 200
+
+Question:
+What does = delete do?
+
+Answer:
+Prevents a function from being used, causing a compile-time error.
+
+Classes Misc 300
+
+Question:
+Why should destructors generally be public?
+
+Answer:
+So objects can be destroyed correctly when going out of scope.
+
+Classes Misc 400
+
+Question:
+What is the difference between shallow copy and deep copy?
+
+Answer:
+Shallow copy duplicates references; deep copy duplicates the owned resources.
+
+Classes Misc 500
+
+Question:
+Why are abstract base classes often used instead of interfaces?
+
+Answer:
+Because C++ has no dedicated interface keyword, and abstract classes fulfill that role.
+
+Final Jeopardy – Set 3
+
+Question:
+Why is copying a polymorphic object by value almost always a design error?
+
+Answer:
+Because it causes object slicing, losing derived-type behavior and data.
