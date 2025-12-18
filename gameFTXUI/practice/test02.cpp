@@ -16,7 +16,7 @@ int main() {
     return vbox({
       text("Input Example") | bold | hcenter,
       separator(),
-      hbox(text("Name: "), input->Render()),
+      hbox(text("Name: ") | bold | color(Color::Red), input->Render()),
       text("Press Enter when done"),
     }) | border;
   });
