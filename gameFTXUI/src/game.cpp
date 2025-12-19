@@ -54,6 +54,7 @@ void Fight_Table(int *WhpP, int *OhpP, int *WstrP, int *OstrP, int *WxptotalP, i
 				*WxptotalP = xp1.getxprecieved();
 				*maxxp = xp1.getmaxxp();
 				*WlvlP = xp1.canlvl(*WxptotalP, *maxxp, WhpP, WstrP);
+            std::cout << "WxptotalP: " << *WxptotalP <<  " *maxxp: " << *maxxp << " *WlvlP: " << std::endl;
 			}
 		}
 		break;
