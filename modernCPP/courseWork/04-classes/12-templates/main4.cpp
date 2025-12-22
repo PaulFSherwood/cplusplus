@@ -13,6 +13,8 @@ T Sum(T start, Args... args) {
 int main() {
 
    // simple_printf("dcff", 3, 'a', 1.999, 42.5);
+   // std::cout << Sum<int, double, float, int>(1,2.2,3.56f,4) << std::endl; // returns 10
+   std::cout << Sum<double, float, float, int>(1,2.2,3.56f,4) << std::endl;  // returns 10.76
    std::cout << Sum<double>(1,2.2,3.56f,4) << std::endl;
 
    return 0;
