@@ -32,11 +32,13 @@ int main() {
     int a = 63;
     int b = 401;
 
-    std::cout << "a: " << a << " || b: " << b << std::endl;
+    std::cout << "Before: " << "a: " << a << " || b: " << b << std::endl;
     a ^= b;
+    std::cout << "a ^= b: " << "a: " << a << " || b: " << b << std::endl;
     b ^= a;
+    std::cout << "b ^= a: " << "a: " << a << " || b: " << b << std::endl;
     a ^= b;
-    std::cout << "a: " << a << " || b: " << b << std::endl;
+    std::cout << "a ^= b: " << "a: " << a << " || b: " << b << std::endl;
 
     // create a duplicate number out of 100
     int count = 100;
