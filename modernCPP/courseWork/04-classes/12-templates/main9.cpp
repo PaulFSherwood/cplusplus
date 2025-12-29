@@ -3,9 +3,9 @@
 
 template<typename first, typename second>
 struct Entry {
-    Entry(first key, second value) {
-        m_key = key;
-        m_value = value;
+    Entry(first key, second value) : m_key(key), m_value(value) {
+        // m_key = key;
+        // m_value = value;
     }
     first m_key;
     second m_value;
