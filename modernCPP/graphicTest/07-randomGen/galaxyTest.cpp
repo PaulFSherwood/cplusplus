@@ -7,7 +7,24 @@ constexpr uint32_t g_starColours[8] =
    0xFFFFFFFF, 0xFFD9FFFF, 0xFFA3FFFF, 0xFFFFC8C8,
    0XFFFFCB9D, 0xFF9F9FFF, 0xFF415EFF, 0xFF28199D
 };
-
+constexpr uint32_t g_planetColours[8] =
+{
+   0xFFE63946,  // Deep Crimson red 
+   0xFFF4A261,  // Warm Desert Orange 
+   0xFF2A9D8F,  // Teal / Ocean Green
+   0xFF457B9D,  // Steel Blue 
+   0xFF6A4C93,  // Royal Purple
+   0xFF3A86FF,  // Bright Space Blue 
+   0xFF52B788,  // Lush Green 
+   0xFFFFD166   // Golden Yellow 
+};
+constexpr uint32_t g_moonColours[4] = 
+{
+   0xFFD9D9D9,  // Pale Lunar Gray
+   0xFFADB5BD,  // Dusty Rock Gray
+   0xFF8D99AE,  // Blue-Gray Stone
+   0xFF6C757d   // Dark Crater Grey
+};
 struct sPlanet
 {
    double distance      = 0.0;
@@ -32,8 +49,10 @@ class cStarSystem
       starExists = (rndInt(0, 20) == 1);
       if (!starExists) return;
 
-      starDiameter = rndDouble(10.0, 40.0);
-      starColour.n = g_starColours[rndInt(0, 8)];
+      starDiameter   = rndDouble(10.0, 40.0);
+      starColour.n   = g_starColours[rndInt(0, 8)];
+      planetColour = g_planetColours[rndInt(0, 8)];
+      moonColour   = g_moonColours[rndInt(0, 4)];
 
       if (!bGenerateFullSystem) return;
       double dDistanceFromStar = rndDouble(60.0, 200.0);
@@ -73,6 +92,8 @@ class cStarSystem
       bool        starExists = false;
       double      starDiameter = 0.0f;
       olc::Pixel  starColour = olc::WHITE;
+      olc::Pixel  planetColour = olc::WHITE;
+      olc::Pixel  moonColour = olc::WHITE;
       std::vector<sPlanet> vPlanets;
 
    private:
@@ -201,7 +222,7 @@ class olcGalaxy : public olc::PixelGameEngine
                if (vBody.x + planet.diameter >= 496) break;
 
                vBody.x += planet.diameter;
-               FillCircle(vBody, (int)(planet.diameter * 1.0), olc::RED);
+               FillCircle(vBody, (int)(planet.diameter * 1.0), star.planetColour);
 
                olc::vi2d vMoon = vBody;
                vMoon.y += planet.diameter + 10;
@@ -210,11 +231,22 @@ class olcGalaxy : public olc::PixelGameEngine
                for (auto& moon : planet.vMoons)
                {
                   vMoon.y += moon;
-                  FillCircle(vMoon, (int)(moon * 1.0), olc::GREY);
+                  FillCircle(vMoon, (int)(moon * 1.0), star.moonColour);
                   vMoon.y += moon + 10;
                }
 
                vBody.x += planet.diameter + 8;
+
+               
+               DrawString(150, 2, 
+                     "Diameter: " + std::to_string(planet.diameter) + "\n" 
+                     "Temperature: " + std::to_string(planet.temperature),
+                     olc::YELLOW
+               );
+               // DrawString(170, 2, 
+               //       "Planet: " + std::to_string(planet.gases), 
+               //       olc::YELLOW
+               // );
             }
          }
          // === HUD ===

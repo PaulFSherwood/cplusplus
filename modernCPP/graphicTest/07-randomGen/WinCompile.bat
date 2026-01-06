@@ -19,8 +19,7 @@ if exist "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\B
 )
 
 REM === Compile ===
-cl /std:c++17 /EHsc "%~1" ^
-    user32.lib gdi32.lib opengl32.lib winmm.lib kernel32.lib shell32.lib ole32.lib
+cl /std:c++17 /EHsc "%~1" ^ user32.lib gdi32.lib opengl32.lib winmm.lib kernel32.lib shell32.lib ole32.lib
 
 @REM timeout /t 4 /nobreak
 
