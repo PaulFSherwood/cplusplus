@@ -1,0 +1,97 @@
+#define OLC_PGE_APPLICATION
+#include "olcPixelGameEngine.h"
+#include <random>
+
+class olcGalaxy : public olc::PixelGameEngine
+{
+   public:
+      olcGalaxy() {
+         sAppName = "olcGalaxy";
+      }
+
+   public:
+      bool OnUserCreate() override {
+         return true;
+      }
+
+      uint32_t nLehmer = 0;
+      uint32_t Lehmer32() 
+      {
+         nLehmer += 0xe120fc15;
+         uint64_t tmp;
+         tmp = (uint64_t)nLehmer * 0x4a39b70d;
+         uint32_t m1 = (tmp >> 32) ^ tmp;
+         tmp = (uint64_t)m1 * 0x12fad5c9;
+         uint32_t m2 = (tmp >> 32) ^ tmp;
+         return m2;
+      }
+
+      inline uint32_t Lehmer32(uint32_t& state)
+      {
+         state += 0xe120fc15;
+         uint64_t tmp = (uint64_t)state * 0x4a39b70d;
+         uint32_t x = (uint32_t)((tmp >> 32) ^ tmp);
+         tmp = (uint64_t)x * 0x12fad5c9;
+         return (uint32_t)((tmp >> 32) ^ tmp);
+      }
+
+
+      bool OnUserUpdate(float fElapsedTime) override 
+      {
+
+         if (GetKey(olc::Key::SPACE).bReleased) 
+         {
+            // set up for good but slower random distribution.
+            // std::random_device rd;
+            // std::mt19937 mt(rd());
+            // std::uniform_int_distribution<int> dist(0, 256);
+
+            // Lehmer random number generator
+
+
+            Clear(olc::BLACK);
+
+            auto tp1 = std::chrono::system_clock::now();
+            
+            for (int x = 0; x < ScreenWidth(); x++) 
+            {
+               for (int y = 0; y < ScreenHeight(); y++) 
+               {
+                  bool bIsStar = false;
+
+                  // // rand fails with specific numbers and will not appear random
+		            // int nSeed = y << 16 | x;
+                  // srand(nSeed);
+                  // bIsStar = rand() % 256 < 32;
+
+                  // mt.seed(nSeed);  // using seed to get the same output everytime.
+                  // bIsStar = dist(mt) < 32;
+
+                  // Lehmer32
+                  // nLehmer = nSeed;
+                  // bIsStar = Lehmer32() % 256 < 32;
+
+
+                  uint32_t state = (y << 16) | x;
+                  bIsStar = (Lehmer32(state) & 0xFF) < 32;
+
+
+                  Draw(x, y, bIsStar ? olc::WHITE : olc::BLACK);
+               }
+            }
+            auto tp2 = std::chrono::system_clock::now();
+            std::chrono::duration<float> elapsedTime = tp2 - tp1;
+            DrawString(3, 3, "Time: " + std::to_string(elapsedTime.count()), olc::RED, 2);
+         }
+
+         return true;
+      }
+};
+
+int main() {
+   olcGalaxy demo;
+   if (demo.Construct(512, 480, 2, 2))
+      demo.Start();
+
+   return 0;
+}
