@@ -1,6 +1,10 @@
 #define OLC_PGE_APPLICATION
 #include "olcPixelGameEngine.h"
 #include <random>
+#include <vector>
+#include <algorithm>
+#include <sstream>
+#include <iomanip>
 
 constexpr uint32_t g_starColours[8] =
 {
@@ -25,6 +29,12 @@ constexpr uint32_t g_moonColours[4] =
    0xFF8D99AE,  // Blue-Gray Stone
    0xFF6C757d   // Dark Crater Grey
 };
+struct sMoon
+{
+   double diameter         = 0.0;
+   // double orbit            = 0.0;
+   olc::Pixel moonColour   = olc::WHITE;
+};
 struct sPlanet
 {
    double distance      = 0.0;
@@ -36,8 +46,17 @@ struct sPlanet
    double temperature   = 0.0;
    double population    = 0.0;
    bool ring            = false;
-   std::vector<double> vMoons;
+   olc::Pixel  planetColour = olc::WHITE;
+   // std::vector<double> vMoons;
+   std::vector<sMoon> vMoons;
 };
+
+inline std::string fmt2(double v)
+{
+    std::ostringstream oss;
+    oss << std::fixed << std::setprecision(2) << v;
+    return oss.str();
+}
 
 class cStarSystem
 {
@@ -51,8 +70,6 @@ class cStarSystem
 
       starDiameter   = rndDouble(10.0, 40.0);
       starColour.n   = g_starColours[rndInt(0, 8)];
-      planetColour = g_planetColours[rndInt(0, 8)];
-      moonColour   = g_moonColours[rndInt(0, 4)];
 
       if (!bGenerateFullSystem) return;
       double dDistanceFromStar = rndDouble(60.0, 200.0);
@@ -68,6 +85,7 @@ class cStarSystem
          p.minerals        = rndDouble(0.0, 1.0);
          p.gases           = rndDouble(0.0, 1.0);
          p.water           = rndDouble(0.0, 1.0);
+         p.planetColour    = g_planetColours[rndInt(0, 8)];
 
          double dSum = 1.0 / (p.foliage + p.minerals + p.gases + p.water);
          p.foliage   *= dSum;
@@ -80,9 +98,16 @@ class cStarSystem
          p.ring = rndInt(0, 10) == 1;
 
          int nMoons = std::max(rndInt(-5, 5), 0);
-         for (int n = 0; n < nMoons; n++);
+         for (int n = 0; n < nMoons; n++)
          { 
-            p.vMoons.push_back(rndDouble(1.0, 5.0));
+            // Make one sMoon
+            sMoon q;
+            // Set and package the moons variables
+            q.diameter     = rndDouble(1.0, 5.0);
+            q.moonColour   =  g_moonColours[rndInt(0, 4)];
+            // push the new moon into the vMoon vector
+            p.vMoons.push_back(q);
+            // move onto the next moon.
          }
          vPlanets.push_back(p);
       }
@@ -92,8 +117,6 @@ class cStarSystem
       bool        starExists = false;
       double      starDiameter = 0.0f;
       olc::Pixel  starColour = olc::WHITE;
-      olc::Pixel  planetColour = olc::WHITE;
-      olc::Pixel  moonColour = olc::WHITE;
       std::vector<sPlanet> vPlanets;
 
    private:
@@ -162,8 +185,6 @@ class olcGalaxy : public olc::PixelGameEngine
 
          olc::vi2d mouse = { GetMouseX() / 16, GetMouseY() / 16 };
          olc::vi2d galaxy_mouse = mouse + vGalaxyOffset;
-
-
          olc::vi2d screen_sector = { 0,0 };
 
          for (screen_sector.x = 0; screen_sector.x < nSectorsX; screen_sector.x++)
@@ -217,12 +238,13 @@ class olcGalaxy : public olc::PixelGameEngine
             vBody.x += (star.starDiameter * 1.375) + 8;
 
             // Draw Planets
+            int line = 2;
             for (auto& planet : star.vPlanets)
             {
                if (vBody.x + planet.diameter >= 496) break;
 
                vBody.x += planet.diameter;
-               FillCircle(vBody, (int)(planet.diameter * 1.0), star.planetColour);
+               FillCircle(vBody, (int)(planet.diameter * 1.0), planet.planetColour);
 
                olc::vi2d vMoon = vBody;
                vMoon.y += planet.diameter + 10;
@@ -230,23 +252,20 @@ class olcGalaxy : public olc::PixelGameEngine
                // Draw Moons
                for (auto& moon : planet.vMoons)
                {
-                  vMoon.y += moon;
-                  FillCircle(vMoon, (int)(moon * 1.0), star.moonColour);
-                  vMoon.y += moon + 10;
+                  vMoon.y += moon.diameter;
+                  FillCircle(vMoon, (int)(moon.diameter * 1.0), moon.moonColour);
+                  vMoon.y += moon.diameter + 10;
                }
 
                vBody.x += planet.diameter + 8;
 
-               
-               DrawString(150, 2, 
-                     "Diameter: " + std::to_string(planet.diameter) + "\n" 
-                     "Temperature: " + std::to_string(planet.temperature),
+               DrawString(150, line, 
+                  
+                     "Diameter: " + fmt2(planet.diameter) + "\n" 
+                     "Temperature: " + fmt2(planet.temperature),
                      olc::YELLOW
                );
-               // DrawString(170, 2, 
-               //       "Planet: " + std::to_string(planet.gases), 
-               //       olc::YELLOW
-               // );
+               line += 20;
             }
          }
          // === HUD ===
