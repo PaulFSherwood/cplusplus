@@ -6,11 +6,11 @@
 
 */
 
-#include <X11/Xlib.h>        // X11 core
-#include <X11/keysym.h>     // Key symbols
-#include <GL/gl.h>          // OpenGL
-#include <GL/glu.h>         // GLU
-#include <GL/glx.h>         // GLX (OpenGL for X11)
+#include <X11/Xlib.h>        		// X11 core
+#include <X11/keysym.h>     		// Key symbols
+#include <GL/gl.h>          		// OpenGL
+#include <GL/glu.h>         		// GLU
+#include <GL/glx.h>         		// GLX (OpenGL for X11)
 #include <cstring>
 #include <cstdio>
 #include <cstdlib>
@@ -39,7 +39,7 @@ void ReSizeGLScene(GLsizei width, GLsizei height)
     if (height == 0)
         height = 1;
 
-    glViewport(0, 0, width, height);         // Reset viewport
+    glViewport(0, 0, width, height); // Reset viewport
 
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
@@ -59,10 +59,10 @@ void ReSizeGLScene(GLsizei width, GLsizei height)
 // ---------------------------
 bool InitGL()
 {
-    glShadeModel(GL_SMOOTH);                   // Smooth shading
-    glClearColor(0, 0, 0, 0);                  // Black background
-    glClearDepth(1.0f);                        // Depth buffer setup
-    glEnable(GL_DEPTH_TEST);                   // Enable depth testing
+    glShadeModel(GL_SMOOTH);         // Smooth shading
+    glClearColor(0, 0, 0, 0);        // Black background
+    glClearDepth(1.0f);              // Depth buffer setup
+    glEnable(GL_DEPTH_TEST);         // Enable depth testing
     glDepthFunc(GL_LEQUAL);
     glHint(GL_PERSPECTIVE_CORRECTION_HINT,
            GL_NICEST);
@@ -251,7 +251,6 @@ int main()
                     keys[kc] = true;
                 break;
             }
-            
             case KeyRelease:
             {
                 unsigned int kc = event.xkey.keycode;
@@ -259,12 +258,10 @@ int main()
                     keys[kc] = false;
                 break;
             }
-
-
-                case ConfigureNotify:
-                    ReSizeGLScene(event.xconfigure.width,
-                                  event.xconfigure.height);
-                    break;
+            case ConfigureNotify:
+				ReSizeGLScene(event.xconfigure.width,
+                              event.xconfigure.height);
+                break;
             }
         }
 
