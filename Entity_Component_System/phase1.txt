@@ -1,0 +1,459 @@
+===== FILE: ./ECS/Components/Renderable.h =====
+#pragma once
+
+#include <SDL2/SDL.h>
+
+// Renderable
+// ----------
+// Minimal visual representation.
+// For now: just a colored rectangle.
+//
+struct Renderable
+{
+    int width{20};
+    int height{10};
+    SDL_Color color{255, 255, 255, 255};
+};
+
+
+
+===== FILE: ./ECS/Components/TransformComponent.h =====
+#pragma once
+
+// TransformComponent
+// ------------------
+// Pure data: position + rotation.
+// No logic. No SDL. No behavior.
+//
+// In ECS:
+// - Systems READ and WRITE this
+// - Components NEVER do work themselves
+//
+struct TransformComponent
+{
+    float x{400.0f};   // screen-space position
+    float y{300.0f};
+    float rotation{0.0f}; // radians
+};
+
+
+
+===== FILE: ./ECS/Components/VelocityComponent.h =====
+#pragma once
+
+// VelocityComponent
+// -----------------
+// Stores movement state (inertia).
+// This is what gives Sub-Terrania / Asteroids-style flight.
+//
+struct VelocityComponent
+{
+    float vx{0.0f};
+    float vy{0.0f};
+};
+
+
+
+===== FILE: ./ECS/ComponentSystem/InputSystem.cpp =====
+#include "InputSystem.h"
+#include <SDL2/SDL.h>
+#include <cmath>
+
+void InputSystem::Update(EntityManager& entities, float dt)
+{
+    int mouseX, mouseY;
+    SDL_GetMouseState(&mouseX, &mouseY);
+
+    const Uint8* keys = SDL_GetKeyboardState(nullptr);
+
+    for (auto e : entities.GetEntities())
+    {
+        if (!entities.HasTransform(e) || !entities.HasVelocity(e))
+            continue;
+
+        auto& t = entities.GetTransform(e);
+        auto& v = entities.GetVelocity(e);
+
+        // Rotate ship to face mouse
+        float dx = mouseX - t.x;
+        float dy = mouseY - t.y;
+        t.rotation = std::atan2(dy, dx);
+
+        // Thrust
+        const float thrust = 200.0f;
+
+        if (keys[SDL_SCANCODE_W])
+        {
+            v.vx += std::cos(t.rotation) * thrust * dt;
+            v.vy += std::sin(t.rotation) * thrust * dt;
+        }
+        if (keys[SDL_SCANCODE_S])
+        {
+            v.vx *= 0.98f;
+            v.vy *= 0.98f;
+        }
+    }
+}
+
+
+
+===== FILE: ./ECS/ComponentSystem/InputSystem.h =====
+#pragma once
+
+#include "../EntitySystem/EntityManager.h"
+
+// InputSystem
+// -----------
+// Converts player input into velocity changes.
+// This is where "control" lives.
+//
+class InputSystem
+{
+public:
+    void Update(EntityManager& entities, float dt);
+};
+
+
+
+===== FILE: ./ECS/ComponentSystem/MovementSystem.cpp =====
+#include "MovementSystem.h"
+
+void MovementSystem::Update(EntityManager& entities, float dt)
+{
+    for (auto e : entities.GetEntities())
+    {
+        if (!entities.HasTransform(e) || !entities.HasVelocity(e))
+            continue;
+
+        auto& t = entities.GetTransform(e);
+        auto& v = entities.GetVelocity(e);
+
+        t.x += v.vx * dt;
+        t.y += v.vy * dt;
+    }
+}
+
+
+
+===== FILE: ./ECS/ComponentSystem/MovementSystem.h =====
+#pragma once
+
+#include "../EntitySystem/EntityManager.h"
+
+// MovementSystem
+// --------------
+// Applies velocity to position.
+//
+class MovementSystem
+{
+public:
+    void Update(EntityManager& entities, float dt);
+};
+
+
+
+===== FILE: ./ECS/ComponentSystem/RenderSystem.cpp =====
+#include "RenderSystem.h"
+#include <cmath>
+
+void RenderSystem::Render(EntityManager& entities, SDL_Renderer* renderer)
+{
+    for (auto e : entities.GetEntities())
+    {
+        if (!entities.HasTransform(e) || !entities.HasRenderable(e))
+            continue;
+
+        auto& t = entities.GetTransform(e);
+        auto& r = entities.GetRenderable(e);
+
+        SDL_Rect rect{
+            static_cast<int>(t.x - r.width / 2),
+            static_cast<int>(t.y - r.height / 2),
+            r.width,
+            r.height
+        };
+
+        SDL_SetRenderDrawColor(renderer, r.color.r, r.color.g, r.color.b, r.color.a);
+        SDL_RenderFillRect(renderer, &rect);
+    }
+}
+
+
+
+===== FILE: ./ECS/ComponentSystem/RenderSystem.h =====
+#pragma once
+
+#include "../EntitySystem/EntityManager.h"
+#include <SDL2/SDL.h>
+
+class RenderSystem
+{
+public:
+    void Render(EntityManager& entities, SDL_Renderer* renderer);
+};
+
+
+
+===== FILE: ./ECS/Core/Application.cpp =====
+#include "Application.h"
+#include "../EntitySystem/EntityManager.h"
+#include "../ComponentSystem/InputSystem.h"
+#include "../ComponentSystem/MovementSystem.h"
+#include "../ComponentSystem/RenderSystem.h"
+
+Application::~Application() = default;
+
+bool Application::Init()
+{
+    SDL_Init(SDL_INIT_VIDEO);
+
+    m_Window = SDL_CreateWindow(
+        "Sub-Terrania Flight Demo (Phase 1)",
+        SDL_WINDOWPOS_CENTERED,
+        SDL_WINDOWPOS_CENTERED,
+        800, 600,
+        0
+    );
+
+    m_Renderer = SDL_CreateRenderer(m_Window, -1, SDL_RENDERER_ACCELERATED);
+
+    m_Entities = std::make_unique<EntityManager>();
+
+    // Create player ship
+    auto ship = m_Entities->CreateEntity();
+    m_Entities->AddTransform(ship);
+    m_Entities->AddVelocity(ship);
+    m_Entities->AddRenderable(ship);
+
+    return true;
+}
+
+void Application::Run()
+{
+    InputSystem input;
+    MovementSystem movement;
+    RenderSystem render;
+
+    const float dt = 1.0f / 60.0f;
+
+    while (m_Running)
+    {
+        SDL_Event e;
+        while (SDL_PollEvent(&e))
+        {
+            if (e.type == SDL_QUIT)
+                m_Running = false;
+        }
+
+        input.Update(*m_Entities, dt);
+        movement.Update(*m_Entities, dt);
+
+        SDL_SetRenderDrawColor(m_Renderer, 15, 15, 20, 255);
+        SDL_RenderClear(m_Renderer);
+
+        render.Render(*m_Entities, m_Renderer);
+
+        SDL_RenderPresent(m_Renderer);
+        SDL_Delay(16);
+    }
+}
+
+void Application::Shutdown()
+{
+    SDL_DestroyRenderer(m_Renderer);
+    SDL_DestroyWindow(m_Window);
+    SDL_Quit();
+}
+
+
+
+===== FILE: ./ECS/Core/Application.h =====
+#pragma once
+#include "../EntitySystem/EntityManager.h"
+
+#include <SDL2/SDL.h>
+#include <memory>
+
+class EntityManager; // forward declaration is OK
+
+class Application
+{
+public:
+    Application() = default;
+    ~Application();
+
+    bool Init();
+    void Run();
+    void Shutdown();
+
+private:
+    SDL_Window* m_Window{nullptr};
+    SDL_Renderer* m_Renderer{nullptr};
+    bool m_Running{true};
+
+    std::unique_ptr<EntityManager> m_Entities;
+};
+
+
+
+===== FILE: ./ECS/Core/Main.cpp =====
+#include "Application.h"
+
+int main()
+{
+    Application app;
+    app.Init();
+    app.Run();
+    app.Shutdown();
+    return 0;
+}
+
+
+
+===== FILE: ./ECS/EntitySystem/EntityComponent.cpp =====
+
+
+===== FILE: ./ECS/EntitySystem/EntityComponent.h =====
+
+
+===== FILE: ./ECS/EntitySystem/EntityComponentSystem.h =====
+
+
+===== FILE: ./ECS/EntitySystem/Entity.cpp =====
+
+
+===== FILE: ./ECS/EntitySystem/Entity.h =====
+#pragma once
+#include "EntitySystemTypes.h"
+
+// Entity
+// ------
+// Lightweight handle.
+// This stays trivial on purpose.
+//
+struct Entity
+{
+    EntityID id;
+};
+
+
+
+===== FILE: ./ECS/EntitySystem/EntityManager.cpp =====
+#include "EntityManager.h"
+
+Entity EntityManager::CreateEntity()
+{
+    Entity e{m_NextID++};
+    m_Entities.push_back(e);
+    return e;
+}
+
+void EntityManager::AddTransform(Entity e)
+{
+    m_Transforms[e.id] = {};
+}
+
+void EntityManager::AddVelocity(Entity e)
+{
+    m_Velocities[e.id] = {};
+}
+
+void EntityManager::AddRenderable(Entity e)
+{
+    m_Renderables[e.id] = {};
+}
+
+bool EntityManager::HasTransform(Entity e) const
+{
+    return m_Transforms.count(e.id) != 0;
+}
+
+bool EntityManager::HasVelocity(Entity e) const
+{
+    return m_Velocities.count(e.id) != 0;
+}
+
+bool EntityManager::HasRenderable(Entity e) const
+{
+    return m_Renderables.count(e.id) != 0;
+}
+
+TransformComponent& EntityManager::GetTransform(Entity e)
+{
+    return m_Transforms.at(e.id);
+}
+
+VelocityComponent& EntityManager::GetVelocity(Entity e)
+{
+    return m_Velocities.at(e.id);
+}
+
+Renderable& EntityManager::GetRenderable(Entity e)
+{
+    return m_Renderables.at(e.id);
+}
+
+
+
+===== FILE: ./ECS/EntitySystem/EntityManager.h =====
+#pragma once
+
+#include "Entity.h"
+#include "../Components/TransformComponent.h"
+#include "../Components/VelocityComponent.h"
+#include "../Components/Renderable.h"
+
+#include <unordered_map>
+#include <vector>
+
+// EntityManager
+// -------------
+// Owns:
+// - entity creation
+// - component storage
+//
+// This is intentionally naïve for teaching.
+//
+class EntityManager
+{
+public:
+    Entity CreateEntity();
+
+    // Component attachment
+    void AddTransform(Entity e);
+    void AddVelocity(Entity e);
+    void AddRenderable(Entity e);
+
+    // Component queries
+    bool HasTransform(Entity e) const;
+    bool HasVelocity(Entity e) const;
+    bool HasRenderable(Entity e) const;
+
+    // Component access
+    TransformComponent& GetTransform(Entity e);
+    VelocityComponent& GetVelocity(Entity e);
+    Renderable& GetRenderable(Entity e);
+
+    const std::vector<Entity>& GetEntities() const { return m_Entities; }
+
+private:
+    EntityID m_NextID{1};
+    std::vector<Entity> m_Entities;
+
+    std::unordered_map<EntityID, TransformComponent> m_Transforms;
+    std::unordered_map<EntityID, VelocityComponent> m_Velocities;
+    std::unordered_map<EntityID, Renderable> m_Renderables;
+};
+
+
+
+===== FILE: ./ECS/EntitySystem/EntitySystemTypes.h =====
+#pragma once
+#include <cstdint>
+
+// In a simple ECS, an entity is just an ID.
+// No vtables. No inheritance.
+using EntityID = std::uint32_t;
+
+
+

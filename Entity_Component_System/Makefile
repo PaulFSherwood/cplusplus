@@ -24,8 +24,12 @@ endif
 
 # --- Project structure ---
 SOURCES = \
-		ECS/Core/Application.cpp \
-    ECS/Core/Main.cpp
+    ECS/Core/Application.cpp \
+    ECS/Core/Main.cpp \
+    ECS/EntitySystem/EntityManager.cpp \
+    ECS/ComponentSystem/InputSystem.cpp \
+    ECS/ComponentSystem/MovementSystem.cpp \
+    ECS/ComponentSystem/RenderSystem.cpp
 
 OBJECTS = $(SOURCES:.cpp=.o)
 TARGET = ecs-prototype
