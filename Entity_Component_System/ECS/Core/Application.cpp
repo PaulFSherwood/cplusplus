@@ -25,26 +25,32 @@ bool Application::Init()
     m_Entities = std::make_unique<EntityManager>();
 
     // Create player ship
-    auto ship = m_Entities->CreateEntity();
+    m_Player = m_Entities->CreateEntity();
+    auto ship = m_Player;
     m_Entities->AddTransform(ship);
     m_Entities->AddVelocity(ship);
     m_Entities->AddRenderable(ship);
     m_Entities->AddCollider(ship);
     m_Entities->AddGravity(ship);
 
+    m_Levels.emplace_back(); // Level 0
+    m_Levels.emplace_back(); // Level 1 (later different map)
+
+    m_Map = m_Levels[m_CurrentLevel];
+
     float startX, startY;
     if (m_Map.FindPlayerStart(startX, startY))
     {
         auto& t = m_Entities->GetTransform(ship);
-        auto& c = m_Entities->GetCollider(ship);
-        // Place the ship ABOVE the landing tile
-        t.x = startX;
-        t.y = startY - c.height / 2.0f;
+        // auto& c = m_Entities->GetCollider(ship);
     
-        // Start landed → no gravity
+        // Place ship ABOVE the landing tile
+        t.x = startX;
+        t.y = startY;// - c.height / 2.0f;
+    
+        // Start landed
         m_Entities->RemoveGravity(ship);
     }
-
 
     return true;
 }
@@ -67,15 +73,38 @@ void Application::Run()
                 m_Running = false;
         }
 
-        input.Update(*m_Entities, dt);
+        input.Update(*m_Entities, dt, m_Camera);
         movement.Update(*m_Entities, dt);
         collision.Update(*m_Entities, m_Map);
+
+        auto& t = m_Entities->GetTransform(m_Player);
+        m_Camera.x = t.x - 400; // half of 800
+        m_Camera.y = t.y - 300; // half of 600
+
+        // if (!m_Entities->HasGravity(m_Player))
+        // {
+        //     m_CurrentLevel = (m_CurrentLevel + 1) % m_Levels.size();
+        //     m_Map = m_Levels[m_CurrentLevel];
+        // 
+        //     float sx, sy;
+        //     if (m_Map.FindPlayerStart(sx, sy))
+        //     {
+        //         auto& t = m_Entities->GetTransform(m_Player);
+        //         auto& c = m_Entities->GetCollider(m_Player);
+        //         auto& v = m_Entities->GetVelocity(m_Player);
+        // 
+        //         t.x = sx;
+        //         t.y = sy - c.height / 2.0f;
+        // 
+        //         v.vx = v.vy = 0.0f;
+        //     }
+        // }
 
         SDL_SetRenderDrawColor(m_Renderer, 15, 15, 20, 255);
         SDL_RenderClear(m_Renderer);
 
-        m_Map.Render(m_Renderer);
-        render.Render(*m_Entities, m_Renderer);
+        m_Map.Render(m_Renderer, m_Camera);
+        render.Render(*m_Entities, m_Renderer, m_Camera);
 
         SDL_RenderPresent(m_Renderer);
         SDL_Delay(16);

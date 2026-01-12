@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../EntitySystem/EntityManager.h"
+#include "../Core/Camera.h"
 
 // InputSystem
 // -----------
@@ -10,6 +11,8 @@
 class InputSystem
 {
 public:
-    void Update(EntityManager& entities, float dt);
+
+    void Update(EntityManager& entities, float dt, const Camera& cam);
+
 };
 

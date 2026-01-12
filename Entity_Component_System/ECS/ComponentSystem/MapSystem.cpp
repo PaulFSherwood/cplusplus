@@ -1,6 +1,14 @@
 #include "MapSystem.h"
 #include <string>
 
+/*
+    0 = black  → normal gravity
+    1 = brown  → solid wall (collision)
+    2 = green  → landing
+    3 = blue   → water (low / inverted gravity)
+    4 = green  → landing + start
+*/
+
 MapSystem::MapSystem()
 {
     const char* raw[] = {
@@ -24,7 +32,9 @@ MapSystem::MapSystem()
         "10000000000000000000024200000000000000000000000001",
         "10000000000000000000211120000000000000000000000001",
         "10000000022222222222211122220000000000000000000001",
-        "11111111111111111111111111111111111111111111111111"
+        "11111111111111111111111111111111000000000000000111",
+        "13333333333333333333333333333333333333333333333331",
+        "13333333333333333333333333333333333333333333333331"
     };
 
     for (auto& row : raw)
@@ -36,7 +46,7 @@ MapSystem::MapSystem()
     }
 }
 
-void MapSystem::Render(SDL_Renderer* renderer)
+void MapSystem::Render(SDL_Renderer* renderer, const Camera& cam)
 {
     for (int y = 0; y < (int)m_Map.size(); ++y)
     {
@@ -46,21 +56,22 @@ void MapSystem::Render(SDL_Renderer* renderer)
             if (tile == 0) continue;
 
             SDL_Rect r{
-                x * TILE_SIZE,
-                y * TILE_SIZE,
+                x * TILE_SIZE - (int)cam.x,
+                y * TILE_SIZE - (int)cam.y,
                 TILE_SIZE,
                 TILE_SIZE
             };
 
             if (tile == 1)
-                SDL_SetRenderDrawColor(renderer, 120, 80, 40, 255); // wall
+                SDL_SetRenderDrawColor(renderer, 120, 80, 40, 255);
             else if (tile == 2 || tile == 4)
-                SDL_SetRenderDrawColor(renderer, 50, 180, 50, 255); // landing
+                SDL_SetRenderDrawColor(renderer, 50, 180, 50, 255);
 
             SDL_RenderFillRect(renderer, &r);
         }
     }
 }
+
 
 bool MapSystem::IsSolidAt(float x, float y) const
 {
@@ -101,3 +112,13 @@ bool MapSystem::FindPlayerStart(float& outX, float& outY) const
     return false;
 }
 
+int MapSystem::GetTileAt(float x, float y) const 
+{
+    int tx = x / TILE_SIZE;
+    int ty = y / TILE_SIZE;
+
+    if (ty < 0 || ty >= (int)m_Map.size()) return 0;
+    if (tx < 0 || tx >= (int)m_Map[0].size()) return 0;
+
+    return m_Map[ty][tx];
+}

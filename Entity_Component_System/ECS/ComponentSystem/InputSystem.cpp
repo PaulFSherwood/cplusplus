@@ -1,8 +1,9 @@
 #include "InputSystem.h"
+#include "../Core/Camera.h"
 #include <SDL2/SDL.h>
 #include <cmath>
 
-void InputSystem::Update(EntityManager& entities, float dt)
+void InputSystem::Update(EntityManager& entities, float dt, const Camera& cam)
 {
     int mouseX, mouseY;
     SDL_GetMouseState(&mouseX, &mouseY);
@@ -17,9 +18,13 @@ void InputSystem::Update(EntityManager& entities, float dt)
         auto& t = entities.GetTransform(e);
         auto& v = entities.GetVelocity(e);
 
+        // Convert mouse to WORLD space
+        float worldMouseX = mouseX + cam.x;
+        float worldMouseY = mouseY + cam.y;
+
         // Rotate ship to face mouse
-        float dx = mouseX - t.x;
-        float dy = mouseY - t.y;
+        float dx = worldMouseX - t.x;
+        float dy = worldMouseY - t.y;
         t.rotation = std::atan2(dy, dx);
 
         // Thrust
