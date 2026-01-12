@@ -3,6 +3,8 @@
 #include "../ComponentSystem/InputSystem.h"
 #include "../ComponentSystem/MovementSystem.h"
 #include "../ComponentSystem/RenderSystem.h"
+#include "../ComponentSystem/MapSystem.h"
+#include "../ComponentSystem/CollisionSystem.h"
 
 Application::~Application() = default;
 
@@ -27,6 +29,22 @@ bool Application::Init()
     m_Entities->AddTransform(ship);
     m_Entities->AddVelocity(ship);
     m_Entities->AddRenderable(ship);
+    m_Entities->AddCollider(ship);
+    m_Entities->AddGravity(ship);
+
+    float startX, startY;
+    if (m_Map.FindPlayerStart(startX, startY))
+    {
+        auto& t = m_Entities->GetTransform(ship);
+        auto& c = m_Entities->GetCollider(ship);
+        // Place the ship ABOVE the landing tile
+        t.x = startX;
+        t.y = startY - c.height / 2.0f;
+    
+        // Start landed → no gravity
+        m_Entities->RemoveGravity(ship);
+    }
+
 
     return true;
 }
@@ -36,6 +54,7 @@ void Application::Run()
     InputSystem input;
     MovementSystem movement;
     RenderSystem render;
+    CollisionSystem collision;
 
     const float dt = 1.0f / 60.0f;
 
@@ -50,10 +69,12 @@ void Application::Run()
 
         input.Update(*m_Entities, dt);
         movement.Update(*m_Entities, dt);
+        collision.Update(*m_Entities, m_Map);
 
         SDL_SetRenderDrawColor(m_Renderer, 15, 15, 20, 255);
         SDL_RenderClear(m_Renderer);
 
+        m_Map.Render(m_Renderer);
         render.Render(*m_Entities, m_Renderer);
 
         SDL_RenderPresent(m_Renderer);

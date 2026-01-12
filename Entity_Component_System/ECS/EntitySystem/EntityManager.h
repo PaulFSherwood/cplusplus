@@ -3,7 +3,10 @@
 #include "Entity.h"
 #include "../Components/TransformComponent.h"
 #include "../Components/VelocityComponent.h"
+#include "../Components/ColliderComponent.h"
 #include "../Components/Renderable.h"
+#include "../Components/GravityComponent.h"
+#include "EntitySystemTypes.h"
 
 #include <unordered_map>
 #include <vector>
@@ -26,6 +29,17 @@ public:
     void AddVelocity(Entity e);
     void AddRenderable(Entity e);
 
+    // Collision
+    void AddCollider(Entity e);
+    bool HasCollider(Entity e) const;
+    ColliderComponent& GetCollider(Entity e);
+
+    // Gravity Component
+    void AddGravity(Entity e);
+    void RemoveGravity(Entity e);
+    bool HasGravity(Entity e) const;
+    GravityComponent& GetGravity(Entity e);
+
     // Component queries
     bool HasTransform(Entity e) const;
     bool HasVelocity(Entity e) const;
@@ -45,5 +59,8 @@ private:
     std::unordered_map<EntityID, TransformComponent> m_Transforms;
     std::unordered_map<EntityID, VelocityComponent> m_Velocities;
     std::unordered_map<EntityID, Renderable> m_Renderables;
+    std::unordered_map<EntityID, ColliderComponent> m_Colliders;
+    std::unordered_map<EntityID, GravityComponent> m_Gravity;
+
 };
 

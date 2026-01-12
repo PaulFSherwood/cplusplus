@@ -27,6 +27,10 @@ void InputSystem::Update(EntityManager& entities, float dt)
 
         if (keys[SDL_SCANCODE_W])
         {
+            if (!entities.HasGravity(e)) 
+            {
+                entities.AddGravity(e);
+            }
             v.vx += std::cos(t.rotation) * thrust * dt;
             v.vy += std::sin(t.rotation) * thrust * dt;
         }

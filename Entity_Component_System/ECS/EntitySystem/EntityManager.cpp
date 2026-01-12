@@ -51,4 +51,37 @@ Renderable& EntityManager::GetRenderable(Entity e)
 {
     return m_Renderables.at(e.id);
 }
+void EntityManager::AddCollider(Entity e)
+{
+    m_Colliders[e.id] = {};
+}
+
+bool EntityManager::HasCollider(Entity e) const
+{
+    return m_Colliders.count(e.id) != 0;
+}
+
+ColliderComponent& EntityManager::GetCollider(Entity e)
+{
+    return m_Colliders.at(e.id);
+}
+void EntityManager::AddGravity(Entity e)
+{
+    m_Gravity[e.id] = {};
+}
+
+void EntityManager::RemoveGravity(Entity e)
+{
+    m_Gravity.erase(e.id);
+}
+
+bool EntityManager::HasGravity(Entity e) const
+{
+    return m_Gravity.count(e.id) != 0;
+}
+
+GravityComponent& EntityManager::GetGravity(Entity e)
+{
+    return m_Gravity.at(e.id);
+}
 

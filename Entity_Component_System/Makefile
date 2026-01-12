@@ -29,7 +29,9 @@ SOURCES = \
     ECS/EntitySystem/EntityManager.cpp \
     ECS/ComponentSystem/InputSystem.cpp \
     ECS/ComponentSystem/MovementSystem.cpp \
-    ECS/ComponentSystem/RenderSystem.cpp
+    ECS/ComponentSystem/RenderSystem.cpp \
+	ECS/ComponentSystem/MapSystem.cpp \
+	ECS/ComponentSystem/CollisionSystem.cpp
 
 OBJECTS = $(SOURCES:.cpp=.o)
 TARGET = ecs-prototype
