@@ -99,6 +99,30 @@ void Application::Run()
         //         v.vx = v.vy = 0.0f;
         //     }
         // }
+        int tile = m_Map.GetTileAt(t.x, t.y);
+
+        if (m_Entities->HasGravity(m_Player))
+        {
+            auto& g = m_Entities->GetGravity(m_Player);
+        
+            switch (tile)
+            {
+                case 3: // water (blue)
+                    g.strength = -40.0f;
+                    break;
+        
+                case 0: // normal space / air
+                case 2: // green
+                case 4: // start
+                    g.strength = 120.0f;
+                    break;
+        
+                default:
+                    g.strength = 120.0f;
+                    break;
+            }
+        }
+
 
         SDL_SetRenderDrawColor(m_Renderer, 15, 15, 20, 255);
         SDL_RenderClear(m_Renderer);

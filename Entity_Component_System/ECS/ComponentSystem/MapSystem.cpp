@@ -3,10 +3,10 @@
 
 /*
     0 = black  → normal gravity
-    1 = brown  → solid wall (collision)
-    2 = green  → landing
-    3 = blue   → water (low / inverted gravity)
-    4 = green  → landing + start
+    1 = brown  → 120,  80, 40, 255 -> solid wall (collision)
+    2 = green  →  50, 180, 50, 255 -> landing
+    3 = blue   →  36,  71, 88, 128 -> water (low / inverted gravity)
+    4 = green  →  50, 180, 50, 255 -> landing + start
 */
 
 MapSystem::MapSystem()
@@ -34,7 +34,8 @@ MapSystem::MapSystem()
         "10000000022222222222211122220000000000000000000001",
         "11111111111111111111111111111111000000000000000111",
         "13333333333333333333333333333333333333333333333331",
-        "13333333333333333333333333333333333333333333333331"
+        "13333333333333333333333333333333333333333333333331",
+        "11111111111111111111111111111111111111111111111111"
     };
 
     for (auto& row : raw)
@@ -66,7 +67,8 @@ void MapSystem::Render(SDL_Renderer* renderer, const Camera& cam)
                 SDL_SetRenderDrawColor(renderer, 120, 80, 40, 255);
             else if (tile == 2 || tile == 4)
                 SDL_SetRenderDrawColor(renderer, 50, 180, 50, 255);
-
+            else if (tile == 3)
+                SDL_SetRenderDrawColor(renderer, 36,  71, 88, 128);  
             SDL_RenderFillRect(renderer, &r);
         }
     }

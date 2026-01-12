@@ -1,0 +1,937 @@
+===== FILE: ./ECS/Components/ColliderComponent.h =====
+#pragma once
+
+// ColliderComponent
+// -----------------
+// Axis-aligned bounding box for collision.
+// Kept simple on purpose.
+//
+struct ColliderComponent
+{
+    int width{20};
+    int height{10};
+};
+
+
+
+===== FILE: ./ECS/Components/GravityComponent.h =====
+#pragma once
+
+// GravityComponent
+// ----------------
+// Presence = entity is affected by gravity.
+// Absence = no gravity.
+//
+struct GravityComponent
+{
+    float strength{120.0f}; // pixels/sec²
+};
+
+
+
+===== FILE: ./ECS/Components/Renderable.h =====
+#pragma once
+
+#include <SDL2/SDL.h>
+
+// Renderable
+// ----------
+// Minimal visual representation.
+// For now: just a colored rectangle.
+//
+struct Renderable
+{
+    int width{20};
+    int height{10};
+    SDL_Color color{255, 255, 255, 255};
+};
+
+
+
+===== FILE: ./ECS/Components/TransformComponent.h =====
+#pragma once
+
+// TransformComponent
+// ------------------
+// Pure data: position + rotation.
+// No logic. No SDL. No behavior.
+//
+// In ECS:
+// - Systems READ and WRITE this
+// - Components NEVER do work themselves
+//
+struct TransformComponent
+{
+    float x{400.0f};   // screen-space position
+    float y{300.0f};
+    float rotation{0.0f}; // radians
+};
+
+
+
+===== FILE: ./ECS/Components/VelocityComponent.h =====
+#pragma once
+
+// VelocityComponent
+// -----------------
+// Stores movement state (inertia).
+// This is what gives Sub-Terrania / Asteroids-style flight.
+//
+struct VelocityComponent
+{
+    float vx{0.0f};
+    float vy{0.0f};
+};
+
+
+
+===== FILE: ./ECS/ComponentSystem/CollisionSystem.cpp =====
+#include "CollisionSystem.h"
+#include <cmath>
+
+// void CollisionSystem::Update(EntityManager& entities, MapSystem& map)
+// {
+//     for (auto e : entities.GetEntities())
+//     {
+//         if (!entities.HasTransform(e) || !entities.HasCollider(e))
+//             continue;
+// 
+//         auto& t = entities.GetTransform(e);
+// 
+//         if (map.IsSolidAt(t.x, t.y))
+//         {
+//             // Crash → reset
+//             t.x = 400;
+//             t.y = 300;
+// 
+//             if (entities.HasVelocity(e))
+//             {
+//                 auto& v = entities.GetVelocity(e);
+//                 v.vx = v.vy = 0.0f;
+//             }
+//         }
+//     }
+// }
+
+
+void CollisionSystem::Update(EntityManager& entities, MapSystem& map)
+{
+    const float MAX_LANDING_SPEED = 60.0f; // safe vertical speed
+
+    for (auto e : entities.GetEntities())
+    {
+        if (!entities.HasTransform(e) || !entities.HasCollider(e))
+            continue;
+
+        auto& t = entities.GetTransform(e);
+
+        // solid wall = crash
+        if (map.IsSolidAt(t.x, t.y))
+        {
+            t.x = 400;
+            t.y = 300;
+
+            if (entities.HasVelocity(e))
+            {
+                auto& v = entities.GetVelocity(e);
+                v.vx = 0.0f;
+                v.vy = 0.0f;
+            }
+            continue;
+        }
+
+        // landing zone
+        if (map.IsLandingAt(t.x, t.y) && entities.HasVelocity(e))
+        {
+            auto& v = entities.GetVelocity(e);
+            auto& c = entities.GetCollider(e);
+        
+            // bottom of ship
+            float shipBottom = t.y + c.height / 2.0f;
+        
+            // top of tile
+            float tileTop =
+                (int(t.y / MapSystem::TILE_SIZE)) * MapSystem::TILE_SIZE;
+        
+            // Safe landing
+            if (std::abs(v.vy) <= MAX_LANDING_SPEED)
+            {
+                // Snap ship on top of the tile (no overlap)
+                t.y = tileTop - c.height / 2.0f;
+        
+                v.vx = 0.0f;
+                v.vy = 0.0f;
+        
+                entities.RemoveGravity(e);
+            }
+            else
+            {
+                // Too fast → crash
+                t.x = 400;
+                t.y = 300;
+                v.vx = 0.0f;
+                v.vy = 0.0f;
+            }
+        }
+
+    }
+}
+
+
+
+===== FILE: ./ECS/ComponentSystem/CollisionSystem.h =====
+#pragma once
+#include "../EntitySystem/EntityManager.h"
+#include "MapSystem.h"
+
+class CollisionSystem
+{
+public:
+    void Update(EntityManager& entities, MapSystem& map);
+};
+
+
+
+===== FILE: ./ECS/ComponentSystem/InputSystem.cpp =====
+#include "InputSystem.h"
+#include "../Core/Camera.h"
+#include <SDL2/SDL.h>
+#include <cmath>
+
+void InputSystem::Update(EntityManager& entities, float dt, const Camera& cam)
+{
+    int mouseX, mouseY;
+    SDL_GetMouseState(&mouseX, &mouseY);
+
+    const Uint8* keys = SDL_GetKeyboardState(nullptr);
+
+    for (auto e : entities.GetEntities())
+    {
+        if (!entities.HasTransform(e) || !entities.HasVelocity(e))
+            continue;
+
+        auto& t = entities.GetTransform(e);
+        auto& v = entities.GetVelocity(e);
+
+        // Convert mouse to WORLD space
+        float worldMouseX = mouseX + cam.x;
+        float worldMouseY = mouseY + cam.y;
+
+        // Rotate ship to face mouse
+        float dx = worldMouseX - t.x;
+        float dy = worldMouseY - t.y;
+        t.rotation = std::atan2(dy, dx);
+
+        // Thrust
+        const float thrust = 200.0f;
+
+        if (keys[SDL_SCANCODE_W])
+        {
+            if (!entities.HasGravity(e)) 
+            {
+                entities.AddGravity(e);
+            }
+            v.vx += std::cos(t.rotation) * thrust * dt;
+            v.vy += std::sin(t.rotation) * thrust * dt;
+        }
+        if (keys[SDL_SCANCODE_S])
+        {
+            v.vx *= 0.98f;
+            v.vy *= 0.98f;
+        }
+    }
+}
+
+
+
+===== FILE: ./ECS/ComponentSystem/InputSystem.h =====
+#pragma once
+
+#include "../EntitySystem/EntityManager.h"
+#include "../Core/Camera.h"
+
+// InputSystem
+// -----------
+// Converts player input into velocity changes.
+// This is where "control" lives.
+//
+class InputSystem
+{
+public:
+
+    void Update(EntityManager& entities, float dt, const Camera& cam);
+
+};
+
+
+
+===== FILE: ./ECS/ComponentSystem/MapSystem.cpp =====
+#include "MapSystem.h"
+#include <string>
+
+/*
+    0 = black  → normal gravity
+    1 = brown  → 120,  80, 40, 255 -> solid wall (collision)
+    2 = green  →  50, 180, 50, 255 -> landing
+    3 = blue   →  36,  71, 88, 128 -> water (low / inverted gravity)
+    4 = green  →  50, 180, 50, 255 -> landing + start
+*/
+
+MapSystem::MapSystem()
+{
+    const char* raw[] = {
+        "11111111111111111111111111111111111111111111111111",
+        "10000000000000000000000000000000000000000000000001",
+        "10000000000000000000000000000000000000000000000001",
+        "10000000000000000000000000000000000000000000000001",
+        "10000000000000000000000000000000000000000000000001",
+        "10000000000000000000000000000000000000000000000001",
+        "10000000000000000000000000000000000000000000000001",
+        "10000000000000000000000000000000000000000000000001",
+        "10000000000000000000000000000000000000000000000001",
+        "10000000000000000000000000000000000000000000000001",
+        "10000000000000000000000000000000000000000000000001",
+        "10000000000000000000000000000000000000000000000001",
+        "10000000000000000000000000000000000000000000000001",
+        "10000000000000000000000000000000000000000000000001",
+        "10000000000000000000000000000000000000000000000001",
+        "10000000000000000000000000000000000000000000000001",
+        "10000000000000000000000000000000000000000000000001",
+        "10000000000000000000024200000000000000000000000001",
+        "10000000000000000000211120000000000000000000000001",
+        "10000000022222222222211122220000000000000000000001",
+        "11111111111111111111111111111111000000000000000111",
+        "13333333333333333333333333333333333333333333333331",
+        "13333333333333333333333333333333333333333333333331",
+        "11111111111111111111111111111111111111111111111111"
+    };
+
+    for (auto& row : raw)
+    {
+        std::vector<int> line;
+        for (char c : std::string(row))
+            line.push_back(c - '0');
+        m_Map.push_back(line);
+    }
+}
+
+void MapSystem::Render(SDL_Renderer* renderer, const Camera& cam)
+{
+    for (int y = 0; y < (int)m_Map.size(); ++y)
+    {
+        for (int x = 0; x < (int)m_Map[y].size(); ++x)
+        {
+            int tile = m_Map[y][x];
+            if (tile == 0) continue;
+
+            SDL_Rect r{
+                x * TILE_SIZE - (int)cam.x,
+                y * TILE_SIZE - (int)cam.y,
+                TILE_SIZE,
+                TILE_SIZE
+            };
+
+            if (tile == 1)
+                SDL_SetRenderDrawColor(renderer, 120, 80, 40, 255);
+            else if (tile == 2 || tile == 4)
+                SDL_SetRenderDrawColor(renderer, 50, 180, 50, 255);
+            else if (tile == 3)
+                SDL_SetRenderDrawColor(renderer, 36,  71, 88, 128);  
+            SDL_RenderFillRect(renderer, &r);
+        }
+    }
+}
+
+
+bool MapSystem::IsSolidAt(float x, float y) const
+{
+    int tx = x / TILE_SIZE;
+    int ty = y / TILE_SIZE;
+
+    if (ty < 0 || ty >= (int)m_Map.size()) return true;
+    if (tx < 0 || tx >= (int)m_Map[0].size()) return true;
+
+    return m_Map[ty][tx] == 1;
+}
+
+bool MapSystem::IsLandingAt(float x, float y) const
+{
+    int tx = x / TILE_SIZE;
+    int ty = y / TILE_SIZE;
+
+    if (ty < 0 || ty >= (int)m_Map.size()) return false;
+    if (tx < 0 || tx >= (int)m_Map[0].size()) return false;
+
+    return m_Map[ty][tx] == 2 || m_Map[ty][tx] == 4;
+}
+
+bool MapSystem::FindPlayerStart(float& outX, float& outY) const
+{
+    for (int y = 0; y < (int)m_Map.size(); ++y)
+    {
+        for (int x = 0; x < (int)m_Map[y].size(); ++x)
+        {
+            if (m_Map[y][x] == 4)
+            {
+                outX = x * TILE_SIZE + TILE_SIZE / 2.0f;
+                outY = y * TILE_SIZE + TILE_SIZE / 2.0f;
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+int MapSystem::GetTileAt(float x, float y) const 
+{
+    int tx = x / TILE_SIZE;
+    int ty = y / TILE_SIZE;
+
+    if (ty < 0 || ty >= (int)m_Map.size()) return 0;
+    if (tx < 0 || tx >= (int)m_Map[0].size()) return 0;
+
+    return m_Map[ty][tx];
+}
+
+
+===== FILE: ./ECS/ComponentSystem/MapSystem.h =====
+#pragma once
+#include "../Core/Camera.h"
+
+#include <vector>
+#include <SDL2/SDL.h>
+
+class MapSystem
+{
+public:
+    static constexpr int TILE_SIZE = 32;
+    void Render(SDL_Renderer* renderer, const Camera& cam);
+
+    MapSystem();
+
+    bool IsSolidAt(float x, float y) const;
+    bool IsLandingAt(float x, float y) const;
+    bool FindPlayerStart(float& outX, float& outY) const;
+
+    int GetTileAt(float x, float y) const;
+
+private:
+    std::vector<std::vector<int>> m_Map;
+};
+
+
+
+===== FILE: ./ECS/ComponentSystem/MovementSystem.cpp =====
+#include "MovementSystem.h"
+
+// void MovementSystem::Update(EntityManager& entities, float dt)
+// {
+//     const float GRAVITY = 120.0f; // pixels/sec² (tweakable)
+// 
+//     for (auto e : entities.GetEntities())
+//     {
+//         if (!entities.HasTransform(e) || !entities.HasVelocity(e))
+//             continue;
+// 
+//         auto& t = entities.GetTransform(e);
+//         auto& v = entities.GetVelocity(e);
+// 
+//         // gravity pulls down
+//         v.vy += GRAVITY * dt;
+// 
+//         t.x += v.vx * dt;
+//         t.y += v.vy * dt;
+//     }
+// }
+
+void MovementSystem::Update(EntityManager& entities, float dt)
+{
+    for (auto e : entities.GetEntities())
+    {
+        if (!entities.HasTransform(e) || !entities.HasVelocity(e))
+            continue;
+
+        auto& t = entities.GetTransform(e);
+        auto& v = entities.GetVelocity(e);
+
+        // Apply gravity only if entity has GravityComponent
+        if (entities.HasGravity(e))
+        {
+            auto& g = entities.GetGravity(e);
+            v.vy += g.strength * dt;
+        }
+
+        t.x += v.vx * dt;
+        t.y += v.vy * dt;
+    }
+}
+
+
+
+===== FILE: ./ECS/ComponentSystem/MovementSystem.h =====
+#pragma once
+
+#include "../EntitySystem/EntityManager.h"
+
+// MovementSystem
+// --------------
+// Applies velocity to position.
+//
+class MovementSystem
+{
+public:
+    void Update(EntityManager& entities, float dt);
+};
+
+
+
+===== FILE: ./ECS/ComponentSystem/RenderSystem.cpp =====
+#include "RenderSystem.h"
+#include <cmath>
+
+void RenderSystem::Render(EntityManager& entities, SDL_Renderer* renderer, const Camera& cam)
+{
+    for (auto e : entities.GetEntities())
+    {
+        if (!entities.HasTransform(e) || !entities.HasRenderable(e))
+            continue;
+
+        auto& t = entities.GetTransform(e);
+        auto& r = entities.GetRenderable(e);
+
+        SDL_Rect rect{
+            (int)(t.x - r.width / 2 - cam.x),
+            (int)(t.y - r.height / 2 - cam.y),
+            r.width,
+            r.height
+        };
+
+        SDL_SetRenderDrawColor(renderer, r.color.r, r.color.g, r.color.b, r.color.a);
+        SDL_RenderFillRect(renderer, &rect);
+    }
+}
+
+
+
+===== FILE: ./ECS/ComponentSystem/RenderSystem.h =====
+#pragma once
+
+#include "../EntitySystem/EntityManager.h"
+#include "../Core/Camera.h"
+#include <SDL2/SDL.h>
+
+class RenderSystem
+{
+public:
+
+    void Render(EntityManager& entities, SDL_Renderer* renderer, const Camera& cam);
+
+};
+
+
+
+===== FILE: ./ECS/Core/Application.cpp =====
+#include "Application.h"
+#include "../EntitySystem/EntityManager.h"
+#include "../ComponentSystem/InputSystem.h"
+#include "../ComponentSystem/MovementSystem.h"
+#include "../ComponentSystem/RenderSystem.h"
+#include "../ComponentSystem/MapSystem.h"
+#include "../ComponentSystem/CollisionSystem.h"
+
+Application::~Application() = default;
+
+bool Application::Init()
+{
+    SDL_Init(SDL_INIT_VIDEO);
+
+    m_Window = SDL_CreateWindow(
+        "Sub-Terrania Flight Demo (Phase 1)",
+        SDL_WINDOWPOS_CENTERED,
+        SDL_WINDOWPOS_CENTERED,
+        800, 600,
+        0
+    );
+
+    m_Renderer = SDL_CreateRenderer(m_Window, -1, SDL_RENDERER_ACCELERATED);
+
+    m_Entities = std::make_unique<EntityManager>();
+
+    // Create player ship
+    m_Player = m_Entities->CreateEntity();
+    auto ship = m_Player;
+    m_Entities->AddTransform(ship);
+    m_Entities->AddVelocity(ship);
+    m_Entities->AddRenderable(ship);
+    m_Entities->AddCollider(ship);
+    m_Entities->AddGravity(ship);
+
+    m_Levels.emplace_back(); // Level 0
+    m_Levels.emplace_back(); // Level 1 (later different map)
+
+    m_Map = m_Levels[m_CurrentLevel];
+
+    float startX, startY;
+    if (m_Map.FindPlayerStart(startX, startY))
+    {
+        auto& t = m_Entities->GetTransform(ship);
+        // auto& c = m_Entities->GetCollider(ship);
+    
+        // Place ship ABOVE the landing tile
+        t.x = startX;
+        t.y = startY;// - c.height / 2.0f;
+    
+        // Start landed
+        m_Entities->RemoveGravity(ship);
+    }
+
+    return true;
+}
+
+void Application::Run()
+{
+    InputSystem input;
+    MovementSystem movement;
+    RenderSystem render;
+    CollisionSystem collision;
+
+    const float dt = 1.0f / 60.0f;
+
+    while (m_Running)
+    {
+        SDL_Event e;
+        while (SDL_PollEvent(&e))
+        {
+            if (e.type == SDL_QUIT)
+                m_Running = false;
+        }
+
+        input.Update(*m_Entities, dt, m_Camera);
+        movement.Update(*m_Entities, dt);
+        collision.Update(*m_Entities, m_Map);
+
+        auto& t = m_Entities->GetTransform(m_Player);
+        m_Camera.x = t.x - 400; // half of 800
+        m_Camera.y = t.y - 300; // half of 600
+
+        // if (!m_Entities->HasGravity(m_Player))
+        // {
+        //     m_CurrentLevel = (m_CurrentLevel + 1) % m_Levels.size();
+        //     m_Map = m_Levels[m_CurrentLevel];
+        // 
+        //     float sx, sy;
+        //     if (m_Map.FindPlayerStart(sx, sy))
+        //     {
+        //         auto& t = m_Entities->GetTransform(m_Player);
+        //         auto& c = m_Entities->GetCollider(m_Player);
+        //         auto& v = m_Entities->GetVelocity(m_Player);
+        // 
+        //         t.x = sx;
+        //         t.y = sy - c.height / 2.0f;
+        // 
+        //         v.vx = v.vy = 0.0f;
+        //     }
+        // }
+        int tile = m_Map.GetTileAt(t.x, t.y);
+
+        if (m_Entities->HasGravity(m_Player))
+        {
+            auto& g = m_Entities->GetGravity(m_Player);
+        
+            switch (tile)
+            {
+                case 3: // water (blue)
+                    g.strength = -40.0f;
+                    break;
+        
+                case 0: // normal space / air
+                case 2: // green
+                case 4: // start
+                    g.strength = 120.0f;
+                    break;
+        
+                default:
+                    g.strength = 120.0f;
+                    break;
+            }
+        }
+
+
+        SDL_SetRenderDrawColor(m_Renderer, 15, 15, 20, 255);
+        SDL_RenderClear(m_Renderer);
+
+        m_Map.Render(m_Renderer, m_Camera);
+        render.Render(*m_Entities, m_Renderer, m_Camera);
+
+        SDL_RenderPresent(m_Renderer);
+        SDL_Delay(16);
+    }
+}
+
+void Application::Shutdown()
+{
+    SDL_DestroyRenderer(m_Renderer);
+    SDL_DestroyWindow(m_Window);
+    SDL_Quit();
+}
+
+
+
+===== FILE: ./ECS/Core/Application.h =====
+#pragma once
+#include "../EntitySystem/EntityManager.h"
+#include "../ComponentSystem/MapSystem.h"
+#include "Camera.h"
+
+#include <SDL2/SDL.h>
+#include <memory>
+
+class EntityManager; // forward declaration is OK
+
+class Application
+{
+public:
+    Application() = default;
+    ~Application();
+
+    bool Init();
+    void Run();
+    void Shutdown();
+
+private:
+    SDL_Window* m_Window{nullptr};
+    SDL_Renderer* m_Renderer{nullptr};
+    bool m_Running{true};
+    MapSystem m_Map;
+    Entity m_Player;
+    Camera m_Camera;
+
+    int m_CurrentLevel{0};
+    std::unique_ptr<EntityManager> m_Entities;
+    std::vector<MapSystem> m_Levels;
+};
+
+
+
+===== FILE: ./ECS/Core/Camera.h =====
+#pragma once
+
+struct Camera
+{
+    float x{0};
+    float y{0};
+};
+
+
+
+===== FILE: ./ECS/Core/Main.cpp =====
+#include "Application.h"
+
+int main()
+{
+    Application app;
+    app.Init();
+    app.Run();
+    app.Shutdown();
+    return 0;
+}
+
+
+
+===== FILE: ./ECS/EntitySystem/EntityComponent.cpp =====
+
+
+===== FILE: ./ECS/EntitySystem/EntityComponent.h =====
+
+
+===== FILE: ./ECS/EntitySystem/EntityComponentSystem.h =====
+
+
+===== FILE: ./ECS/EntitySystem/Entity.cpp =====
+
+
+===== FILE: ./ECS/EntitySystem/Entity.h =====
+#pragma once
+#include "EntitySystemTypes.h"
+
+// Entity
+// ------
+// Lightweight handle.
+// This stays trivial on purpose.
+//
+struct Entity
+{
+    EntityID id;
+};
+
+
+
+===== FILE: ./ECS/EntitySystem/EntityManager.cpp =====
+#include "EntityManager.h"
+
+Entity EntityManager::CreateEntity()
+{
+    Entity e{m_NextID++};
+    m_Entities.push_back(e);
+    return e;
+}
+
+void EntityManager::AddTransform(Entity e)
+{
+    m_Transforms[e.id] = {};
+}
+
+void EntityManager::AddVelocity(Entity e)
+{
+    m_Velocities[e.id] = {};
+}
+
+void EntityManager::AddRenderable(Entity e)
+{
+    m_Renderables[e.id] = {};
+}
+
+bool EntityManager::HasTransform(Entity e) const
+{
+    return m_Transforms.count(e.id) != 0;
+}
+
+bool EntityManager::HasVelocity(Entity e) const
+{
+    return m_Velocities.count(e.id) != 0;
+}
+
+bool EntityManager::HasRenderable(Entity e) const
+{
+    return m_Renderables.count(e.id) != 0;
+}
+
+TransformComponent& EntityManager::GetTransform(Entity e)
+{
+    return m_Transforms.at(e.id);
+}
+
+VelocityComponent& EntityManager::GetVelocity(Entity e)
+{
+    return m_Velocities.at(e.id);
+}
+
+Renderable& EntityManager::GetRenderable(Entity e)
+{
+    return m_Renderables.at(e.id);
+}
+void EntityManager::AddCollider(Entity e)
+{
+    m_Colliders[e.id] = {};
+}
+
+bool EntityManager::HasCollider(Entity e) const
+{
+    return m_Colliders.count(e.id) != 0;
+}
+
+ColliderComponent& EntityManager::GetCollider(Entity e)
+{
+    return m_Colliders.at(e.id);
+}
+void EntityManager::AddGravity(Entity e)
+{
+    m_Gravity[e.id] = {};
+}
+
+void EntityManager::RemoveGravity(Entity e)
+{
+    m_Gravity.erase(e.id);
+}
+
+bool EntityManager::HasGravity(Entity e) const
+{
+    return m_Gravity.count(e.id) != 0;
+}
+
+GravityComponent& EntityManager::GetGravity(Entity e)
+{
+    return m_Gravity.at(e.id);
+}
+
+
+
+===== FILE: ./ECS/EntitySystem/EntityManager.h =====
+#pragma once
+
+#include "Entity.h"
+#include "../Components/TransformComponent.h"
+#include "../Components/VelocityComponent.h"
+#include "../Components/ColliderComponent.h"
+#include "../Components/Renderable.h"
+#include "../Components/GravityComponent.h"
+#include "EntitySystemTypes.h"
+
+#include <unordered_map>
+#include <vector>
+
+// EntityManager
+// -------------
+// Owns:
+// - entity creation
+// - component storage
+//
+// This is intentionally naïve for teaching.
+//
+class EntityManager
+{
+public:
+    Entity CreateEntity();
+
+    // Component attachment
+    void AddTransform(Entity e);
+    void AddVelocity(Entity e);
+    void AddRenderable(Entity e);
+
+    // Collision
+    void AddCollider(Entity e);
+    bool HasCollider(Entity e) const;
+    ColliderComponent& GetCollider(Entity e);
+
+    // Gravity Component
+    void AddGravity(Entity e);
+    void RemoveGravity(Entity e);
+    bool HasGravity(Entity e) const;
+    GravityComponent& GetGravity(Entity e);
+
+    // Component queries
+    bool HasTransform(Entity e) const;
+    bool HasVelocity(Entity e) const;
+    bool HasRenderable(Entity e) const;
+
+    // Component access
+    TransformComponent& GetTransform(Entity e);
+    VelocityComponent& GetVelocity(Entity e);
+    Renderable& GetRenderable(Entity e);
+
+    const std::vector<Entity>& GetEntities() const { return m_Entities; }
+
+private:
+    EntityID m_NextID{1};
+    std::vector<Entity> m_Entities;
+
+    std::unordered_map<EntityID, TransformComponent> m_Transforms;
+    std::unordered_map<EntityID, VelocityComponent> m_Velocities;
+    std::unordered_map<EntityID, Renderable> m_Renderables;
+    std::unordered_map<EntityID, ColliderComponent> m_Colliders;
+    std::unordered_map<EntityID, GravityComponent> m_Gravity;
+
+};
+
+
+
+===== FILE: ./ECS/EntitySystem/EntitySystemTypes.h =====
+#pragma once
+#include <cstdint>
+
+// In a simple ECS, an entity is just an ID.
+// No vtables. No inheritance.
+using EntityID = std::uint32_t;
+
+
+
