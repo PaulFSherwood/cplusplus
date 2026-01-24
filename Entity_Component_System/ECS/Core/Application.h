@@ -25,6 +25,8 @@ private:
     MapSystem m_Map;
     Entity m_Player;
     Camera m_Camera;
+    int HEIGHT = 600;
+    int WIDTH = 800;
 
     int m_CurrentLevel{0};
     std::unique_ptr<EntityManager> m_Entities;

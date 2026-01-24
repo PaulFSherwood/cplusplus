@@ -16,7 +16,7 @@ bool Application::Init()
         "Sub-Terrania Flight Demo (Phase 1)",
         SDL_WINDOWPOS_CENTERED,
         SDL_WINDOWPOS_CENTERED,
-        800, 600,
+        WIDTH, HEIGHT,
         0
     );
 
@@ -66,21 +66,31 @@ void Application::Run()
 
     while (m_Running)
     {
+        // Look at each event
         SDL_Event e;
+        // If the event is to quit, then quit
         while (SDL_PollEvent(&e))
         {
             if (e.type == SDL_QUIT)
                 m_Running = false;
         }
 
+        // Update the input (get the mouse, update the ship based on current movement) 
         input.Update(*m_Entities, dt, m_Camera);
+        // update the movement (apply gravity)
         movement.Update(*m_Entities, dt);
+        // Update collision (Check speed, and certain cells for damage)
         collision.Update(*m_Entities, m_Map);
-
+        // Get the current ships position
         auto& t = m_Entities->GetTransform(m_Player);
+        // Move the camera to the center of the ship (will move past the end of a wall.)
         m_Camera.x = t.x - 400; // half of 800
         m_Camera.y = t.y - 300; // half of 600
-
+        // Adjust camera so it doesn't overrun the screen.
+        if (m_Camera.x < 0) { m_Camera.x = 0; } 
+        if (m_Camera.y < 0) { m_Camera.y = 0; } 
+        if (m_Camera.x > WIDTH) { m_Camera.x = WIDTH; } 
+        if (m_Camera.y > HEIGHT) { m_Camera.y = HEIGHT; } 
         // if (!m_Entities->HasGravity(m_Player))
         // {
         //     m_CurrentLevel = (m_CurrentLevel + 1) % m_Levels.size();
@@ -99,12 +109,13 @@ void Application::Run()
         //         v.vx = v.vy = 0.0f;
         //     }
         // }
+        // Get the current tile under the ship.
         int tile = m_Map.GetTileAt(t.x, t.y);
 
         if (m_Entities->HasGravity(m_Player))
         {
             auto& g = m_Entities->GetGravity(m_Player);
-        
+            // Based on the tile do differnt things. 
             switch (tile)
             {
                 case 3: // water (blue)
