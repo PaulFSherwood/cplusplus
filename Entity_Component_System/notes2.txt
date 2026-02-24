@@ -1,0 +1,96 @@
+==================================================
+Code flow:
+==================================================
+
+BOOT
+↓
+CREATE WORLD
+↓
+GAME LOOP
+   INPUT
+   UPDATE
+   COLLISION
+   RENDER
+↓
+SHUTDOWN
+
+
+==================================================
+ECS Loop Mnemonic:
+==================================================
+
+IMCR
+Input
+Movement
+Collision
+Render
+
+Poll Input
+Apply Movement
+Resolve Collision
+Render Scene
+
+
+==================================================
+Components Mnemonic
+==================================================
+- Transform
+- Velocity
+- Collider
+- Renderable
+- Gravity
+
+TVCRG
+
+Transform -> Velocity -> Collider -> Render -> Gravity
+They describe:
+- Where
+- How fast
+- What hits
+- How drawn
+- What pulls
+
+
+==================================================
+Systems Mnemonics
+==================================================
+- InputSystem
+- MovementSystem
+- CollisionSystem
+- MapSystem
+
+IMCRM
+
+Input
+Movement
+Collision
+Render
+Map
+
+
+==================================================
+Entity Manager Pattern
+==================================================
+- CreateEntity()
+- AddTransform()
+- AddVelocity()
+- AddRenderable()
+- AddCollider()
+- AddGravity()
+
+Manager holds maps
+Systems query maps
+
+Note:
+Entity is ID, Manager owns data, Systems Operate
+That's ECS
+
+
+==================================================
+Folder Meaning
+==================================================
+Core            => Program Flow
+EntitySystem    => Data Owndership
+Components      => Raw Data
+Systems         => Behavior
+
