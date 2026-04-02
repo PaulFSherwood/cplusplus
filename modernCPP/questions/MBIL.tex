@@ -548,6 +548,258 @@ Examples:
 % ==============================================================================================================
 % 14 
 % ==============================================================================================================
+\section{Fault management architecture}
+
+Fault handling should not be hidden inside random subsystem code. 
+
+Create a dedicated \textbf{Fault Engine}. 
+
+\textbf{Fault Engine responsibilities}
+\begin{itemize}
+   \item Load defined fault scenarios
+   \item Activate faults at configured ticks
+   \item Match faults to subsystems/messages
+   \item Apply behavior changes
+   \item Report activation and resolution events
+\end{itemize}
+
+\textbf{Fault definition examples}
+
+Each fault should define:
+\begin{itemize}
+   \item \hl{fault\_id}
+   \item \hl{type}
+   \item \hl{target}
+   \item \hl{start\_tick}
+   \item \hl{end\_tick} or duration
+   \item \hl{condition}
+   \item \hl{effect}
+   \item \hl{severity}
+\end{itemize}
+
+\textbf{Example fault types in config}
+\begin{itemize}
+   \item subsystem offline
+   \item drope all heartbeat messages from MC1
+   \item delay temperature sensor messages by 3 ticks
+   \item corrupt altitude sensor payload
+   \item drop every third message from a source
+\end{itemize}
+
+\begin{center}
+\rule{0.9\textwidth}{1pt}
+\end{center}
+% ==============================================================================================================
+% 15 
+% ==============================================================================================================
+\section{Redundancy and failover design}
+
+This is the golden feature and should be treated seriously. 
+
+\textbf{Redundancy model}
+\begin{itemize}
+   \item MC1 is primary
+   \item MC2 is standby
+   \item both may receive some information
+   \item only one is active controller at a time
+\end{itemize}
+
+\textbf{Failover trigger}
+
+MC2 should monitor MC1 heartbeat. 
+
+Example rule:
+\begin{itemize}
+   \item MC1 heartbeat expected every 2 ticks
+   \item if absent for 5 ticks, MC2 declares MC1 failed
+   \item MC2 transitions from standby to active
+\end{itemize}
+
+\textbf{Failover sequence}
+\begin{enumerate}
+   \item MC1 heartbeat stops
+   \item MC2 increments missed-heartbeat counter
+   \item threshold exceeded
+   \item MC2 logs failover event
+   \item MC2 becomes active controller
+   \item MC2 emits \hl{FAILOVER\_NOTICE}
+   \item display/status output reflects controller change
+\end{enumerate}
+
+\textbf{Recovery policy}
+
+For MVP, keep it simple: 
+\begin{itemize}
+   \item failover is one-way during a scenario
+   \item once MC2 takes over, MC1 does not automaticlly resume control 
+\end{itemize}
+
+That avoids messy arbitration logic early on\dots
+Later we can add controlled reintegration. 
+
+\begin{center}
+\rule{0.9\textwidth}{1pt}
+\end{center}
+% ==============================================================================================================
+% 16 
+% ==============================================================================================================
+\section{Observability design}
+
+This is now a major pillar of the project.
+
+MBIL should be designed so that someone can answer:
+
+\begin{itemize}
+   \item what happened
+   \item when it happened
+   \item which subsystem did it
+   \item which message was involved
+   \item what state the system was in before and after
+\end{itemize}
+
+\textbf{Observability features}
+
+\textbf{A. Structured logs}
+
+Each event logged as JSON or key-value text. 
+
+Fields should include:
+\begin{itemize}
+   \item tick
+   \item timestamp or simulated time
+   \item category
+   \item subsytem ID
+   \item event name
+   \item message ID if applicable
+   \item trace ID if applicable
+   \item severity
+   \item state summary
+\end{itemize}
+
+\textbf{B. Event tracing}
+
+Track key message lifecycle events:
+\begin{itemize}
+   \item created
+   \item queued
+   \item delayed
+   \item dropped
+   \item delivered
+   \item processed
+\end{itemize}
+
+\textbf{C. State snapshots}
+
+At configurable intervals, output a system snaptshot:
+\begin{itemize}
+   \item active controller
+   \item subsystem health states
+   \item latest sensor values
+   \item queued messages
+   \item active fautls
+\end{itemize}
+
+\textbf{D. Auditability}
+
+All failover actions and fault activations should be explicitly logged. 
+
+This gives use strong language later:
+\begin{itemize}
+   \item observability
+   \item audit trail 
+   \item event traceability
+   \item debuggability under failure
+\end{itemize}
+
+
+\begin{center}
+\rule{0.9\textwidth}{1pt}
+\end{center}
+% ==============================================================================================================
+% 17 
+% ==============================================================================================================
+\section{Configuration-driven architecture}
+
+This should be stronger than before. 
+
+MBIL should aim for:
+
+\textbf{System topology from config, not code.}
+
+\textbf{Config should define}
+\begin{itemize}
+   \item subsystem list
+   \item subsystem type
+   \item subsystem IDs
+   \item timing parameters
+   \item heartbeat intervals
+   \item timeout threshholdds
+   \item sensor rates
+   \item scenario duration
+   \item active faults
+   \item logging level
+   \item snapshot interval
+\end{itemize}
+
+\textbf{What should remain in code}
+
+Only:
+\begin{itemize}
+   \item subsystem class implementations 
+   \item routing engine
+   \item failover fules
+   \item fault application logic
+\end{itemize}
+You should be able to:
+\begin{itemize}
+   \item add a new sensor in JSON
+   \item change heartbeat threshold in JSON
+   \item switch active scenario in JSON
+   \item run normal vs degraded modes without changing code
+\end{itemize}
+Setup of for senior engineer training
+
+\begin{center}
+\rule{0.9\textwidth}{1pt}
+\end{center}
+% ==============================================================================================================
+% 18 
+% ==============================================================================================================
+\section{Suggested JSON model}
+
+\textbf{System configuration}
+
+Defines structure. 
+
+\begin{lstlisting}[language=json]
+{
+   "simulation": {
+      "tick_ms": 100,
+      "duration_ticks": 300,
+      "snapshot_interval": 10,
+   },
+   "bus": {
+      "broadcast_id": "ALL"
+   },
+   "mission_control": {
+      "primary_id": "MC1",
+      "backup_id": "MC2",
+      "heartbeat_intervale_ticks": 2,
+      "failover_timeout_ticks": 5
+   },
+   "subsystems": [
+      { "id": "MC1", "type": "mission_computer", "role": "primary" },
+      { "id": "MC2", "type": "mission_computer", "role": "backup" },
+      { "id": "ALT1", "type": "sensor", "sensor_type": "altitude", "rate_ticks": 2 },
+      { "id": "TMP1", "type": "sensor", "sensor_type": "temperature", "rate_ticks": 5 },
+      { "id": "DSP1", "type": "display" }
+   ]
+}
+\end{lstlisting}
+
+
+
+
 
 
 

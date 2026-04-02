@@ -6,7 +6,9 @@
 \usepackage{amsmath,amssymb,amsthm,mathtools}
 \usepackage{lmodern}
 \usepackage{enumitem}
-\usepackage{xcolor}
+\usepackage{soul}
+\usepackage{xcolor}   % for custom colors
+\usepackage{listings} % For code listings
 \usepackage{varwidth}
 \usepackage{import}
 \usepackage{tikz}
@@ -18,6 +20,7 @@
     bookmarksnumbered=true,
     bookmarksopen=true
 }
+\sethlcolor{lightgray} % set highlight color
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % TCOLORBOX (your question / answer boxes)
@@ -30,6 +33,35 @@
 \definecolor{myb}{RGB}{45, 111, 177}
 \definecolor{myg}{RGB}{56,140,70}
 \definecolor{mygr}{HTML}{2C3338}
+
+% ==============================
+% Define code block
+\lstdefinelanguage{json}{
+    basicstyle=\ttfamily\small,
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    stepnumber=1,
+    numbersep=8pt,
+    showstringspaces=false,
+    breaklines=true,
+    frame=single,
+    backgroundcolor=\color{gray!10},
+    literate=
+     *{0}{{{\color{blue}0}}}{1}
+      {1}{{{\color{blue}1}}}{1}
+      {2}{{{\color{blue}2}}}{1}
+      {3}{{{\color{blue}3}}}{1}
+      {4}{{{\color{blue}4}}}{1}
+      {5}{{{\color{blue}5}}}{1}
+      {6}{{{\color{blue}6}}}{1}
+      {7}{{{\color{blue}7}}}{1}
+      {8}{{{\color{blue}8}}}{1}
+      {9}{{{\color{blue}9}}}{1}
+      {:}{{{\color{red}{:}}}}{1}
+      {,}{{{\color{red}{,}}}}{1}
+      {"}{{{\color{orange}{"}}}}{1}
+}
+% ==============================
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % QUESTION, ANSWER
