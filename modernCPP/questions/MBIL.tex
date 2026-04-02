@@ -797,10 +797,299 @@ Defines structure.
 }
 \end{lstlisting}
 
+\textbf{Scenario configuration}
+
+Defines operational conditions.
+
+\begin{lstlisting}[language=json]
+{
+    "scenario_name": "primary_failover",
+    "faults": [
+        {
+            "fault_id": "mc1_offline",
+            "type": "subsystem_offline",
+            "target": "MC1",
+            "start_tick": 100
+        }
+    ]
+}
+\end{lstlisting}
+
+\begin{center}
+\rule{0.9\textwidth}{1pt}
+\end{center}
+% ==============================================================================================================
+% 19 
+% ==============================================================================================================
+\newpage
+\section{Internal code structure}
+
+\textbf{Recommended directories}
 
 
 
+\textbf{System configuration}
 
 
+\begin{lstlisting}[language=json]
+{
+    mbil/
+        src/
+            app/
+            core/
+            bus/
+            subsystem/
+            faults/
+            logging/
+            config/
+            models/
+        config/
+        docs/
+        tests/
+}
+\end{lstlisting}
+
+\vspace{\baselineskip}
+\textbf{Import classes}
+
+\vspace{\baselineskip}
+\textbf{Core}
+\begin{itemize}
+   \item SimulationEngine
+   \item ScenarioRunner
+   \item TickClock
+\end{itemize}
+
+\textbf{Bus}
+\begin{itemize}
+   \item Message
+   \item Bus
+   \item DeliveryQueue
+   \item RoutingTable
+\end{itemize}
+
+\textbf{Subsystems}
+\begin{itemize}
+   \item ISubsystem
+   \item MissionComputer
+   \item Sensor
+   \item Display
+\end{itemize}
+
+\textbf{Faults}
+\begin{itemize}
+   \item Fault
+   \item FaultEngine
+   \item FaultMatcher
+\end{itemize}
+
+\textbf{Logging}
+\begin{itemize}
+   \item Logger
+   \item EventRecord
+   \item SnapshotWriter
+\end{itemize}
+
+\textbf{Config}
+\begin{itemize}
+   \item ConfigLoader
+   \item SystemConfig
+   \item ScenarioConfig
+\end{itemize}
+
+
+\begin{center}
+\rule{0.9\textwidth}{1pt}
+\end{center}
+% ==============================================================================================================
+% 18 
+% ==============================================================================================================
+\section{Minimum viable version}
+
+\textbf{The MVP should contain:}
+\begin{itemize}
+   \item fixed tick loop
+   \item central bus
+   \item one primary mission computer
+   \item one backup mission computer
+   \item two sensors
+   \item one display
+   \item heartbeat logic
+   \item failover logic
+   \item one normal scenario
+   \item one failover scenario
+   \item structured logs
+   \item JSON config
+\end{itemize}
+
+
+\begin{center}
+\rule{0.9\textwidth}{1pt}
+\end{center}
+% ==============================================================================================================
+% 21 
+% ==============================================================================================================
+\section{Verification and testing}
+
+This is important because the project is about system behavior, not just code compiling.
+
+\textbf{Required tests}
+
+\textbf{Test 1 -- Normal operation}
+
+Expected:
+\begin{itemize}
+   \item MC1 active
+   \item MC2 standby
+   \item regular sensor data
+   \item regular heartbeat
+   \item no failover
+\end{itemize}
+
+\textbf{Test 2 -- Primary node failure}
+
+Expected:
+\begin{itemize}
+   \item MC1 offline at target tick
+   \item heartbeat stops
+   \item MC2 detects timeout
+   \item MC2 assumes control
+   \item failover logged
+\end{itemize}
+
+\textbf{Test 3 -- Message delay}
+
+Expected:
+\begin{itemize}
+   \item delayed messages visible in logs
+   \item receiving subsystem sees stale data
+   \item system still operates
+\end{itemize}
+
+\textbf{Test 4 -- Message drop}
+
+Expected:
+\begin{itemize}
+   \item dropped message event logged
+   \item degraded behavior visible
+   \item no crash
+\end{itemize}
+
+\textbf{Test 5 -- Message corruption}
+
+Expected:
+\begin{itemize}
+   \item invalid data identified
+   \item receiving subsystem rejects or flags data
+\end{itemize}
+
+\textbf{Test 6 -- Snapshot integrity}
+
+Expected:
+\begin{itemize}
+   \item snapshots reflect real subsystem state
+   \item active faults visible
+\end{itemize}
+
+\begin{center}
+\rule{0.9\textwidth}{1pt}
+\end{center}
+% ==============================================================================================================
+% 22 
+% ==============================================================================================================
+\section{Documentation set}
+
+This project should have professional docs.
+
+\textbf{1. Architecture Overview}
+
+Explain:
+\begin{itemize}
+   \item major components
+   \item runtime phases
+   \item subsystem relationships
+   \item failover strategy
+   \item fault model
+\end{itemize}
+
+\textbf{2. Interface Control Document (ICD)}
+
+Define:
+\begin{itemize}
+   \item subsystem IDs
+   \item message types
+   \item payload formats
+   \item heartbeat contract
+   \item routing expectations
+\end{itemize}
+
+\textbf{3. Fault Scenarios Document}
+
+For each fault:
+\begin{itemize}
+   \item trigger
+   \item target
+   \item expected effect
+   \item expected logs
+   \item expected system response
+\end{itemize}
+
+\textbf{4. Test Plan}
+
+Define:
+\begin{itemize}
+   \item scenarios
+   \item pass/fail expectations
+   \item observable outputs
+\end{itemize}
+
+\textbf{5. README}
+
+Explain:
+\begin{itemize}
+   \item build
+   \item run
+   \item scenario files
+   \item what the project demonstrates
+\end{itemize}
+
+\begin{center}
+\rule{0.9\textwidth}{1pt}
+\end{center}
+% ==============================================================================================================
+% 23 
+% ==============================================================================================================
+\section{What not todo}
+
+These are correct warnings and should stay part of the design.
+
+Don \textbf{not} spend time on:
+\begin{itemize}
+   \item fancy graphics
+   \item game-style UI
+   \item overbuilt animation
+   \item deep MIL-STD-1553 protocol accuracy
+   \item premature multithreading
+   \item huge numbers of subsystems
+\end{itemize}
+
+\begin{center}
+\rule{0.9\textwidth}{1pt}
+\end{center}
+% ==============================================================================================================
+% 24 
+% ==============================================================================================================
+\section{What to emphasize on resume or GitHub}
+
+Language use:
+\begin{itemize}
+   \item deterministic tick-driven mission-system simulation
+   \item redundant mission computer failover
+   \item configuration-defined subsystem topology
+   \item first-class failure mode modeling
+   \item structured observability and audi logging
+   \item reproducible scenario execution
+   \item fault injection and degraded-mode behavior
+\end{itemize}
 
 \end{document}

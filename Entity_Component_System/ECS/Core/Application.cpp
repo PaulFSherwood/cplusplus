@@ -135,14 +135,14 @@ void Application::Run()
         }
 
 
-        SDL_SetRenderDrawColor(m_Renderer, 15, 15, 20, 255);
-        SDL_RenderClear(m_Renderer);
+        SDL_SetRenderDrawColor(m_Renderer, 15, 15, 20, 255); // Background color
+        SDL_RenderClear(m_Renderer);                         // Fills the screen with the above color
 
-        m_Map.Render(m_Renderer, m_Camera);
-        render.Render(*m_Entities, m_Renderer, m_Camera);
+        m_Map.Render(m_Renderer, m_Camera);                  // Draw tiles to the screen
+        render.Render(*m_Entities, m_Renderer, m_Camera);    // Draws sprites of ECS system
 
-        SDL_RenderPresent(m_Renderer);
-        SDL_Delay(16);
+        SDL_RenderPresent(m_Renderer);                       // Double buffering, hidden backbuffer, swaps buffer
+        SDL_Delay(16);                                       // 16 millisecond pause
     }
 }
 
