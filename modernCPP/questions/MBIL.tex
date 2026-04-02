@@ -6,9 +6,12 @@
 \begin{document}
 
 \chapter{Mission Bus Integration Lab (MBIL)}
+% ==============================================================================================================
+% 1 
+% ==============================================================================================================
 \section{Project purpose}
 \newline
-Mission Bus Integration Lab (MBIL) is a deterministic, configuration-driven software system that simulates a simplified aerospace mission environment built around a central data bus, redundant mission computers, subsystem messaging, defined failure modes, observability, and failover behaviour.
+Mission Bus Integration Lab (MBIL) is a deterministic, configuration-driven software system that simulates a simplified aerospace mission environment built around a central data bus, redundant mission computers, subsystem messaging, defined failure modes, observability, and failover behavior.
 \newline
 
 The goal is not to make a flashy simulator
@@ -19,12 +22,178 @@ The goal to demonstrate that I understand how \textbf{mission-critical systems b
 \begin{center}
 \rule{0.9\textwidth}{1pt}
 \end{center}
+% ==============================================================================================================
+% 2 
+% ==============================================================================================================
 
 \section{What MBIL should communicate}
 \newline
 When someone sees this project, they should think:
 \begin{itemize}
-   \item[$\star$] This person understands relibable system design
-   \item two
+   \item[$\star$] This person understands relibable system design. 
+   \item This person thinks in interfaces and contracts
+   \item This person knows how to model faults and degraded operation
+   \item This person knows how to make systems observable
+   \item This person can separate control logic, transport, config, and monitoring
 \end{itemize}
+MBIL should read like a \textbf{systems engineering lab}, not a game and not a toy simulation 
+
+\begin{center}
+\rule{0.9\textwidth}{1pt}
+\end{center}
+% ==============================================================================================================
+% 3 
+% ==============================================================================================================
+
+\section{Core project statement}
+MBIL is a \textbf{tick-driven mission-system simulation platform} with these defining properties:
+\begin{itemize}
+   \item Deterministic execution
+   \item Configuration-defined topology
+   \item Redundant control nodes
+   \item First-class failure scenarios
+   \item structured observability 
+   \item Recoverable degraded operation 
+\end{itemize}}
+
+\begin{center}
+\rule{0.9\textwidth}{1pt}
+\end{center}
+% ==============================================================================================================
+% 4 
+% ==============================================================================================================
+\section{Design priorities}
+These are the real priorities, in order:
+\begin{itemize}
+   \item[] \textbf{Priority 1 -- Determinism}
+\newline The same scenario should produce the same behavior every run unless randomness is explicitly enabled 
+   \item[] \textbf{Priority 2 -- Reliability modeling}
+\newline Failures are not side noes.  They are part of the system design. 
+   \item[] \textbf{Priority 3 -- Observability}
+\newline Every important decision, state transition, and message path should be visible in logs or snapshots. 
+   \item[] \textbf{Priority 4 -- Clear modular architecture}
+\newline Subsystem logic, bus behavior, timing, fault injection, and loggin must stay cleanly separated. 
+   \item[] \textbf{Priority 5 -- Configurability}
+\newline System topology and scenarios should be changel from config files, not by rewriting core logic. 
+\end{itemize}
+
+\begin{center}
+\rule{0.9\textwidth}{1pt}
+\end{center}
+% ==============================================================================================================
+% 5 
+% ==============================================================================================================
+\section{Function Goals}
+MBIL must support:
+\begin{itemize}
+   \item Subsystem-to-subsystem communication through a central bus 
+   \item Multiple sybsystem types 
+   \item Dual mission computer architecture 
+   \item Heartbeat monitoring 
+   \item Failover behavior 
+   \item Defined failure injection 
+   \item Message routing
+   \item Deterministic Scheduling 
+   \item Structured logs 
+   \item State Snapshots 
+   \item Scenario-based runs
+\end{itemize}
+
+\begin{center}
+\rule{0.9\textwidth}{1pt}
+\end{center}
+% ==============================================================================================================
+% 6 
+% ==============================================================================================================
+\subsection{High-level Architecture}
+MBIL should be split into these major layers. 
+\newline\textbf{A. Simulation Core}
+
+\begin{itemize}[Responsible for:]
+   \item Tick loop 
+   \item Execution order 
+   \item Simulation Duration 
+   \item System lifecycle 
+   \item Calling each subsystem in deterministic order
+\end{itemize}
+\newline\textbf{B. Bus Layer}
+\begin{itemize}[Responsible for:]
+   \item Receiving Outgoing messages 
+   \item Storing pending messages 
+   \item Applying routing rules 
+   \item Applying message-related faults 
+   \item Delivering ready messages 
+   \item Preserving deterministic ordering
+\end{itemize}
+\newline\textbf{C. Subsystem Layer}
+\begin{itemize}[Responsible for:]
+   \item Mission Computers 
+   \item Sensors 
+   \item Display / Endpoints
+   \item Health State 
+   \item Behavior per tick
+   \item Message Handling
+\end{itemize}
+\newline\textbf{D. Fault Management Layer}
+\begin{itemize}[Responsible for:]
+   \item Defined Failure modes
+   \item Scripted Scenario Events
+   \item Optional Random Fault behavior later
+   \item Recording Fault Activations
+   \item Applying Degradation Cleanly
+\end{itemize}
+\newline\textbf{E. Observability Layer}
+\begin{itemize}[Responsible for:]
+   \item Structured Event Logging
+   \item Traceable Messgage Lifecycle
+   \item State Snapshots
+   \item Failover Reportin
+   \item Auditability
+\end{itemize}
+\newline\textbf{F. Configuration Layer}
+\begin{itemize}[Responsible for:]
+   \item Loading JSON config
+   \item Validating Topology
+   \item Instantiating Subsystem Objects
+   \item Loading Scenario/Fault Definitions
+   \item Setting timing and thresholds
+\end{itemize}
+
+\begin{center}
+\rule{0.9\textwidth}{1pt}
+\end{center}
+% ==============================================================================================================
+% 7 
+% ==============================================================================================================
+\subsection{Runtime Model}
+MBIL should use a \textbf{fixed tick} simulation model. 
+
+\begin{itemize}[Example:]
+   \item One tick every 100 ms simulated time 
+   \item Run for 300 ticks per scenario
+\end{itemize}
+
+\begin{itemize}[This is important because it gives you:]
+   \item Deterministic Behavior
+   \item Clean Testability
+   \item Easier Fault scripting
+   \item Easier replay and debugging
+\end{itemize}
+
+\textbf{Tick Processing Order}
+
+Use a Fixed order every tick:
+
+\textbf{Phase 1 -- Scenario updates}
+\begin{itemize}
+   \item Activate any scheduled Failures
+   \item Deactivate expired Failrues 
+   \item Apply Manual state changes if configured 
+\end{itemize}
+
+\textbf{Phase 2 -- Sensor Updates}
+\begin{itemize}
+   \item Sensors decide whether to emit new data this tick
+\end{itemize}
+
 \end{document}

@@ -339,6 +339,8 @@ INPUT /home/sherwood/.miktex/texmfs/data/fonts/map/pdftex/pdftex.map
 INPUT /home/sherwood/.miktex/texmfs/install/fonts/enc/dvips/lm/lm-rm.enc
 INPUT /home/sherwood/.miktex/texmfs/install/fonts/enc/dvips/lm/lm-mathit.enc
 INPUT /home/sherwood/.miktex/texmfs/install/fonts/enc/dvips/lm/lm-ts1.enc
+INPUT /home/sherwood/.miktex/texmfs/install/fonts/tfm/public/lm/rm-lmr12.tfm
+INPUT /home/sherwood/.miktex/texmfs/install/fonts/tfm/public/lm/rm-lmbx12.tfm
 INPUT MBIL.aux
 INPUT ./MBIL.out
 INPUT ./MBIL.out
