@@ -10,12 +10,12 @@
 % 1 
 % ==============================================================================================================
 \section{Project purpose}
-\newline
+\vspace{\baselineskip}
 Mission Bus Integration Lab (MBIL) is a deterministic, configuration-driven software system that simulates a simplified aerospace mission environment built around a central data bus, redundant mission computers, subsystem messaging, defined failure modes, observability, and failover behavior.
-\newline
+\vspace{\baselineskip}
 
 The goal is not to make a flashy simulator
-\newline
+\vspace{\baselineskip}
 
 The goal to demonstrate that I understand how \textbf{mission-critical systems behave, fail, reover, and get debugged.}
 
@@ -27,7 +27,7 @@ The goal to demonstrate that I understand how \textbf{mission-critical systems b
 % ==============================================================================================================
 
 \section{What MBIL should communicate}
-\newline
+\vspace{\baselineskip}
 When someone sees this project, they should think:
 \begin{itemize}
    \item[$\star$] This person understands relibable system design. 
@@ -54,7 +54,7 @@ MBIL is a \textbf{tick-driven mission-system simulation platform} with these def
    \item First-class failure scenarios
    \item structured observability 
    \item Recoverable degraded operation 
-\end{itemize}}
+\end{itemize}
 
 \begin{center}
 \rule{0.9\textwidth}{1pt}
@@ -66,15 +66,15 @@ MBIL is a \textbf{tick-driven mission-system simulation platform} with these def
 These are the real priorities, in order:
 \begin{itemize}
    \item[] \textbf{Priority 1 -- Determinism}
-\newline The same scenario should produce the same behavior every run unless randomness is explicitly enabled 
+\vspace{\baselineskip}The same scenario should produce the same behavior every run unless randomness is explicitly enabled 
    \item[] \textbf{Priority 2 -- Reliability modeling}
-\newline Failures are not side noes.  They are part of the system design. 
+\vspace{\baselineskip}Failures are not side noes.  They are part of the system design. 
    \item[] \textbf{Priority 3 -- Observability}
-\newline Every important decision, state transition, and message path should be visible in logs or snapshots. 
+\vspace{\baselineskip}Every important decision, state transition, and message path should be visible in logs or snapshots. 
    \item[] \textbf{Priority 4 -- Clear modular architecture}
-\newline Subsystem logic, bus behavior, timing, fault injection, and loggin must stay cleanly separated. 
+\vspace{\baselineskip}Subsystem logic, bus behavior, timing, fault injection, and loggin must stay cleanly separated. 
    \item[] \textbf{Priority 5 -- Configurability}
-\newline System topology and scenarios should be changel from config files, not by rewriting core logic. 
+\vspace{\baselineskip}System topology and scenarios should be changel from config files, not by rewriting core logic. 
 \end{itemize}
 
 \begin{center}
@@ -105,19 +105,21 @@ MBIL must support:
 % ==============================================================================================================
 % 6 
 % ==============================================================================================================
-\subsection{High-level Architecture}
+\section{High-level Architecture}
 MBIL should be split into these major layers. 
-\newline\textbf{A. Simulation Core}
+\vspace{\baselineskip} \textbf{A. Simulation Core}
 
-\begin{itemize}[Responsible for:]
+\textbf{Responsible for:}
+\begin{itemize}
    \item Tick loop 
    \item Execution order 
    \item Simulation Duration 
    \item System lifecycle 
    \item Calling each subsystem in deterministic order
 \end{itemize}
-\newline\textbf{B. Bus Layer}
-\begin{itemize}[Responsible for:]
+\textbf{B. Bus Layer}
+\textbf{Responsible for:}
+\begin{itemize}
    \item Receiving Outgoing messages 
    \item Storing pending messages 
    \item Applying routing rules 
@@ -125,8 +127,9 @@ MBIL should be split into these major layers.
    \item Delivering ready messages 
    \item Preserving deterministic ordering
 \end{itemize}
-\newline\textbf{C. Subsystem Layer}
-\begin{itemize}[Responsible for:]
+\vspace{\baselineskip} \textbf{C. Subsystem Layer}
+\textbf{Responsible for:}
+\begin{itemize}
    \item Mission Computers 
    \item Sensors 
    \item Display / Endpoints
@@ -134,24 +137,27 @@ MBIL should be split into these major layers.
    \item Behavior per tick
    \item Message Handling
 \end{itemize}
-\newline\textbf{D. Fault Management Layer}
-\begin{itemize}[Responsible for:]
+\vspace{\baselineskip} \textbf{D. Fault Management Layer}
+\textbf{Responsible for:}
+\begin{itemize}
    \item Defined Failure modes
    \item Scripted Scenario Events
    \item Optional Random Fault behavior later
    \item Recording Fault Activations
    \item Applying Degradation Cleanly
 \end{itemize}
-\newline\textbf{E. Observability Layer}
-\begin{itemize}[Responsible for:]
+\vspace{\baselineskip} \textbf{E. Observability Layer}
+\textbf{Responsible for:}
+\begin{itemize}
    \item Structured Event Logging
    \item Traceable Messgage Lifecycle
    \item State Snapshots
    \item Failover Reportin
    \item Auditability
 \end{itemize}
-\newline\textbf{F. Configuration Layer}
-\begin{itemize}[Responsible for:]
+\vspace{\baselineskip} \textbf{F. Configuration Layer}
+\textbf{Responsible for:}
+\begin{itemize}
    \item Loading JSON config
    \item Validating Topology
    \item Instantiating Subsystem Objects
@@ -165,15 +171,17 @@ MBIL should be split into these major layers.
 % ==============================================================================================================
 % 7 
 % ==============================================================================================================
-\subsection{Runtime Model}
+\section{Runtime Model}
 MBIL should use a \textbf{fixed tick} simulation model. 
 
-\begin{itemize}[Example:]
+\textbf{Example:}
+\begin{itemize}
    \item One tick every 100 ms simulated time 
    \item Run for 300 ticks per scenario
 \end{itemize}
 
-\begin{itemize}[This is important because it gives you:]
+\textbf{This is important because it gives you:}
+\begin{itemize}
    \item Deterministic Behavior
    \item Clean Testability
    \item Easier Fault scripting
@@ -195,5 +203,352 @@ Use a Fixed order every tick:
 \begin{itemize}
    \item Sensors decide whether to emit new data this tick
 \end{itemize}
+
+\textbf{Phase 3 -- Mission Computer Updates}
+\begin{itemize}
+   \item Active controller processes a state 
+   \item Standby Controller monitors health 
+   \item Heartbeats generated if healthy
+\end{itemize}
+
+\textbf{Phase 4 -- Endpoint / Display Updates}
+\begin{itemize}
+   \item Display or logger consumers update their local state. 
+\end{itemize}
+
+\textbf{Phase 5 -- Bus Processing}
+\begin{itemize}
+   \item Pending messages sorted and processsed
+   \item Faults applied to eligible messages
+   \item Delayed messages retained
+   \item Deliverable messages routed
+\end{itemize}
+
+\textbf{Phase 6 -- Observability Output}
+\begin{itemize}
+   \item Event logs Written
+   \item Snapshot Optionally captured
+\end{itemize}
+
+That order should be documented and never casually changed.
+
+\begin{center}
+\rule{0.9\textwidth}{1pt}
+\end{center}
+% ==============================================================================================================
+% 8 
+% ==============================================================================================================
+\section{Deterministic behavior rules}
+
+This is now a first-class design feature. 
+
+\vspace{1\baselineskip}
+\textbf{MBIL determinism rules}
+\vspace{2\baselineskip}
+\vspace{\baselineskip}\textbf{Rule 1: fixed tick rate}
+\vspace{\baselineskip}\vspace{1\baselineskip}The simulation advances in discrete ticks. 
+
+\noindent \textbf{Rule 2: stable subsystem order}
+\vspace{\baselineskip}\vspace{1\baselineskip}Subsystems are always ticked in the same deterministic order, such as sorted by ID. 
+
+\noindent \textbf{Rule 3: Stable message ordering}
+\vspace{\baselineskip}\vspace{1\baselineskip}Messages created in the same tick are delivered in a defined order:
+\begin{itemize}
+   \item Priority 
+   \item Tick created 
+   \item Source ID 
+   \item Message sequence number
+\end{itemize}
+
+\noindent \textbf{Rule 4: No hidden asynchronous behavior in MVP}
+\vspace{\baselineskip}\vspace{1\baselineskip}No real multithreading in the initial version. 
+
+\noindent \textbf{Rule 5: Reproducible scenario results}
+\vspace{\baselineskip}\vspace{1\baselineskip}A scenario file should produce identical output unless randomness is explicitly enabled with a fixed seed.  
+\vspace{\baselineskip}\vspace{1\baselineskip}This matters because it makes the system feel like an engineering lab rather than an app demo. 
+
+\begin{center}
+\rule{0.9\textwidth}{1pt}
+\end{center}
+% ==============================================================================================================
+% 9 
+% ==============================================================================================================
+\section{Core subsystem model}
+
+Each subsystem should implement a common interface. 
+
+\begin{itemize}
+   \item id()
+   \item type()
+   \item tick(context)
+   \item receive(message)
+   \item health()
+   \item snapshot()
+\end{itemize}
+
+\textbf{Health states}
+
+Every subsystem should have explicit health states such as:
+\begin{itemize}
+   \item Nominal
+   \item Degraded
+   \item Offline
+   \item Failed
+   \item Recovering
+\end{itemize}
+
+This makes failure hanling more professional and easier to test.
+
+\begin{center}
+\rule{0.9\textwidth}{1pt}
+\end{center}
+% ==============================================================================================================
+% 10 
+% ==============================================================================================================
+\section{Main subsystem types}
+
+\textbf{A. Mission Computer}
+
+\textbf{Two instances:}
+\begin{itemize}
+   \item \textbf{MC1} = primary
+   \item \textbf{MC2} = backup
+\end{itemize}
+
+\textbf{Responsibilities:}
+\begin{itemize}
+   \item Process incoming sensor/status messages
+   \item Emit heartbeats
+   \item Generate command/status output
+   \item Maintain own health state
+   \item Participate in failover logic
+\end{itemize}
+
+
+\textbf{MC1 Behavior}
+\begin{itemize}
+   \item Starts as active controller
+   \item Processes sensor inputs
+   \item Emits heartbeat periodically
+   \item Produces system status and commands
+\end{itemize}
+
+\textbf{MC2 Behavior}
+\begin{itemize}
+   \item Starts in standby
+   \item Watches for MC1 heartbeat loss
+   \item Tracks timeout threshold
+   \item Assumes control when failover condition is met 
+   \item Announces failover in log/event stream
+\end{itemize}
+
+\begin{center}
+\rule{0.9\textwidth}{1pt}
+\end{center}
+
+\textbf{B. Sensors}
+
+\textbf{Example Sensors} 
+\begin{itemize}
+   \item Altitude Sensor
+   \item Temperature Sensor
+   \item Navigation Source
+\end{itemize}
+
+\textbf{Responsibilities} 
+\begin{itemize}
+   \item Emit data on configured interval
+   \item Send structured sensor messages
+   \item Support degraded or failed behavior under fault scenarios
+\end{itemize}
+
+\textbf{Sensor outputs should be simple but believable:} 
+\begin{itemize}
+   \item Value
+   \item Valid Flag
+   \item Quality / State
+\end{itemize}
+
+
+\begin{center}
+\rule{0.9\textwidth}{1pt}
+\end{center}
+
+
+\textbf{C. Display/Endpoint}
+
+\textbf{Responsibilities:} 
+\begin{itemize}
+   \item Receive commands/status
+   \item Display system state through logs or summary output
+   \item Report currently active mission computer
+   \item Show degraded conditions
+\end{itemize}
+
+This is not a GUI priority.  Console or structured log output is engouth.
+
+\begin{center}
+\rule{0.9\textwidth}{1pt}
+\end{center}
+% ==============================================================================================================
+% 11 
+% ==============================================================================================================
+\section{Message bus design}
+
+The bus is central, but should stay simple. 
+
+\textbf{Bus responsibilities}
+\begin{itemize}
+   \item Accept outgoing messages from subsystems
+   \item Assign message metadata if needed
+   \item Hold pending and delayed queues
+   \item Apply failure rules
+   \item Route messages by destination
+   \item Support broadcast
+   \item log delivery outcome
+\end{itemize}
+
+\textbf{Message routing modes}
+
+\vspace{\baselineskip} Support:
+\begin{itemize}
+   \item point-to-point
+   \item broadcast
+   \item optional group routing later
+\end{itemize}
+
+
+\begin{center}
+\rule{0.9\textwidth}{1pt}
+\end{center}
+% ==============================================================================================================
+% 12 
+% ==============================================================================================================
+\section{Message model}
+
+\vspace{\baselineskip} Keep the message model explicit and interview-friendly. 
+
+\noindent\textbf{Message fields}
+
+
+\noindent Each message should include:
+\begin{itemize}
+   \item message\_id
+   \item sequence\_number
+   \item tick\_created
+   \item tick\_due
+   \item source\_id
+   \item destination\_id
+   \item message\_type
+   \item priority
+   \item payload
+   \item trace\_id or correlation ID
+\end{itemize}
+\vspace{\baselineskip} That last field is very good for observability. 
+
+\textbf{Message types}
+
+Starts with:
+\begin{itemize}
+   \item HEARTBEAT
+   \item SENSOR\_DATA
+   \item STATUS
+   \item COMMAND
+   \item ALERT
+   \item FAILOVER\_NOTICE
+\end{itemize}
+
+\textbf{Payload model}
+
+Use a simple tagged payload design. 
+
+Examples:
+\begin{itemize}
+   \item Heartbeat payload: current role, heatlh
+   \item Sensor payload: sensor name, numeric value, validity
+   \item Status payload: active controller, mode, health summary
+   \item Command payload: command name, parameter
+\end{itemize}
+
+\begin{center}
+\rule{0.9\textwidth}{1pt}
+\end{center}
+% ==============================================================================================================
+% 13 
+% ==============================================================================================================
+\section{Failure modes as a first-class feature}
+
+This is one of the the biggest improvements. 
+
+Do not describ ehtis as "supports faults."
+
+Describe it as:
+
+\textbf{MBIL includes defined operational failure modes and corresponding system responses.}
+
+\textbf{Core failure mdoe categories}
+
+\textbf{1. Bus timeout / delivery failure}
+
+A Message does not arrive in expected time.  
+
+Effect:
+\begin{itemize}
+   \item Receiving system may mark source stale
+   \item Failover logic may be triggered if heartbeats are affected
+\end{itemize}
+
+\textbf{3. Message delay}
+
+Message is delivered after configured delay. 
+
+Effect:
+\begin{itemize}
+   \item Stale data
+   \item Delayed heartbeat detection
+   \item Timing edge cases
+\end{itemize}
+
+\textbf{4. Message corruption}
+
+Payload kared invalid or altered. 
+
+Effect:
+\begin{itemize}
+   \item Receiving system rejects or flags data
+   \item Degraded mode may be entered
+\end{itemize}
+
+\textbf{5. Node failure}
+
+Subsystem goes offline. 
+
+Examples:
+\begin{itemize}
+   \item MC1 failes
+   \item Sensor fails
+   \item Display goes offline
+\end{itemize}
+
+\textbf{6. Node degradation}
+
+Subsystem still runs but performs poorly. 
+
+Examples:
+\begin{itemize}
+   \item Lower sensor update rate
+   \item Heartbeat jitter
+   \item Intermittent bad data
+\end{itemize}
+
+
+\begin{center}
+\rule{0.9\textwidth}{1pt}
+\end{center}
+% ==============================================================================================================
+% 14 
+% ==============================================================================================================
+
+
 
 \end{document}
