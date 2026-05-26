@@ -1,0 +1,8 @@
+initialize SDL
+create a window
+create a renderer
+handle events
+clear scren
+draw something
+preset frame
+clean up
