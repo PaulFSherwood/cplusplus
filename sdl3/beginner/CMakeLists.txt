@@ -24,3 +24,9 @@ target_link_libraries(lesson05 SDL3::SDL3)
 
 add_executable(lesson06 lesson06/main.cpp)
 target_link_libraries(lesson06 SDL3::SDL3)
+
+add_executable(lesson07 lesson07/main.cpp)
+target_link_libraries(lesson07 SDL3::SDL3)
+
+add_executable(lesson08 lesson08/main.cpp)
+target_link_libraries(lesson08 SDL3::SDL3)

@@ -1,0 +1,4 @@
+Rectangle overlap
+Checking player against many walls.
+Undoing movement when collision happens.
+Basic solid walls.

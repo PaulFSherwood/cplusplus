@@ -1,0 +1,4 @@
+Multiple structs
+arrays/vectors of objects 
+drawing many objects 
+rendering different object types

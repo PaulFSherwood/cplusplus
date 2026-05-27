@@ -1,0 +1,214 @@
+Card 1:
+SDL_Init(SDL_INIT_VIDEO)
+--
+Starts SDL video/window support.
+Must happen before creating windows/renderers.
+
+Card 2:
+SDL_Window* window = SDL_CreateWindow(...);
+--
+Creates the OS window 
+The window is what appears on screen 
+
+Card 3:
+SDL_Renderer* renderer = SDL_CreateRenderer(window, nullptr);
+--
+Creates the drawing tool connected to the window.
+The renderer draws shapes/images.
+
+Card 4:
+while (running)
+{
+   handleEvents(running);
+   updatePlayer(player, deltaTime);
+   render(renderer, player);
+}
+--
+Main loop:
+1. handle input/handleEvents
+2. update world
+3. render/draw world 
+
+Card 5:
+while (SDL_PollEvent(&event))
+--
+Pulls pending SDL events one at a time.
+Used for quit, keyboard press, mouse, window events.
+
+Card 6:
+if (event.type == SDL_EVENT_QUIT)
+{
+   running = false;
+}
+--
+Detects when the user closes the window.
+
+Card 7:
+if (event.key.key == SDLK_ESCAPE)
+{
+   running = false;
+}
+-- 
+Quits when Escape is pressed.
+Good for app/game exit.
+
+Card 8:
+const bool* keyboard = SDL_GetKeyboardState(nullptr);
+--
+Gets current held-down keyboard state.
+Good for movement controls.
+
+Card 9:
+if (keyboard(SDL_SCANCODE_RIGHT))
+{
+   player.rect.x += player.speed * deltaTime;
+}
+--
+If right arrow is held, move player right.
+Movement uses speed times deltaTime.
+
+Card 10:
+Uint64 previousTime = SDL_GetTicks();
+--
+Stores previous frame time in milliseconds.
+
+Card 11:
+Uint64 frameStart = SDL_GetTicks();
+--
+Gets current frame start time in milliseconds.
+
+Card 12:
+float deltaTime = (frameStart - previousTime) / 1000.0f;
+previousTime = frameStart;
+--
+Calculates seconds since last frame.
+Converts milliseconds to seconds.
+
+Card 13:
+player.rect.x += player.speed * deltaTime;
+--
+Moves based on real time, not frame count.
+speed is pixels per second.
+
+Card 14:
+const int targetFPS = 60;
+const Uint64 frameDelayMS = 1000 / targetFPS;
+--
+At 60 FPS, each frame should take about 16 ms.
+
+Card 15:
+if (frameTime < frameDelayMS)
+{
+   SDL_Delay(frameDelayMS - frameTime)
+}
+--
+If the frame finished too fast, wait.
+Controls max frame rate.
+
+Card 16:
+SDL_SetRenderDrawColor(renderer, r, g, b, a);
+--
+Sets the current drawing color.
+RGBA = red, green, blue, alpha.
+
+Card 17:
+SDL_RenderClear(renderer);
+--
+Clears the current frame using the current draw color.
+
+Card 18:
+SDL_RenderFillRect(renderer, &rect);
+--
+Draws a filled rectangle.
+Takes the address of an SDL_Rect 
+
+Card 19:
+SDL_RenderPresent(renderer);
+--
+Shows the finished frame on screen.
+Think: swap/present back buffer
+
+Card 20:
+SDL_FRect rect;
+rect.x = 350.0f;
+rect.y = 250.0f;
+rect.w = 100.0f;
+rect.h = 100.0f;
+--
+x/y = top-left position.
+w/h = width and height.
+Uses float values.
+
+Card 21:
+0,0
+--
+Top-Left of the screen.
+x increases right 
+y increases left 
+
+Card 22:
+if (player.rect.x < 0)
+{
+   player.rect.x = 0;
+}
+--
+Stops player from leaving the left side.
+
+Card 23:
+if (player.rect.x + player.rect.w > windowWidth)
+{
+   player.rect.x = windowWidth - player.rect.w;
+}
+--
+Stops player from leaving the right side.
+Right edge = X + width;
+
+Card 24:
+if (player.rect.y + player.rect.h > windowHeight)
+{
+   player.rect.y = windowHeight - player.rect.h;
+}
+--
+Stops player from leaving the bottom.
+Bottom edge = y + height.
+
+Card 25:
+struct Player{
+   SDL_FRect rect;
+   float speed;
+};
+--
+Groups player data together:
+position/size and movement speed.
+
+Card 26:
+void updatePlayer(Player& player, float deltaTime)
+--
+Passes player by reference.
+Function can modify the original player.
+
+Card 27:
+void drawPlayer(SDL_Renderer* renderer, const Player& player)
+--
+Passes player read-only by reference.
+Function can use player but not change it.
+
+Card 28:
+Player&
+--
+Reference.
+Uses original object.
+Can modify it unless const.
+
+Card 29:
+const Player&
+--
+Read-only reference.
+Efficient and safe for drawing/rendering.
+
+Card 30:
+Player*
+--
+Pointer.
+Requires passing address like &player.
+Access members with -> instead of .
