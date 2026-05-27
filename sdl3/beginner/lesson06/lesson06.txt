@@ -1,0 +1,3 @@
+grouping related data together
+passing custom objects to functions
+moving from faw rectagle code toward game objects

@@ -1,0 +1,4 @@
+screen boundaries
+clamping position
+using window width/height 
+basic collision with edges

@@ -1,0 +1,5 @@
+keyboard state
+position variables
+speed
+per-fram movement
+redrawing at a new location

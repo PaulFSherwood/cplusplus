@@ -1,0 +1,4 @@
+why functions reduce clutter
+how to pass SDL objects into functions
+separating input, update, and render
+the basic shape of a real game loop

@@ -1,0 +1,6 @@
+frame start time 
+frame end time 
+delta time 
+target FPS
+frame delay 
+pixels per second
