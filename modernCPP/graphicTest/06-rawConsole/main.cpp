@@ -3,6 +3,10 @@
 #include <thread>
 #include <vector>
 #include <iostream>
+#include <fstream>
+#include <sstream>
+#include <string>
+
 // Tsoding [https://www.youtube.com/watch?v=qjWkNZ0SXfo]
 // ======================
 // Terminal control
@@ -94,6 +98,40 @@ void draw_line(std::vector<char>& buf, int w, int h, Vec2 a, Vec2 b) {
     }
 }
 
+bool loadMesh(const std::string& filename,
+              std::vector<Vec3>& verts,
+              std::vector<std::vector<int>>& faces)
+{
+  std::ifstream file(filename);
+  if (!file.is_open())
+  {
+    std::cerr << "Failed to open mesh file: " << filename << "\n";
+    return false;
+  }
+
+  std::string type;
+  while (file >> type) {
+    if (type == "v") {
+      float x, y, z;
+      file >> x >> y >> z;
+      verts.push_back({x, y, z});
+    }
+    else if (type == "f") {
+      std::string line;
+      std::getline(file, line);
+      std::istringstream iss(line);
+
+      std::vector<int> face;
+      int idx;
+      while (iss >> idx)
+      {
+        face.push_back(idx);
+      }
+      faces.push_back(face);
+    }
+  }
+  return true;
+}
 // ======================
 // Main
 // ======================
@@ -104,28 +142,60 @@ int main() {
 
     term_init();
 
+    // std::vector<Vec3> vs = {
+    //     { 0.25f,  0.25f,  0.25f},
+    //     {-0.25f,  0.25f,  0.25f},
+    //     {-0.25f, -0.25f,  0.25f},
+    //     { 0.25f, -0.25f,  0.25f},
+    //     { 0.25f,  0.25f, -0.25f},
+    //     {-0.25f,  0.25f, -0.25f},
+    //     {-0.25f, -0.25f, -0.25f},
+    //     { 0.25f, -0.25f, -0.25f},
+    // };
+
+    
     std::vector<Vec3> vs = {
-        { 0.25f,  0.25f,  0.25f},
-        {-0.25f,  0.25f,  0.25f},
-        {-0.25f, -0.25f,  0.25f},
-        { 0.25f, -0.25f,  0.25f},
-        { 0.25f,  0.25f, -0.25f},
-        {-0.25f,  0.25f, -0.25f},
-        {-0.25f, -0.25f, -0.25f},
-        { 0.25f, -0.25f, -0.25f},
+        { 0.0f,  0.5f,  0.0f},  // top
+        { 0.5f,  0.0f,  0.0f},  // +X
+        { 0.0f,  0.0f,  0.5f},  // +Z
+        {-0.5f,  0.0f,  0.0f},  // -X
+        { 0.0f,  0.0f, -0.5f},  // -Z
+        { 0.0f, -0.5f,  0.0f},  // bottom
     };
 
+
+    // std::vector<std::vector<int>> fs = {
+    //     {0,1,2,3},
+    //     {4,5,6,7},
+    //     {0,4},
+    //     {1,5},
+    //     {2,6},
+    //     {3,7}
+    // };
+
+    
     std::vector<std::vector<int>> fs = {
-        {0,1,2,3},
-        {4,5,6,7},
-        {0,4},
-        {1,5},
-        {2,6},
-        {3,7}
+        {0,1,2},
+        {0,2,3},
+        {0,3,4},
+        {0,4,1},
+        {5,2,1},
+        {5,3,2},
+        {5,4,3},
+        {5,1,4}
     };
+
 
     float angle = 0.f;
     float dz = 2.f;
+
+    std::vector<Vec3> vs;
+    std::vector<std:;vector<int>> fs;
+
+    if (!loadMesh("mesh.txt", vs, fs)) 
+    {
+      return 1;
+    }
 
     while (true) {
         std::vector<char> buffer(WIDTH * HEIGHT, ' ');
